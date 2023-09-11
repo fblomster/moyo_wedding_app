@@ -92,12 +92,19 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         elevation: 0.0,
+        actions: [
+          IconButton(
+              onPressed: (){
+                print('hej');
+              },
+              icon: const Icon(Icons.language))],
         /*title: Text(widget.title,
         style: const TextStyle(
           fontFamily: 'Literata',
           fontSize: 32.0,
         )),
         centerTitle: true,*/
+
       ),
      drawer: Drawer(
        child: ListView(
@@ -118,6 +125,18 @@ class _MyHomePageState extends State<MyHomePage> {
            ),
            ListTile(
              title: const Text("Transport"),
+             onTap: () {
+               Navigator.pop(context);
+             },
+           ),
+           ListTile(
+             title: const Text("Gästlista"),
+             onTap: () {
+               Navigator.pop(context);
+             },
+           ),
+           ListTile(
+             title: const Text("Önskelista"),
              onTap: () {
                Navigator.pop(context);
              },
