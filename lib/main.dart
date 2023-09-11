@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'moyo Wedding App',
       theme: ThemeData(
         // This is the theme of your application.
@@ -92,6 +93,55 @@ class _MyHomePageState extends State<MyHomePage> {
         )),
         centerTitle: true,
       ),
+     drawer: Drawer(
+       child: ListView(
+         children: <Widget>[
+           const DrawerHeader(
+             decoration: BoxDecoration(color: Colors.green),
+             child: Text(
+               "Hello Andy!!",
+               textAlign: TextAlign.justify,
+               textScaleFactor: 2.0,
+             ),
+           ),
+           ListTile(
+             title: const Text("First"),
+             onTap: () {
+               Navigator.pop(context);
+             },
+           ),
+           ListTile(
+             title: const Text("Second"),
+             onTap: () {
+               Navigator.pop(context);
+             },
+           )
+         ],
+       ),
+     ),
+     /*   body: DefaultTabController(
+          length: 3,
+          child: Scaffold(
+            appBar: AppBar(
+              actions: const <Widget>[],
+              title: const TabBar(
+                tabs: [
+                  Tab(icon: Icon(Icons.directions_car)),
+                  Tab(icon: Icon(Icons.directions_transit)),
+                  Tab(icon: Icon(Icons.directions_bike)),
+                ],
+                indicatorColor: Colors.white,
+              ),
+            ),
+            body: const TabBarView(
+              children: [
+                Icon(Icons.directions_car,size: 50.0,),
+                Icon(Icons.directions_transit,size: 50.0,),
+                Icon(Icons.directions_bike,size: 50.0,),
+              ],
+            ),
+          ),
+        ),*/
       body: //Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -156,7 +206,40 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      bottomNavigationBar: menu(),
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+Widget menu() {
+  return Container(
+    color: const Color(0xFF3F5AA6),
+    child: const TabBar(
+      labelColor: Colors.white,
+      unselectedLabelColor: Colors.white70,
+      indicatorSize: TabBarIndicatorSize.tab,
+      indicatorPadding: EdgeInsets.all(5.0),
+      indicatorColor: Colors.blue,
+      tabs: [
+        Tab(
+          text: "Transactions",
+          icon: Icon(Icons.euro_symbol),
+        ),
+        Tab(
+          text: "Bills",
+          icon: Icon(Icons.assignment),
+        ),
+        Tab(
+          text: "Balance",
+          icon: Icon(Icons.account_balance_wallet),
+        ),
+        Tab(
+          text: "Options",
+          icon: Icon(Icons.settings),
+        ),
+      ],
+    ),
+  );
 }
