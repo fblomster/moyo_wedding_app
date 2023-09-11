@@ -92,12 +92,12 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         elevation: 0.0,
-        title: Text(widget.title,
+        /*title: Text(widget.title,
         style: const TextStyle(
           fontFamily: 'Literata',
           fontSize: 32.0,
         )),
-        centerTitle: true,
+        centerTitle: true,*/
       ),
      drawer: Drawer(
        child: ListView(
@@ -164,25 +164,37 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Text(
+                '15 juni 2024',
+                style: TextStyle(
+                  fontFamily: 'Literata',
+                  fontSize: 18,
+                ),
+              ),
+            /*  Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.headlineMedium,
+              ),*/
+              const SizedBox(
+                height: 20.0,
               ),
-              SizedBox(),
               Container(
                 padding: const EdgeInsets.all(10.0),
                 color: Colors.white,
                 margin: const EdgeInsets.all(20.0),
                 child: Image.asset('assets/kiss1.jpg'),
               ),
-              const Icon(
-                Icons.airport_shuttle,
-                size: 50,
+              const SizedBox(
+                height: 20.0,
               ),
               ElevatedButton(
                 onPressed: (){
                   print('Clicked!');
                 },
-                child: const Text('Click me'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.greenAccent,
+                ),
+                child: const Text('Inbjudan',
+                style: TextStyle(color: Colors.black)),
               ),
             ],
         ),
@@ -204,13 +216,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
 Widget menu() {
   return Container(
-    color: Colors.greenAccent,// const Color(0xFF3F5AA6),
+    color: Colors.black87,// const Color(0xFF3F5AA6),
     child: const TabBar(
-      labelColor: Colors.black,
-      unselectedLabelColor: Colors.black45,
+      labelColor: Colors.white,
+      unselectedLabelColor: Colors.white70,
       indicatorSize: TabBarIndicatorSize.tab,
       indicatorPadding: EdgeInsets.all(5.0),
-      indicatorColor: Colors.blue,
+      indicatorColor: Colors.greenAccent,
       tabs: [
         Tab(
           text: "Boende",
