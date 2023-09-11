@@ -77,8 +77,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-      extendBodyBehindAppBar: true,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 4,
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
@@ -86,6 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.transparent,//const Color(0xffE0C9A6), //Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
+        elevation: 0.0,
         title: Text(widget.title,
         style: const TextStyle(
           fontFamily: 'Literata',
@@ -97,21 +103,21 @@ class _MyHomePageState extends State<MyHomePage> {
        child: ListView(
          children: <Widget>[
            const DrawerHeader(
-             decoration: BoxDecoration(color: Colors.green),
+             decoration: BoxDecoration(color: Colors.greenAccent),
              child: Text(
-               "Hello Andy!!",
+               "Hello friends!!",
                textAlign: TextAlign.justify,
                textScaleFactor: 2.0,
              ),
            ),
            ListTile(
-             title: const Text("First"),
+             title: const Text("Boende"),
              onTap: () {
                Navigator.pop(context);
              },
            ),
            ListTile(
-             title: const Text("Second"),
+             title: const Text("Transport"),
              onTap: () {
                Navigator.pop(context);
              },
@@ -119,30 +125,9 @@ class _MyHomePageState extends State<MyHomePage> {
          ],
        ),
      ),
-     /*   body: DefaultTabController(
-          length: 3,
-          child: Scaffold(
-            appBar: AppBar(
-              actions: const <Widget>[],
-              title: const TabBar(
-                tabs: [
-                  Tab(icon: Icon(Icons.directions_car)),
-                  Tab(icon: Icon(Icons.directions_transit)),
-                  Tab(icon: Icon(Icons.directions_bike)),
-                ],
-                indicatorColor: Colors.white,
-              ),
-            ),
-            body: const TabBarView(
-              children: [
-                Icon(Icons.directions_car,size: 50.0,),
-                Icon(Icons.directions_transit,size: 50.0,),
-                Icon(Icons.directions_bike,size: 50.0,),
-              ],
-            ),
-          ),
-        ),*/
-      body: //Center(
+
+      body: TabBarView(
+    children: [//Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         //child:
@@ -202,42 +187,46 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
         ),
           ),
-      floatingActionButton: FloatingActionButton(
+    ]),
+
+   /*   floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ),
-      bottomNavigationBar: menu(),
+      ),*/
+          bottomNavigationBar:   menu(),
       // This trailing comma makes auto-formatting nicer for build methods.
+    ),
+    ),
     );
   }
 }
 
 Widget menu() {
   return Container(
-    color: const Color(0xFF3F5AA6),
+    color: Colors.greenAccent,// const Color(0xFF3F5AA6),
     child: const TabBar(
-      labelColor: Colors.white,
-      unselectedLabelColor: Colors.white70,
+      labelColor: Colors.black,
+      unselectedLabelColor: Colors.black45,
       indicatorSize: TabBarIndicatorSize.tab,
       indicatorPadding: EdgeInsets.all(5.0),
       indicatorColor: Colors.blue,
       tabs: [
         Tab(
-          text: "Transactions",
-          icon: Icon(Icons.euro_symbol),
+          text: "Boende",
+          icon: Icon(Icons.hotel),
         ),
         Tab(
-          text: "Bills",
-          icon: Icon(Icons.assignment),
+          text: "Transport",
+          icon: Icon(Icons.bus_alert),
         ),
         Tab(
-          text: "Balance",
-          icon: Icon(Icons.account_balance_wallet),
+          text: "Info",
+          icon: Icon(Icons.info),
         ),
         Tab(
-          text: "Options",
-          icon: Icon(Icons.settings),
+          text: "OSA",
+          icon: Icon(Icons.mail),
         ),
       ],
     ),
