@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moyo/model/language_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,6 +59,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  LanguageModel? _chosenValue;
+  List<LanguageModel> _languages = List.empty(growable: true);
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -70,6 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
+  void initState(){
+    super.initState();
+    _languages.add(LanguageModel(code: 'sv', name: 'Svenska'));
+    _languages.add(LanguageModel(code: 'en', name: 'English'));
+  }
+
+  @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -77,14 +88,16 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    String selectedValue = "Svenska";;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         length: 4,
         child: Scaffold(
           extendBodyBehindAppBar: true,
-
       appBar: AppBar(
+        //leading: const Icon(Icons.language),
+        //title: const Text('Välj språk'),
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
@@ -93,11 +106,70 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         elevation: 0.0,
         actions: [
-          IconButton(
+          Row(
+            children: <Widget>[
+              Icon(Icons.language),
+              const SizedBox(width: 8.0,),
+              DropdownButton<LanguageModel>(
+                //decoration: const InputDecoration(
+                  //prefixIcon: Icon(Icons.language)
+                //),
+                  dropdownColor: Colors.white,
+                  iconEnabledColor: Colors.white,
+                  items: _languages
+                  .map<DropdownMenuItem<LanguageModel>>((LanguageModel value) {
+                    return DropdownMenuItem<LanguageModel>(
+                      value: value,
+                        child: Text(
+                          value.name!,
+                          style: const TextStyle(color: Colors.black),
+                        ),
+                        );
+                    }).toList(),
+                hint: const Text(
+                  "Välj språk",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+                ),
+                onChanged: (LanguageModel? newValue) {
+                    setState(() {
+                      _chosenValue = newValue!;
+                    });
+                },
+        ),
+            ],
+          ),
+          /*IconButton(
               onPressed: (){
                 print('hej');
               },
-              icon: const Icon(Icons.language))],
+              icon: const Icon(Icons.language),
+              tooltip: 'Välj språk'),*/
+       /*   DropdownButtonFormField(
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.blue, width: 2),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.blue, width: 2),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                filled: true,
+                fillColor: Colors.blueAccent,
+              ),
+              dropdownColor: Colors.blueAccent,
+             // selectedValue = 'Svenska', items: const [],, onChanged: (Object? value) {  },;
+              value: selectedValue,
+              onChanged: (String? newValue) {
+                setState(() {
+                  selectedValue = newValue!;
+                });
+              },
+              items: dropdownItems),*///const Text('Välj språk'),
+
         /*title: Text(widget.title,
         style: const TextStyle(
           fontFamily: 'Literata',
@@ -105,6 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
         )),
         centerTitle: true,*/
 
+      ],
       ),
      drawer: Drawer(
        child: ListView(
@@ -140,11 +213,17 @@ class _MyHomePageState extends State<MyHomePage> {
              onTap: () {
                Navigator.pop(context);
              },
+           ),
+             ListTile(
+               leading: const Icon(Icons.language),
+               title: const Text("Språk"),
+               onTap: () {
+                 Navigator.pop(context);
+               },
            )
          ],
        ),
      ),
-
       body: TabBarView(
     children: [//Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -182,7 +261,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontSize: 26,
                 ),
               ),
-              Text(
+              const Text(
                 '15 juni 2024',
                 style: TextStyle(
                   fontFamily: 'Literata',
@@ -262,4 +341,12 @@ Widget menu() {
       ],
     ),
   );
+}
+
+List<DropdownMenuItem<String>> get dropdownItems{
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "Svenska", child: Text("Svenska")),
+    const DropdownMenuItem(value: "English", child: Text("English")),
+  ];
+  return menuItems;
 }
