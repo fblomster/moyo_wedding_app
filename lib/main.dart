@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:moyo/l10n/supported_locale.dart';
 import 'package:moyo/model/language_model.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:moyo/provider/locale_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+      ChangeNotifierProvider<LocaleProvider>(
+          create: (context) => LocaleProvider(),
+  child: MyApp(),
+      )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -11,30 +22,44 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'moyo Wedding App',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple, background: const Color(0xffD8CFB9)),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'moyo Wedding App'),
-    );
+    return Consumer<LocaleProvider>(
+        builder: (context, appState, child){
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'moyo Wedding App',
+        locale: Provider.of<LocaleProvider>(context).locale,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // TRY THIS: Try running your application with "flutter run". You'll see
+          // the application has a blue toolbar. Then, without quitting the app,
+          // try changing the seedColor in the colorScheme below to Colors.green
+          // and then invoke "hot reload" (save your changes or press the "hot
+          // reload" button in a Flutter-supported IDE, or press "r" if you used
+          // the command line to start the app).
+          //
+          // Notice that the counter didn't reset back to zero; the application
+          // state is not lost during the reload. To reset the state, use hot
+          // restart instead.
+          //
+          // This works for code too, not just values: Most code changes can be
+          // tested with just a hot reload.
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple,
+              background: const Color(0xffD8CFB9)),
+          useMaterial3: true,
+        ),
+        /*localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: L10n.support,*/
+        home: const MyHomePage(title: 'moyo Wedding App'),
+      );
+    });
   }
 }
 
@@ -126,9 +151,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         );
                     }).toList(),
-                hint: const Text(
-                  "Välj språk",
-                  style: TextStyle(
+                hint: Text(
+                  AppLocalizations.of(context)!.chooseLanguage,
+                  style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                     color: Colors.white),
@@ -136,6 +161,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (LanguageModel? newValue) {
                     setState(() {
                       _chosenValue = newValue!;
+                      Provider.of<LocaleProvider>(context, listen: false).setLocale(
+                          Locale(newValue.code!));
                     });
                 },
         ),
@@ -216,7 +243,7 @@ class _MyHomePageState extends State<MyHomePage> {
            ),
              ListTile(
                leading: const Icon(Icons.language),
-               title: const Text("Språk"),
+               title: Text(AppLocalizations.of(context)!.chooseLanguage),
                onTap: () {
                  Navigator.pop(context);
                },
@@ -261,8 +288,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontSize: 26,
                 ),
               ),
-              const Text(
-                '15 juni 2024',
+              Text(
+                AppLocalizations.of(context)!.weddingDate,
                 style: TextStyle(
                   fontFamily: 'Literata',
                   fontSize: 18,
@@ -291,7 +318,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.greenAccent,
                 ),
-                child: const Text('Inbjudan',
+                child: Text(AppLocalizations.of(context)!.inviteButton,
                 style: TextStyle(color: Colors.black)),
               ),
             ],
