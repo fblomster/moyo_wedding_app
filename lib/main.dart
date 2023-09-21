@@ -169,42 +169,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
             ],
           ),
-          /*IconButton(
-              onPressed: (){
-                print('hej');
-              },
-              icon: const Icon(Icons.language),
-              tooltip: 'Välj språk'),*/
-       /*   DropdownButtonFormField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blue, width: 2),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blue, width: 2),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                filled: true,
-                fillColor: Colors.blueAccent,
-              ),
-              dropdownColor: Colors.blueAccent,
-             // selectedValue = 'Svenska', items: const [],, onChanged: (Object? value) {  },;
-              value: selectedValue,
-              onChanged: (String? newValue) {
-                setState(() {
-                  selectedValue = newValue!;
-                });
-              },
-              items: dropdownItems),*///const Text('Välj språk'),
-
-        /*title: Text(widget.title,
-        style: const TextStyle(
-          fontFamily: 'Literata',
-          fontSize: 32.0,
-        )),
-        centerTitle: true,*/
-
       ],
       ),
      drawer: Drawer(
@@ -213,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
            const DrawerHeader(
              decoration: BoxDecoration(color: Colors.greenAccent),
              child: Text(
-               "Hello friends!!",
+               "Hej vänner!!",
                textAlign: TextAlign.justify,
                textScaleFactor: 2.0,
              ),

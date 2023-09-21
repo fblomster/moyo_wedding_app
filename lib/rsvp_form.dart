@@ -23,34 +23,62 @@ class MyRSVPFormState extends State<MyRSVPForm> {
   @override
   Widget build(BuildContext context) {
 // Build a Form widget using the _formKey created above.
-    return Form(
-      key: _formKey,
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.fill,
+          image: AssetImage('assets/wood-plank-texture-background.jpg'),
+        ),
+      ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          TextFormField(
+          Text("Vi ber om att ta emot ditt svar senast den XX XX 2024."),
+          Form(
+            key: _formKey,
+            child: Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Column(
+                children: [
+                  TextFormField(
 // The validator receives the text that the user has entered.
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: ElevatedButton(
-              onPressed: () {
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'Ditt för- och efternamn',
+                    ),
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'Kommentar',
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: ElevatedButton(
+                      onPressed: () {
 // Validate returns true if the form is valid, or false otherwise.
-                if (_formKey.currentState!.validate()) {
+                        if (_formKey.currentState!.validate()) {
 // If the form is valid, display a snackbar. In the real world,
 // you'd often call a server or save the information in a database.
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Tack för ditt svar! Vi ser fram emot att ses i juni!')),
-                  );
-                }
-              },
-              child: const Text('Submit'),
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Tack för ditt svar! Vi ser fram emot att ses i juni!')),
+                          );
+                        }
+                      },
+                      child: const Text('Submit'),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
