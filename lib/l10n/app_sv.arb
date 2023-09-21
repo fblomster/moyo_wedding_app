@@ -2,5 +2,10 @@
     "weddingDate": "15 juni 2024",
     "inviteButton": "Inbjudan",
     "helloWorld": "Hej världen!",
-    "chooseLanguage": "Välj språk"
+    "chooseLanguage": "Välj språk",
+    "accommodation": "Boende",
+    "transport": "Transport",
+    "guestList": "Gästlista",
+    "registry": "Önskelista",
+    "rsvp": "OSA"
 }

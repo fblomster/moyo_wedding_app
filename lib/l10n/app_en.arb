@@ -2,5 +2,10 @@
     "weddingDate": "June 15th, 2024",
     "inviteButton": "Invitation",
     "helloWorld": "Hello World!",
-    "chooseLanguage": "Choose language"
+    "chooseLanguage": "Choose language",
+    "accommodation": "Accommodation",
+    "transport": "Transport",
+    "guestList": "Guest list",
+    "registry": "Registry",
+    "rsvp": "RSVP"
 }

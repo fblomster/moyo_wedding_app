@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:moyo/provider/locale_provider.dart';
+import 'package:moyo/rsvp_form.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -218,25 +219,25 @@ class _MyHomePageState extends State<MyHomePage> {
              ),
            ),
            ListTile(
-             title: const Text("Boende"),
+             title: Text(AppLocalizations.of(context)!.accommodation),
              onTap: () {
                Navigator.pop(context);
              },
            ),
            ListTile(
-             title: const Text("Transport"),
+             title: Text(AppLocalizations.of(context)!.transport),
              onTap: () {
                Navigator.pop(context);
              },
            ),
            ListTile(
-             title: const Text("Gästlista"),
+             title: Text(AppLocalizations.of(context)!.guestList),
              onTap: () {
                Navigator.pop(context);
              },
            ),
            ListTile(
-             title: const Text("Önskelista"),
+             title: Text(AppLocalizations.of(context)!.registry),
              onTap: () {
                Navigator.pop(context);
              },
@@ -306,7 +307,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(10.0),
                 color: Colors.white,
                 margin: const EdgeInsets.all(20.0),
-                child: Image.asset('assets/kiss1.jpg'),
+                child: Image.asset('assets/kiss_filtered_blurred3.jpg'),
               ),
               const SizedBox(
                 height: 20.0,
@@ -324,6 +325,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
         ),
           ),
+      Icon(Icons.directions_bike),
+      Icon(Icons.directions_bus),
+      const MyRSVPForm(),
     ]),
 
    /*   floatingActionButton: FloatingActionButton(
