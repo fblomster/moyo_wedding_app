@@ -8,6 +8,8 @@ import 'package:moyo/provider/locale_provider.dart';
 import 'package:moyo/rsvp_form.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:moyo/screens/insert_data.dart';
+import 'package:moyo/screens/fetch_data.dart';
 
 Future<void> main() async {
 
@@ -18,13 +20,22 @@ Future<void> main() async {
   runApp(
       ChangeNotifierProvider<LocaleProvider>(
           create: (context) => LocaleProvider(),
-  child: const MyApp(),
+  child: MyApp(),
       )
   );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+  /*class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+  }
+
+  class _MyAppState extends State<MyApp> {*/
 
   // This widget is the root of your application.
   @override
@@ -108,8 +119,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState(){
     super.initState();
-    _languages.add(LanguageModel(code: 'sv', name: 'Svenska'));
-    _languages.add(LanguageModel(code: 'en', name: 'English'));
+    _languages.add(LanguageModel(code: 'sv', name: 'SV'));
+    _languages.add(LanguageModel(code: 'en', name: 'EN'));
+    _languages.add(LanguageModel(code: 'fi', name: 'FI'));
   }
 
   @override
@@ -120,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    String selectedValue = "Svenska";;
+    String selectedValue = "SV";
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
@@ -292,12 +304,39 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text(AppLocalizations.of(context)!.inviteButton,
                 style: TextStyle(color: Colors.black)),
               ),
+              MaterialButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const InsertData()));
+                },
+                child: const Text('OSA'),
+                color: Colors.blue,
+                textColor: Colors.white,
+                minWidth: 300,
+                height: 40,
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              MaterialButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const FetchData()));
+                },
+                child: const Text('Gästlista'),
+                color: Colors.blue,
+                textColor: Colors.white,
+                minWidth: 300,
+                height: 40,
+              ),
             ],
         ),
           ),
       Icon(Icons.directions_bike),
       Icon(Icons.directions_bus),
-      const MyRSVPForm(),
+      const RSVPInsertData(),
     ]),
 
    /*   floatingActionButton: FloatingActionButton(

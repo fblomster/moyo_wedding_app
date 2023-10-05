@@ -1,7 +1,30 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
+class RSVPInsertData extends StatefulWidget {
+  const RSVPInsertData({Key? key}) : super(key: key);
+
+  @override
+  State<RSVPInsertData> createState() => _InsertDataState();
+}
+
+class _InsertDataState extends State<RSVPInsertData> {
+
+  final  userNameController = TextEditingController();
+  final  userLastnameController= TextEditingController();
+  final  userEmailController =TextEditingController();
+  final  userPhoneController =TextEditingController();
+
+  late DatabaseReference dbRef;
+
+  @override
+  void initState() {
+    super.initState();
+    dbRef = FirebaseDatabase.instance.ref().child('Guests');
+  }
+
 // Create a Form widget.
-class MyRSVPForm extends StatefulWidget {
+/*class MyRSVPForm extends StatefulWidget {
   const MyRSVPForm({super.key});
 
   @override
@@ -18,7 +41,7 @@ class MyRSVPFormState extends State<MyRSVPForm> {
 //
 // Note: This is a GlobalKey<FormState>,
 // not a GlobalKey<MyRSVPFormState>.
-  final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();*/
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +55,13 @@ class MyRSVPFormState extends State<MyRSVPForm> {
           image: AssetImage('assets/wood-plank-texture-background.jpg'),
         ),
       ),
+      child: SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text("Vi ber om att ta emot ditt svar senast den XX XX 2024."),
           Form(
-            key: _formKey,
+            //key: _formKey,
             child: Padding(
               padding: const EdgeInsets.all(30.0),
               child: Column(
@@ -52,7 +76,82 @@ class MyRSVPFormState extends State<MyRSVPForm> {
                     },
                     decoration: const InputDecoration(
                       border: UnderlineInputBorder(),
-                      labelText: 'Ditt för- och efternamn',
+                      labelText:'Ditt för- och efternamn',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextField(
+                    controller: userNameController,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Förnamn',
+                      hintText: 'Skriv ditt förnamn',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextField(
+                    controller: userLastnameController,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Efternamn',
+                      hintText: 'Skriv ditt efternamn',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextField(
+                    controller: userEmailController,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'E-post',
+                      hintText: 'Fyll i din e-postadress',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextField(
+                    controller: userPhoneController,
+                    keyboardType: TextInputType.phone,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Telefon',
+                      hintText: 'Fyll i ditt telefonnummer',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'Kommentar',
+                    ),
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'Kommentar',
+                    ),
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'Kommentar',
+                    ),
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'Kommentar',
                     ),
                   ),
                   TextFormField(
@@ -65,14 +164,23 @@ class MyRSVPFormState extends State<MyRSVPForm> {
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: ElevatedButton(
                       onPressed: () {
+                        Map<String, String> guests = {
+                          'name': userNameController.text,
+                          'lastname': userLastnameController.text,
+                          'email': userEmailController.text,
+                          'phone': userPhoneController.text
+                        };
+
+                        dbRef.push().set(guests);
+
 // Validate returns true if the form is valid, or false otherwise.
-                        if (_formKey.currentState!.validate()) {
+                        //if (_formKey.currentState!.validate()) {
 // If the form is valid, display a snackbar. In the real world,
 // you'd often call a server or save the information in a database.
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(content: Text('Tack för ditt svar! Vi ser fram emot att ses i juni!')),
                           );
-                        }
+                       // }
                       },
                       child: const Text('Submit'),
                     ),
@@ -82,6 +190,7 @@ class MyRSVPFormState extends State<MyRSVPForm> {
             ),
           ),
         ],
+      ),
       ),
     );
   }
