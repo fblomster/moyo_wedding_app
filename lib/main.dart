@@ -9,6 +9,7 @@ import 'package:moyo/rsvp_form.dart';
 import 'package:moyo/rsvp_form2.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:moyo/screens/wedding_day.dart';
 import 'package:moyo/screens/insert_data.dart';
 import 'package:moyo/screens/fetch_data.dart';
 
@@ -62,15 +63,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -78,21 +70,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
   LanguageModel? _chosenValue;
   List<LanguageModel> _languages = List.empty(growable: true);
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   void initState(){
@@ -105,12 +85,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     String selectedValue = "SV";
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -119,19 +93,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Scaffold(
           extendBodyBehindAppBar: true,
       appBar: AppBar(
-        //leading: const Icon(Icons.language),
-        //title: const Text('Välj språk'),
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
         backgroundColor: Colors.transparent,//const Color(0xffE0C9A6), //Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         elevation: 0.0,
         actions: [
           Row(
             children: <Widget>[
-              Icon(Icons.language),
+              const Icon(Icons.language),
               const SizedBox(width: 8.0,),
               DropdownButton<LanguageModel>(
                 //decoration: const InputDecoration(
@@ -171,13 +138,20 @@ class _MyHomePageState extends State<MyHomePage> {
      drawer: Drawer(
        child: ListView(
          children: <Widget>[
-           const DrawerHeader(
+          /* const DrawerHeader(
              decoration: BoxDecoration(color: Colors.greenAccent),
              child: Text(
                "Hej vänner!!",
                textAlign: TextAlign.justify,
                textScaleFactor: 2.0,
              ),
+           ),*/
+           ListTile(
+             title: Text("Bröllopsdagen"),
+             onTap: () {
+               Navigator.push(context,
+                   MaterialPageRoute(builder: (context) => const WeddingDay()));
+             },
            ),
            ListTile(
              title: Text(AppLocalizations.of(context)!.accommodation),
@@ -192,6 +166,12 @@ class _MyHomePageState extends State<MyHomePage> {
              },
            ),
            ListTile(
+             title: Text("Toastmaster / Toastmadame"),
+             onTap: () {
+               Navigator.pop(context);
+             },
+           ),
+           ListTile(
              title: Text(AppLocalizations.of(context)!.guestList),
              onTap: () {
                Navigator.pop(context);
@@ -199,6 +179,36 @@ class _MyHomePageState extends State<MyHomePage> {
            ),
            ListTile(
              title: Text(AppLocalizations.of(context)!.registry),
+             onTap: () {
+               Navigator.pop(context);
+             },
+           ),
+           ListTile(
+             title: Text("Karta"),
+             onTap: () {
+               Navigator.pop(context);
+             },
+           ),
+           ListTile(
+             title: Text("Kontakt"),
+             onTap: () {
+               Navigator.pop(context);
+             },
+           ),
+           ListTile(
+             title: Text("Gästbok - TBA"),
+             onTap: () {
+               Navigator.pop(context);
+             },
+           ),
+           ListTile(
+             title: Text("Meny - TBA"),
+             onTap: () {
+               Navigator.pop(context);
+             },
+           ),
+           ListTile(
+             title: Text("Bordsplacering - TBA"),
              onTap: () {
                Navigator.pop(context);
              },
@@ -252,7 +262,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Text(
                 AppLocalizations.of(context)!.weddingDate,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: 'Literata',
                   fontSize: 18,
                 ),
@@ -275,12 +285,13 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ElevatedButton(
                 onPressed: (){
-                  print('Clicked!');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const WeddingDay()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.greenAccent,
                 ),
-                child: Text(AppLocalizations.of(context)!.inviteButton,
+                child: Text("Bröllopsdagen",
                 style: const TextStyle(color: Colors.black)),
               ),
               MaterialButton(
@@ -310,6 +321,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 minWidth: 300,
                 height: 40,
               ),
+              Text("Ev nedräkning?? tveksam"),
             ],
         ),
           ),

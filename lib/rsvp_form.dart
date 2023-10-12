@@ -26,35 +26,6 @@ class _InsertDataState extends State<RSVPInsertData> {
     dbRef = FirebaseDatabase.instance.ref().child('Guests');
   }
 
-// Create a Form widget.
-/*class MyRSVPForm extends StatefulWidget {
-  const MyRSVPForm({super.key});
-
-  @override
-  MyRSVPFormState createState() {
-    return MyRSVPFormState();
-  }
-}*/
-
-// Create a corresponding State class.
-// This class holds data related to the form.
-/*class MyRSVPFormState extends State<MyRSVPForm> {
-// Create a global key that uniquely identifies the Form widget
-// and allows validation of the form.
-//
-// Note: This is a GlobalKey<FormState>,
-// not a GlobalKey<MyRSVPFormState>.
-  final _formKey = GlobalKey<FormState>();
-  String _name = '';
-
-  void _submit() {
-  // validate all the form fields
-  if (_formKey.currentState!.validate()) {
-  // on success, notify the parent widget
-  widget.onSubmit(_name);
-  }
-  }*/
-
   @override
   Widget build(BuildContext context) {
 // Build a Form widget using the _formKey created above.
