@@ -21,6 +21,7 @@ class _FetchDataState extends State<FetchData> {
       padding: const EdgeInsets.all(10),
       height: 110,
       color: Colors.amberAccent,
+    child: SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,6 +88,7 @@ class _FetchDataState extends State<FetchData> {
           )
         ],
       ),
+    ),
     );
   }
 

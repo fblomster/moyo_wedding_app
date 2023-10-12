@@ -6,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:moyo/provider/locale_provider.dart';
 import 'package:moyo/rsvp_form.dart';
+import 'package:moyo/rsvp_form2.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:moyo/screens/insert_data.dart';
@@ -28,15 +29,6 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  /*class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-  }
-
-  class _MyAppState extends State<MyApp> {*/
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -50,21 +42,7 @@ class MyApp extends StatelessWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         theme: ThemeData(
           // This is the theme of your application.
-          //
-          // TRY THIS: Try running your application with "flutter run". You'll see
-          // the application has a blue toolbar. Then, without quitting the app,
-          // try changing the seedColor in the colorScheme below to Colors.green
-          // and then invoke "hot reload" (save your changes or press the "hot
-          // reload" button in a Flutter-supported IDE, or press "r" if you used
-          // the command line to start the app).
-          //
-          // Notice that the counter didn't reset back to zero; the application
-          // state is not lost during the reload. To reset the state, use hot
-          // restart instead.
-          //
-          // This works for code too, not just values: Most code changes can be
-          // tested with just a hot reload.
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent,
               background: const Color(0xffD8CFB9)),
           useMaterial3: true,
         ),
@@ -126,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -302,7 +281,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   backgroundColor: Colors.greenAccent,
                 ),
                 child: Text(AppLocalizations.of(context)!.inviteButton,
-                style: TextStyle(color: Colors.black)),
+                style: const TextStyle(color: Colors.black)),
               ),
               MaterialButton(
                 onPressed: () {
@@ -335,7 +314,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
           ),
       Icon(Icons.directions_bike),
-      Icon(Icons.directions_bus),
+      const MyRSVPForm(),
       const RSVPInsertData(),
     ]),
 
@@ -383,10 +362,10 @@ Widget menu() {
   );
 }
 
-List<DropdownMenuItem<String>> get dropdownItems{
+/*List<DropdownMenuItem<String>> get dropdownItems{
   List<DropdownMenuItem<String>> menuItems = [
     const DropdownMenuItem(value: "Svenska", child: Text("Svenska")),
     const DropdownMenuItem(value: "English", child: Text("English")),
   ];
   return menuItems;
-}
+}*/
