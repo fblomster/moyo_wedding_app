@@ -136,91 +136,108 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
       ),
      drawer: Drawer(
-       child: ListView(
-         children: <Widget>[
-          /* const DrawerHeader(
-             decoration: BoxDecoration(color: Colors.greenAccent),
-             child: Text(
-               "Hej vänner!!",
-               textAlign: TextAlign.justify,
-               textScaleFactor: 2.0,
-             ),
-           ),*/
-           ListTile(
-             title: Text("Bröllopsdagen"),
-             onTap: () {
-               Navigator.push(context,
-                   MaterialPageRoute(builder: (context) => const WeddingDay()));
-             },
-           ),
-           ListTile(
-             title: Text(AppLocalizations.of(context)!.accommodation),
-             onTap: () {
-               Navigator.pop(context);
-             },
-           ),
-           ListTile(
-             title: Text(AppLocalizations.of(context)!.transport),
-             onTap: () {
-               Navigator.pop(context);
-             },
-           ),
-           ListTile(
-             title: Text("Toastmaster / Toastmadame"),
-             onTap: () {
-               Navigator.pop(context);
-             },
-           ),
-           ListTile(
-             title: Text(AppLocalizations.of(context)!.guestList),
-             onTap: () {
-               Navigator.pop(context);
-             },
-           ),
-           ListTile(
-             title: Text(AppLocalizations.of(context)!.registry),
-             onTap: () {
-               Navigator.pop(context);
-             },
-           ),
-           ListTile(
-             title: Text("Karta"),
-             onTap: () {
-               Navigator.pop(context);
-             },
-           ),
-           ListTile(
-             title: Text("Kontakt"),
-             onTap: () {
-               Navigator.pop(context);
-             },
-           ),
-           ListTile(
-             title: Text("Gästbok - TBA"),
-             onTap: () {
-               Navigator.pop(context);
-             },
-           ),
-           ListTile(
-             title: Text("Meny - TBA"),
-             onTap: () {
-               Navigator.pop(context);
-             },
-           ),
-           ListTile(
-             title: Text("Bordsplacering - TBA"),
-             onTap: () {
-               Navigator.pop(context);
-             },
-           ),
+
+       //Paste this link on the website where your app is available for download or in the description section of the platform or marketplace you’re using.
+       //<a href="https://www.freepik.com/free-photo/brown-wooden-flooring_4246371.htm#query=wood%20background&position=0&from_view=keyword&track=ais">Image by rawpixel.com</a> on Freepik
+       child: Container(
+         color: const Color(0xffc2fedc),/*decoration: const BoxDecoration(
+        image: DecorationImage(
+        fit: BoxFit.fill,
+        image: AssetImage('assets/turquoise-colored-canvas-fabric-texture.jpg'),
+          ),
+        ),*/
+         child: ListView(
+           children: <Widget>[
+            /* const DrawerHeader(
+               decoration: BoxDecoration(color: Colors.greenAccent),
+               child: Text(
+                 "Hej vänner!!",
+                 textAlign: TextAlign.justify,
+                 textScaleFactor: 2.0,
+               ),
+             ),*/
              ListTile(
-               leading: const Icon(Icons.language),
-               title: Text(AppLocalizations.of(context)!.chooseLanguage),
+               title: Text("Bröllopsdagen"),
+               onTap: () {
+                 Navigator.push(context,
+                     MaterialPageRoute(builder: (context) => const WeddingDay()));
+               },
+             ),
+             ListTile(
+               title: Text(AppLocalizations.of(context)!.accommodation),
                onTap: () {
                  Navigator.pop(context);
                },
-           )
-         ],
+             ),
+             ListTile(
+               title: Text(AppLocalizations.of(context)!.transport),
+               onTap: () {
+                 Navigator.pop(context);
+               },
+             ),
+             ListTile(
+               title: Text("Toastmaster / Toastmadame"),
+               onTap: () {
+                 Navigator.pop(context);
+               },
+             ),
+             ListTile(
+               title: Text(AppLocalizations.of(context)!.guestList),
+               onTap: () {
+                 Navigator.pop(context);
+               },
+             ),
+             ListTile(
+               title: Text(AppLocalizations.of(context)!.registry),
+               onTap: () {
+                 Navigator.pop(context);
+               },
+             ),
+             ListTile(
+               title: Text("Karta"),
+               onTap: () {
+                 Navigator.pop(context);
+               },
+             ),
+             ListTile(
+               title: Text("Kontakt"),
+               onTap: () {
+                 Navigator.pop(context);
+               },
+             ),
+             ListTile(
+               title: Text("Musik - Spotify"),
+               onTap: () {
+                 Navigator.pop(context);
+               },
+             ),
+             ListTile(
+               title: Text("Gästbok - TBA"),
+               onTap: () {
+                 Navigator.pop(context);
+               },
+             ),
+             ListTile(
+               title: Text("Meny - TBA"),
+               onTap: () {
+                 Navigator.pop(context);
+               },
+             ),
+             ListTile(
+               title: Text("Bordsplacering - TBA"),
+               onTap: () {
+                 Navigator.pop(context);
+               },
+             ),
+               ListTile(
+                 leading: const Icon(Icons.language),
+                 title: Text(AppLocalizations.of(context)!.chooseLanguage),
+                 onTap: () {
+                   Navigator.pop(context);
+                 },
+             )
+           ],
+         ),
        ),
      ),
       body: TabBarView(
