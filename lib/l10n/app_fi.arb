@@ -1,11 +1,12 @@
 {
-  "weddingDate": "15 kesäkuu 2024",
-  "inviteButton": "Kutsu",
-  "helloWorld": "Hei maailma!",
-  "chooseLanguage": "FI",
   "accommodation": "Majoitus",
-  "transport": "Kuljetus",
+  "chooseLanguage": "FI",
   "guestList": "Vieraslista",
+  "helloWorld": "Hei maailma!",
+  "inviteButton": "Kutsu",
   "registry": "Toivelista",
-  "rsvp": "RSVP"
+  "rsvp": "RSVP",
+  "transport": "Kuljetus",
+  "weddingDate": "15 kesäkuu 2024",
+  "weddingDay": "Hääpäivä"
 }

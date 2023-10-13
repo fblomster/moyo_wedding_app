@@ -26,6 +26,14 @@ class _InsertDataState extends State<RSVPInsertData> {
     dbRef = FirebaseDatabase.instance.ref().child('Guests');
   }
 
+  void clearText() {
+    userNameController.clear();
+    userLastnameController.clear();
+    userEmailController.clear();
+    userPhoneController.clear();
+    userAllergyController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
 // Build a Form widget using the _formKey created above.
@@ -200,6 +208,7 @@ class _InsertDataState extends State<RSVPInsertData> {
                                 const SnackBar(content: Text('Tack för ditt svar! Vi ser fram emot att ses i juni!')),
                               );
                             }
+                            clearText();
                           },
                             child: const Text('Submit',
                               style: TextStyle(color: Colors.black)),

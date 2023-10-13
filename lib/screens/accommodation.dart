@@ -1,35 +1,25 @@
-import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
-class WeddingDay extends StatefulWidget {
-  const WeddingDay({Key? key}) : super(key: key);
+class Accommodation extends StatefulWidget {
+  const Accommodation({Key? key}) : super(key: key);
 
   @override
-  State<WeddingDay> createState() => _InsertDataState();
+  State<Accommodation> createState() => _AccommodationState();
 }
 
-class _InsertDataState extends State<WeddingDay> {
+class _AccommodationState extends State<Accommodation> {
 
   final  userNameController = TextEditingController();
   final  userLastnameController= TextEditingController();
   final  userEmailController =TextEditingController();
   final  userPhoneController =TextEditingController();
 
-  late DatabaseReference dbRef;
-
-  @override
-  void initState() {
-    super.initState();
-    dbRef = FirebaseDatabase.instance.ref().child('Guests');
-  }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.weddingDay),
+        title: Text('Boende'),
       ),
       body: Container(
         height: double.infinity,
@@ -48,7 +38,7 @@ class _InsertDataState extends State<WeddingDay> {
                 height: 50,
               ),
               const Text(
-                'Välkommen att fira med oss',
+                'Övernatta på Silverskär',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w500,
@@ -59,14 +49,6 @@ class _InsertDataState extends State<WeddingDay> {
                 height: 30,
               ),
           const Text("Vigsel"),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text("Middag & Fest"),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text("Brunch"),
               const SizedBox(
                 height: 30,
               ),

@@ -1,11 +1,12 @@
 {
-    "weddingDate": "June 15th, 2024",
-    "inviteButton": "Invitation",
-    "helloWorld": "Hello World!",
-    "chooseLanguage": "EN",
     "accommodation": "Accommodation",
-    "transport": "Transport",
+    "chooseLanguage": "EN",
     "guestList": "Guest list",
+    "helloWorld": "Hello World!",
+    "inviteButton": "Invitation",
     "registry": "Registry",
-    "rsvp": "RSVP"
+    "rsvp": "RSVP",
+    "transport": "Transport",
+    "weddingDate": "June 15th, 2024",
+    "weddingDay": "Wedding day"
 }

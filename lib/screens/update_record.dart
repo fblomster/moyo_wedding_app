@@ -46,7 +46,15 @@ class _UpdateRecordState extends State<UpdateRecord> {
       appBar: AppBar(
         title: Text('Updating record'),
       ),
-      body:  Center(
+      body:  Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: AssetImage('assets/wood-plank-texture-background.jpg'),
+          ),
+        ),
         child: Padding(
           padding: EdgeInsets.all(8.0),
           child: Column(
@@ -130,8 +138,8 @@ class _UpdateRecordState extends State<UpdateRecord> {
 
                 },
                 child: const Text('Update Data'),
-                color: Colors.blue,
-                textColor: Colors.white,
+                color: Colors.greenAccent,
+                textColor: Colors.black,
                 minWidth: 300,
                 height: 40,
               ),

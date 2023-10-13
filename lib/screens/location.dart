@@ -1,35 +1,25 @@
-import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
-class WeddingDay extends StatefulWidget {
-  const WeddingDay({Key? key}) : super(key: key);
+class Location extends StatefulWidget {
+  const Location({Key? key}) : super(key: key);
 
   @override
-  State<WeddingDay> createState() => _InsertDataState();
+  State<Location> createState() => _LocationState();
 }
 
-class _InsertDataState extends State<WeddingDay> {
+class _LocationState extends State<Location> {
 
   final  userNameController = TextEditingController();
   final  userLastnameController= TextEditingController();
   final  userEmailController =TextEditingController();
   final  userPhoneController =TextEditingController();
 
-  late DatabaseReference dbRef;
-
-  @override
-  void initState() {
-    super.initState();
-    dbRef = FirebaseDatabase.instance.ref().child('Guests');
-  }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.weddingDay),
+        title: Text('Silverskär'),
       ),
       body: Container(
         height: double.infinity,
@@ -48,7 +38,7 @@ class _InsertDataState extends State<WeddingDay> {
                 height: 50,
               ),
               const Text(
-                'Välkommen att fira med oss',
+                'Silverskär på kartan',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w500,
@@ -58,15 +48,7 @@ class _InsertDataState extends State<WeddingDay> {
               const SizedBox(
                 height: 30,
               ),
-          const Text("Vigsel"),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text("Middag & Fest"),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text("Brunch"),
+          const Text("sfkjfkjgh"),
               const SizedBox(
                 height: 30,
               ),

@@ -3,6 +3,7 @@ import 'package:moyo/l10n/supported_locale.dart';
 import 'package:moyo/model/language_model.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:moyo/screens/location.dart';
 import 'package:provider/provider.dart';
 import 'package:moyo/provider/locale_provider.dart';
 import 'package:moyo/rsvp_form.dart';
@@ -10,7 +11,8 @@ import 'package:moyo/rsvp_form2.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:moyo/screens/wedding_day.dart';
-import 'package:moyo/screens/insert_data.dart';
+import 'package:moyo/screens/accommodation.dart';
+import 'package:moyo/screens/music.dart';
 import 'package:moyo/screens/fetch_data.dart';
 
 Future<void> main() async {
@@ -136,10 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
       ),
      drawer: Drawer(
-
-       //Paste this link on the website where your app is available for download or in the description section of the platform or marketplace you’re using.
-       //<a href="https://www.freepik.com/free-photo/brown-wooden-flooring_4246371.htm#query=wood%20background&position=0&from_view=keyword&track=ais">Image by rawpixel.com</a> on Freepik
-       child: Container(
+              child: Container(
          color: const Color(0xffc2fedc),/*decoration: const BoxDecoration(
         image: DecorationImage(
         fit: BoxFit.fill,
@@ -157,7 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
                ),
              ),*/
              ListTile(
-               title: Text("Bröllopsdagen"),
+               title: Text(AppLocalizations.of(context)!.weddingDay),
                onTap: () {
                  Navigator.push(context,
                      MaterialPageRoute(builder: (context) => const WeddingDay()));
@@ -166,7 +165,8 @@ class _MyHomePageState extends State<MyHomePage> {
              ListTile(
                title: Text(AppLocalizations.of(context)!.accommodation),
                onTap: () {
-                 Navigator.pop(context);
+                 Navigator.push(context,
+                     MaterialPageRoute(builder: (context) => const Accommodation()));
                },
              ),
              ListTile(
@@ -184,7 +184,8 @@ class _MyHomePageState extends State<MyHomePage> {
              ListTile(
                title: Text(AppLocalizations.of(context)!.guestList),
                onTap: () {
-                 Navigator.pop(context);
+                 Navigator.push(context,
+                     MaterialPageRoute(builder: (context) => const FetchData()));
                },
              ),
              ListTile(
@@ -194,9 +195,10 @@ class _MyHomePageState extends State<MyHomePage> {
                },
              ),
              ListTile(
-               title: Text("Karta"),
+               title: Text("Silverskär"),
                onTap: () {
-                 Navigator.pop(context);
+                 Navigator.push(context,
+                     MaterialPageRoute(builder: (context) => const Location()));
                },
              ),
              ListTile(
@@ -208,11 +210,12 @@ class _MyHomePageState extends State<MyHomePage> {
              ListTile(
                title: Text("Musik - Spotify"),
                onTap: () {
-                 Navigator.pop(context);
+                 Navigator.push(context,
+                     MaterialPageRoute(builder: (context) => const Music()));
                },
              ),
              ListTile(
-               title: Text("Gästbok - TBA"),
+               title: Text(AppLocalizations.of(context)!.guestList),
                onTap: () {
                  Navigator.pop(context);
                },
@@ -308,37 +311,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.greenAccent,
                 ),
-                child: Text("Bröllopsdagen",
+                child: Text(AppLocalizations.of(context)!.weddingDay,
                 style: const TextStyle(color: Colors.black)),
-              ),
-              MaterialButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const InsertData()));
-                },
-                child: const Text('OSA'),
-                color: Colors.blue,
-                textColor: Colors.white,
-                minWidth: 300,
-                height: 40,
               ),
               const SizedBox(
                 height: 30,
               ),
-              MaterialButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const FetchData()));
-                },
-                child: const Text('Gästlista'),
-                color: Colors.blue,
-                textColor: Colors.white,
-                minWidth: 300,
-                height: 40,
-              ),
-              Text("Ev nedräkning?? tveksam"),
             ],
         ),
           ),
