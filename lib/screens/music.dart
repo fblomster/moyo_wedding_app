@@ -15,6 +15,16 @@ class _MusicState extends State<Music> {
   final  userEmailController =TextEditingController();
   final  userPhoneController =TextEditingController();
 
+  playSong() async {
+    var res = await SpotifySdk.connectToSpotifyRemote(
+        clientId: "28e25b413e3645598c775497a6940f0d",
+        redirectUrl: "moyo://spotify/callback",
+        scope:
+        "app-remote-control,user-modify-playback-state,playlist-read-private");
+    print(res);
+    var trackId ="0ct6r3EGTcMLPtrXHDvVjc";
+    SpotifySdk.play(spotifyUri: "spotify:track:$trackId");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,47 +41,29 @@ class _MusicState extends State<Music> {
             image: AssetImage('assets/wood-plank-texture-background.jpg'),
           ),
         ),
-        child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 50,
+        child: const Column(
+          children: <Widget>[
+            SizedBox(
+              height: 50,
+            ),
+            Text(
+              'Spotify',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w500,
               ),
-              const Text(
-                'Spotify',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-          const Text("sfkjfkjgh"),
-              const SizedBox(
-                height: 30,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.greenAccent,
-                  ),
-                  onPressed: () {
-                    //Navigator.push(
-                      //  context,
-                        //MaterialPageRoute(
-                          //  builder: (context) => const RSVPInsertData()));
-                  },
-                  child: const Text('OSA',
-                      style: TextStyle(color: Colors.black)),
-                ),
-              ),
-            ],
-          ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+          ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: playSong,
+        tooltip: 'Increment',
+        child: const Icon(Icons.play_arrow),
       ),
     );
   }

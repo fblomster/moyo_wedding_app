@@ -45,7 +45,7 @@ android {
         applicationId "com.example.moyo"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 20//flutter.minSdkVersion
+        minSdkVersion 21//flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -64,4 +64,16 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':spotify-app-remote')
+    implementation "com.google.code.gson:gson:2.8.9"
+    implementation 'com.spotify.android:auth:1.2.6' // Maven dependency
+
+    // All other dependencies for your app should also be here:
+    //implementation 'androidx.browser:browser:1.5.0'
+   // implementation "androidx.appcompat:appcompat:$appCompatVersion"
+}

@@ -13,6 +13,7 @@ import 'firebase_options.dart';
 import 'package:moyo/screens/wedding_day.dart';
 import 'package:moyo/screens/accommodation.dart';
 import 'package:moyo/screens/music.dart';
+import 'package:moyo/screens/music2.dart';
 import 'package:moyo/screens/fetch_data.dart';
 
 Future<void> main() async {
