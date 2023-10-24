@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_sdk/spotify_sdk.dart';
+import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
 
 class Music extends StatefulWidget {
   const Music({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _MusicState extends State<Music> {
   playSong() async {
     var res = await SpotifySdk.connectToSpotifyRemote(
         clientId: "28e25b413e3645598c775497a6940f0d",
-        redirectUrl: "moyo://spotify/callback",
+        redirectUrl: "moyo://callback",
         scope:
         "app-remote-control,user-modify-playback-state,playlist-read-private");
     print(res);
@@ -30,7 +31,15 @@ class _MusicState extends State<Music> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Musik'),
+        leading: const BackButton(
+            color: Colors.white
+        ),
+        title: const Text('Musik',
+          style: TextStyle(
+            color: Colors.white,
+          ),),
+        backgroundColor: Colors.black87,
+        //elevation: 0.0,
       ),
       body: Container(
         height: double.infinity,

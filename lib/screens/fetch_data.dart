@@ -101,7 +101,15 @@ class _FetchDataState extends State<FetchData> {
         backgroundColor: Colors.transparent,
           appBar: AppBar(
             //backgroundColor: Colors.transparent,
-            title: Text(AppLocalizations.of(context)!.guestList),
+            leading: const BackButton(
+                color: Colors.white
+            ),
+            title: Text(AppLocalizations.of(context)!.guestList,
+              style: const TextStyle(
+                color: Colors.white,
+              ),),
+            backgroundColor: Colors.black87,
+            //elevation: 0.0,
           ),
           body: SizedBox(
             height: double.infinity,

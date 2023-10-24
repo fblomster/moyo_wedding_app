@@ -15,6 +15,7 @@ pluginManagement {
     }
 }
 
+rootProject.name = 'moyo'
 include ':spotify-app-remote'
 
 include ":app"

@@ -1,9 +1,16 @@
+import 'dart:developer';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:moyo/l10n/supported_locale.dart';
 import 'package:moyo/model/language_model.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:moyo/screens/contact.dart';
 import 'package:moyo/screens/location.dart';
+import 'package:moyo/screens/login.dart';
+import 'package:moyo/screens/register.dart';
+//import 'package:moyo/screens/music2.dart';
+import 'package:moyo/screens/toastmadame.dart';
+import 'package:moyo/services/auth.dart';
+import 'package:moyo/services/auth_services.dart';
 import 'package:provider/provider.dart';
 import 'package:moyo/provider/locale_provider.dart';
 import 'package:moyo/rsvp_form.dart';
@@ -13,7 +20,6 @@ import 'firebase_options.dart';
 import 'package:moyo/screens/wedding_day.dart';
 import 'package:moyo/screens/accommodation.dart';
 import 'package:moyo/screens/music.dart';
-import 'package:moyo/screens/music2.dart';
 import 'package:moyo/screens/fetch_data.dart';
 
 Future<void> main() async {
@@ -22,10 +28,13 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseMessaging.instance.setAutoInitEnabled(true);
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  log("FCMToken $fcmToken");
   runApp(
       ChangeNotifierProvider<LocaleProvider>(
           create: (context) => LocaleProvider(),
-  child: MyApp(),
+  child: const MyApp(),
       )
   );
 }
@@ -45,6 +54,7 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         theme: ThemeData(
+            fontFamily: 'Literata',
           // This is the theme of your application.
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent,
               background: const Color(0xffD8CFB9)),
@@ -62,6 +72,27 @@ class MyApp extends StatelessWidget {
     });
   }
 }
+
+/*class PushNotificationService {
+  final FirebaseMessaging _fcm = FirebaseMessaging.instance;
+
+  Future initialize() async {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print('Got a message whilst in the foreground!');
+      print('Message data: ${message.data}');
+
+      if (message.notification != null) {
+        print('Message also contained a notification: ${message.notification}');
+      }
+    });
+  }
+
+  Future<String?> getToken() async {
+    String? token = await _fcm.getToken();
+    print('Token: $token');
+    return token;
+  }
+}*/
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -138,109 +169,107 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
       ],
       ),
-     drawer: Drawer(
-              child: Container(
-         color: const Color(0xffc2fedc),/*decoration: const BoxDecoration(
-        image: DecorationImage(
-        fit: BoxFit.fill,
-        image: AssetImage('assets/turquoise-colored-canvas-fabric-texture.jpg'),
-          ),
-        ),*/
-         child: ListView(
-           children: <Widget>[
-            /* const DrawerHeader(
-               decoration: BoxDecoration(color: Colors.greenAccent),
-               child: Text(
-                 "Hej vänner!!",
-                 textAlign: TextAlign.justify,
-                 textScaleFactor: 2.0,
+     drawer: Container(
+       width: MediaQuery.of(context).size.width * 0.75,
+       child: Drawer(
+                child: Container(
+           color: const Color(0xffc2fedc),
+           child: ListView(
+             children: <Widget>[
+              const DrawerHeader(
+                 decoration: BoxDecoration(color: Colors.black87),
+                 child: Text("Frida Blomster",
+                   style: TextStyle(color: Colors.white),
+                   textAlign: TextAlign.justify,
+                   textScaleFactor: 2.0,
+                 ),
                ),
-             ),*/
-             ListTile(
-               title: Text(AppLocalizations.of(context)!.weddingDay),
-               onTap: () {
-                 Navigator.push(context,
-                     MaterialPageRoute(builder: (context) => const WeddingDay()));
-               },
-             ),
-             ListTile(
-               title: Text(AppLocalizations.of(context)!.accommodation),
-               onTap: () {
-                 Navigator.push(context,
-                     MaterialPageRoute(builder: (context) => const Accommodation()));
-               },
-             ),
-             ListTile(
-               title: Text(AppLocalizations.of(context)!.transport),
-               onTap: () {
-                 Navigator.pop(context);
-               },
-             ),
-             ListTile(
-               title: Text("Toastmaster / Toastmadame"),
-               onTap: () {
-                 Navigator.pop(context);
-               },
-             ),
-             ListTile(
-               title: Text(AppLocalizations.of(context)!.guestList),
-               onTap: () {
-                 Navigator.push(context,
-                     MaterialPageRoute(builder: (context) => const FetchData()));
-               },
-             ),
-             ListTile(
-               title: Text(AppLocalizations.of(context)!.registry),
-               onTap: () {
-                 Navigator.pop(context);
-               },
-             ),
-             ListTile(
-               title: Text("Silverskär"),
-               onTap: () {
-                 Navigator.push(context,
-                     MaterialPageRoute(builder: (context) => const Location()));
-               },
-             ),
-             ListTile(
-               title: Text("Kontakt"),
-               onTap: () {
-                 Navigator.pop(context);
-               },
-             ),
-             ListTile(
-               title: Text("Musik - Spotify"),
-               onTap: () {
-                 Navigator.push(context,
-                     MaterialPageRoute(builder: (context) => const Music()));
-               },
-             ),
-             ListTile(
-               title: Text(AppLocalizations.of(context)!.guestList),
-               onTap: () {
-                 Navigator.pop(context);
-               },
-             ),
-             ListTile(
-               title: Text("Meny - TBA"),
-               onTap: () {
-                 Navigator.pop(context);
-               },
-             ),
-             ListTile(
-               title: Text("Bordsplacering - TBA"),
-               onTap: () {
-                 Navigator.pop(context);
-               },
-             ),
                ListTile(
-                 leading: const Icon(Icons.language),
-                 title: Text(AppLocalizations.of(context)!.chooseLanguage),
+                 title: Text(AppLocalizations.of(context)!.weddingDay),
                  onTap: () {
-                   Navigator.pop(context);
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) => const WeddingDay()));
                  },
-             )
-           ],
+               ),
+               ListTile(
+                 title: Text(AppLocalizations.of(context)!.accommodation),
+                 onTap: () {
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) => const Accommodation()));
+                 },
+               ),
+               ListTile(
+                 title: Text(AppLocalizations.of(context)!.transport),
+                 onTap: () {
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) => const Accommodation()));
+                 },
+               ),
+               ListTile(
+                 title: Text("Toastmadame"),
+                 onTap: () {
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) => const Toastmadame()));
+                 },
+               ),
+               ListTile(
+                 title: Text(AppLocalizations.of(context)!.guestList),
+                 onTap: () {
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) => const FetchData()));
+                 },
+               ),
+               ListTile(
+                 title: Text(AppLocalizations.of(context)!.registry),
+                 onTap: () {
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) => const Accommodation()));
+                 },
+               ),
+               ListTile(
+                 title: Text("Silverskär"),
+                 onTap: () {
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) => const Location()));
+                 },
+               ),
+               ListTile(
+                 title: Text("Kontakt"),
+                 onTap: () {
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) => const Contact()));
+                 },
+               ),
+               ListTile(
+                 title: Text("Musik - Spotify"),
+                 onTap: () {
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) => const Music()));
+                 },
+               ),
+               ListTile(
+                 title: Text("Meny - TBA"),
+                 onTap: () {
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) => const Accommodation()));
+                 },
+               ),
+               ListTile(
+                 title: Text("Bordsplacering - TBA"),
+                 onTap: () {
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) => const Accommodation()));
+                 },
+               ),
+                /* ListTile(
+                   leading: const Icon(Icons.language),
+                   title: Text(AppLocalizations.of(context)!.chooseLanguage),
+                   onTap: () {
+                     Navigator.pop(context);
+                   },
+               )*/
+             ],
+           ),
          ),
        ),
      ),
@@ -321,7 +350,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
         ),
           ),
-      Icon(Icons.directions_bike),
+      const LoginOrRegister(),
       const MyRSVPForm(),
       const RSVPInsertData(),
     ]),
@@ -370,10 +399,4 @@ Widget menu() {
   );
 }
 
-/*List<DropdownMenuItem<String>> get dropdownItems{
-  List<DropdownMenuItem<String>> menuItems = [
-    const DropdownMenuItem(value: "Svenska", child: Text("Svenska")),
-    const DropdownMenuItem(value: "English", child: Text("English")),
-  ];
-  return menuItems;
-}*/
+

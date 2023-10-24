@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Accommodation extends StatefulWidget {
-  const Accommodation({Key? key}) : super(key: key);
+class Contact extends StatefulWidget {
+  const Contact({Key? key}) : super(key: key);
 
   @override
-  State<Accommodation> createState() => _AccommodationState();
+  State<Contact> createState() => _ContactState();
 }
 
-class _AccommodationState extends State<Accommodation> {
+class _ContactState extends State<Contact> {
 
   final  userNameController = TextEditingController();
   final  userLastnameController= TextEditingController();
@@ -22,7 +22,7 @@ class _AccommodationState extends State<Accommodation> {
         leading: const BackButton(
             color: Colors.white
         ),
-        title: const Text('Boende',
+        title: const Text('Kontakt',
           style: TextStyle(
             color: Colors.white,
           ),),
@@ -46,17 +46,13 @@ class _AccommodationState extends State<Accommodation> {
                 height: 50,
               ),
               const Text(
-                'Övernatta på Silverskär',
+                'Kontakta oss vid frågor',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w500,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(
-                height: 30,
-              ),
-          const Text("Vigsel"),
               const SizedBox(
                 height: 30,
               ),
@@ -72,7 +68,7 @@ class _AccommodationState extends State<Accommodation> {
                         //MaterialPageRoute(
                           //  builder: (context) => const RSVPInsertData()));
                   },
-                  child: const Text('OSA',
+                  child: const Text('Skicka',
                       style: TextStyle(color: Colors.black)),
                 ),
               ),

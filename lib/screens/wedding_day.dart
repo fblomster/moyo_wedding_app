@@ -1,6 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:moyo/rsvp_form.dart';
 
 class WeddingDay extends StatefulWidget {
   const WeddingDay({Key? key}) : super(key: key);
@@ -29,7 +30,15 @@ class _InsertDataState extends State<WeddingDay> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.weddingDay),
+        leading: const BackButton(
+            color: Colors.white
+        ),
+        title: Text(AppLocalizations.of(context)!.weddingDay,
+          style: const TextStyle(
+            color: Colors.white,
+          ),),
+        backgroundColor: Colors.black87,
+        //elevation: 0.0,
       ),
       body: Container(
         height: double.infinity,
@@ -40,56 +49,129 @@ class _InsertDataState extends State<WeddingDay> {
             image: AssetImage('assets/wood-plank-texture-background.jpg'),
           ),
         ),
-        child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-              const Text(
-                'Välkommen att fira med oss',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-          const Text("Vigsel"),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text("Middag & Fest"),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text("Brunch"),
-              const SizedBox(
-                height: 30,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.greenAccent,
+        child: const SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(30.0),
+            child: Column(
+              children: [
+                Text(
+                  'Välkommen på',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
                   ),
-                  onPressed: () {
-                    //Navigator.push(
-                      //  context,
-                        //MaterialPageRoute(
-                          //  builder: (context) => const RSVPInsertData()));
-                  },
-                  child: const Text('OSA',
-                      style: TextStyle(color: Colors.black)),
+                  textAlign: TextAlign.center,
                 ),
+                SizedBox(
+                  height: 16,
+                ),
+                Text(
+                  'Bröllop',
+                  style: TextStyle(
+                    fontSize: 36,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 6,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  'Datum: 15 juni 2024',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  'Tid: 14:00',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  'Klädsel: Kavaj och bekväma skor',
+                  style: TextStyle(
+                    fontSize: 14,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+            Text("Vigsel",
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
               ),
-            ],
+            ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Den 15 juni 2024 gifter vi oss i Jomala kyrka, Åland och vi önskar att dela dagen med Er. Vigseln börjar kl. 14:00 och efterföljande middag och dans på ön Silverskär. Busstransport ordnas från kyrkan."),
+                SizedBox(
+                  height: 30,
+                ),
+                Text("Middag & Fest",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Vid ankomst till ön bjuds alla på Silverskärs traditionsenliga Ålandspannkaka och snaps."),
+                SizedBox(
+                  height: 30,
+                ),
+                Text("Brunch söndag 16 juni",
+                  style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Vi hoppas att ni som övernattar får några timmars god sömn i era fina rum innan vi avslutar festhelgen men en härlig brunch. Det kan vara trevligt att avrunda kvällen vid den fina bastualtanen med två bastur, jacuzzi och trevliga relaxutrymmen, alternativt som morgonbastu!"),
+              ],
+            ),
           ),
         ),
       ),
+      //bottomNavigationBar:   menu(),
     );
   }
+}
+Widget menu() {
+  return Container(
+    color: Colors.black87,// const Color(0xFF3F5AA6),
+    child: const TabBar(
+      labelColor: Colors.white,
+      unselectedLabelColor: Colors.white70,
+      indicatorSize: TabBarIndicatorSize.tab,
+      indicatorPadding: EdgeInsets.all(5.0),
+      indicatorColor: Colors.greenAccent,
+      tabs: [
+        Tab(
+          text: "Boende",
+          icon: Icon(Icons.hotel),
+        ),
+        Tab(
+          text: "Transport",
+          icon: Icon(Icons.bus_alert),
+        ),
+        Tab(
+          text: "Info",
+          icon: Icon(Icons.info),
+        ),
+        Tab(
+          text: "OSA",
+          icon: Icon(Icons.mail),
+        ),
+      ],
+    ),
+  );
 }

@@ -1,15 +1,13 @@
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:flutter/material.dart';
 
-class Location extends StatefulWidget {
-  const Location({Key? key}) : super(key: key);
+class Toastmadame extends StatefulWidget {
+  const Toastmadame({Key? key}) : super(key: key);
 
   @override
-  State<Location> createState() => _LocationState();
+  State<Toastmadame> createState() => _ToastmadameState();
 }
 
-class _LocationState extends State<Location> {
+class _ToastmadameState extends State<Toastmadame> {
 
   final  userNameController = TextEditingController();
   final  userLastnameController= TextEditingController();
@@ -24,10 +22,10 @@ class _LocationState extends State<Location> {
         leading: const BackButton(
             color: Colors.white
         ),
-        title: const Text('Silverskär',
-          style: TextStyle(
-            color: Colors.white,
-          ),),
+        title: const Text('Toastmadame',
+        style: TextStyle(
+          color: Colors.white,
+        ),),
         backgroundColor: Colors.black87,
         //elevation: 0.0,
       ),
@@ -41,43 +39,40 @@ class _LocationState extends State<Location> {
           ),
         ),
         child: const Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(30.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 50,
+              Center(
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('assets/jenny.jpg'),
+                  radius: 40.0,
+                ),
+              ),
+              Divider(
+                height: 60.0,
+                color: Colors.greenAccent,
               ),
               Text(
-                'Silverskär på kartan',
+                'Namn',
                 style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w900,
                 ),
                 textAlign: TextAlign.center,
               ),
               SizedBox(
-                height: 30,
+                height: 10,
               ),
-          Text("sfkjfkjgh"),
+          Text("Jenny Hedlöf",
+            style: TextStyle(
+              letterSpacing: 2.0,
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
               SizedBox(
                 height: 30,
               ),
-              /*Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.greenAccent,
-                  ),
-                  onPressed: () {
-                    //Navigator.push(
-                      //  context,
-                        //MaterialPageRoute(
-                          //  builder: (context) => const RSVPInsertData()));
-                  },
-                  child: const Text('OSA',
-                      style: TextStyle(color: Colors.black)),
-                ),
-              ),*/
             ],
           ),
         ),
