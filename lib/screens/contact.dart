@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:moyo/services/auth_services.dart';
+import 'package:provider/provider.dart';
 
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
@@ -14,6 +16,13 @@ class _ContactState extends State<Contact> {
   final  userEmailController =TextEditingController();
   final  userPhoneController =TextEditingController();
 
+  //sign user out
+  void signOut() {
+    //get auth service
+    final authService = Provider.of<AuthService>(context, listen: false);
+
+    authService.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +37,10 @@ class _ContactState extends State<Contact> {
           ),),
         backgroundColor: Colors.black87,
         //elevation: 0.0,
+        actions: [
+          //sign out button
+          IconButton(onPressed: signOut, icon: const Icon(Icons.logout)),
+        ],
       ),
       body: Container(
         height: double.infinity,

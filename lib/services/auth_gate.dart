@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:moyo/screens/contact.dart';
 import 'package:moyo/screens/login.dart';
+import 'package:moyo/screens/music2.dart';
 import 'package:moyo/services/auth.dart';
 
 import '../screens/home_page.dart';
@@ -23,7 +25,7 @@ class AuthGate extends StatefulWidget {
           builder: (context, snapshot) {
             //if user is logged in
             if (snapshot.hasData) {
-              return const HomePage();
+              return const Contact();
             }
             //if user is NOT logged in
             else {

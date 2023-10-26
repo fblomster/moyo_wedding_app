@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:moyo/model/language_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:moyo/screens/contact.dart';
+import 'package:moyo/screens/faq_page.dart';
 import 'package:moyo/screens/location.dart';
 import 'package:moyo/screens/login.dart';
 import 'package:moyo/screens/register.dart';
 //import 'package:moyo/screens/music2.dart';
 import 'package:moyo/screens/toastmadame.dart';
 import 'package:moyo/services/auth.dart';
+import 'package:moyo/services/auth_gate.dart';
 import 'package:moyo/services/auth_services.dart';
 import 'package:provider/provider.dart';
 import 'package:moyo/provider/locale_provider.dart';
@@ -32,8 +34,19 @@ Future<void> main() async {
   final fcmToken = await FirebaseMessaging.instance.getToken();
   log("FCMToken $fcmToken");
   runApp(
-      ChangeNotifierProvider<LocaleProvider>(
-          create: (context) => LocaleProvider(),
+      //ChangeNotifierProvider<LocaleProvider>(
+        //  create: (context) => LocaleProvider(),
+      /*ChangeNotifierProvider(
+        create: (context) => AuthService(),*/
+        MultiProvider(
+        providers: [
+          ChangeNotifierProvider<LocaleProvider>(
+            create: (context) => LocaleProvider(),
+          ),
+          ChangeNotifierProvider<AuthService>(
+            create: (context) => AuthService() ,
+          ),
+        ],
   child: const MyApp(),
       )
   );
@@ -49,7 +62,7 @@ class MyApp extends StatelessWidget {
         builder: (context, appState, child){
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'moyo Wedding App',
+        //title: 'moyo Wedding App',
         locale: Provider.of<LocaleProvider>(context).locale,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
@@ -67,7 +80,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: L10n.support,*/
-        home: const MyHomePage(title: 'moyo Wedding App'),
+        home: AuthGate(),//const MyHomePage(title: 'moyo Wedding App'),
       );
     });
   }
@@ -238,6 +251,13 @@ class _MyHomePageState extends State<MyHomePage> {
                  onTap: () {
                    Navigator.push(context,
                        MaterialPageRoute(builder: (context) => const Contact()));
+                 },
+               ),
+               ListTile(
+                 title: Text("FAQ"),
+                 onTap: () {
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) => const FaqPage()));
                  },
                ),
                ListTile(

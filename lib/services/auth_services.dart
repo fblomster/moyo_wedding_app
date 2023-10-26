@@ -3,14 +3,26 @@ import 'package:flutter/cupertino.dart';
 
 class AuthService extends ChangeNotifier {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  
+
+  //sign in
   Future<UserCredential> signInWithEmailandPassword(String email, String password) async {
     try {
-      UserCredential userCredential = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+      //signing in
+      UserCredential userCredential =
+      await _firebaseAuth.signInWithEmailAndPassword(
+          email: email,
+          password: password
+      );
       return userCredential;
     }
+    //catch if errors
     on FirebaseAuthException catch (e) {
       throw Exception(e.code);
     }
+  }
+
+  //sign out
+  Future<void> signOut() async {
+    return await FirebaseAuth.instance.signOut();
   }
 }
