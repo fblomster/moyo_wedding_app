@@ -25,7 +25,7 @@ class AuthGate extends StatefulWidget {
           builder: (context, snapshot) {
             //if user is logged in
             if (snapshot.hasData) {
-              return const Contact();
+              return const HomePage(title: 'moyo Wedding App');
             }
             //if user is NOT logged in
             else {
