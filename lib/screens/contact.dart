@@ -1,4 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'chat_page.dart';
 
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
@@ -9,10 +13,8 @@ class Contact extends StatefulWidget {
 
 class _ContactState extends State<Contact> {
 
-  final  userNameController = TextEditingController();
-  final  userLastnameController= TextEditingController();
-  final  userEmailController =TextEditingController();
-  final  userPhoneController =TextEditingController();
+  //auth instance
+  final FirebaseAuth _auth =  FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,8 @@ class _ContactState extends State<Contact> {
         backgroundColor: Colors.black87,
         //elevation: 0.0,
       ),
-      body: Container(
+      body: _buildUserList(),
+      /*Container(
         height: double.infinity,
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -74,7 +77,56 @@ class _ContactState extends State<Contact> {
             ],
           ),
         ),
-      ),
+      ),*/
     );
+  }
+
+  //building a list of users except the current logged in user
+  Widget _buildUserList() {
+    return StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection('users').snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Text('Error');
+          }
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Text ('Loading...');
+          }
+
+          return ListView(
+            children: snapshot.data!.docs.map<Widget>((doc) => _buildUserListItem(doc))
+            .toList(),
+          );
+        },
+    );
+  }
+
+  //build individual user list item
+  Widget _buildUserListItem(DocumentSnapshot document) {
+    Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+
+    //display all users except current user
+  if (_auth.currentUser!.email != data['email']) {
+    return ListTile(
+      title: Text(data['email']),
+      onTap: () {
+        //pass the clicked user's uID to the chat page
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ChatPage(
+              receiverUserEmail: data['email'],
+              receiverUserID: data['uid'],
+        ),
+        ),
+        );
+      },
+    );
+  }
+  else {
+    //return empty container
+    return Container();
+  }
   }
 }

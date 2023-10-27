@@ -5,7 +5,7 @@ import 'package:moyo/screens/contact.dart';
 import 'package:moyo/screens/faq_page.dart';
 import 'package:moyo/screens/location.dart';
 import 'package:moyo/screens/toastmadame.dart';
-import 'package:moyo/services/auth.dart';
+import 'package:moyo/services/auth/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:moyo/provider/locale_provider.dart';
 import 'package:moyo/rsvp_form.dart';
@@ -15,7 +15,7 @@ import 'package:moyo/screens/accommodation.dart';
 import 'package:moyo/screens/music.dart';
 import 'package:moyo/screens/fetch_data.dart';
 
-import '../services/auth_services.dart';
+import '../services/auth/auth_services.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});

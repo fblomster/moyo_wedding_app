@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moyo/components/moyo_button.dart';
 import 'package:moyo/components/moyo_text_field.dart';
-import 'package:moyo/services/auth_services.dart';
+import 'package:moyo/services/auth/auth_services.dart';
 import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
