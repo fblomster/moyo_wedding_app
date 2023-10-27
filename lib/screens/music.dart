@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_sdk/spotify_sdk.dart';
-import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
 
 class Music extends StatefulWidget {
   const Music({Key? key}) : super(key: key);

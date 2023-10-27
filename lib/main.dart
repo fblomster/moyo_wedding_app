@@ -6,9 +6,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:moyo/screens/contact.dart';
 import 'package:moyo/screens/faq_page.dart';
 import 'package:moyo/screens/location.dart';
-import 'package:moyo/screens/login.dart';
-import 'package:moyo/screens/register.dart';
-//import 'package:moyo/screens/music2.dart';
 import 'package:moyo/screens/toastmadame.dart';
 import 'package:moyo/services/auth.dart';
 import 'package:moyo/services/auth_gate.dart';
@@ -34,10 +31,6 @@ Future<void> main() async {
   final fcmToken = await FirebaseMessaging.instance.getToken();
   log("FCMToken $fcmToken");
   runApp(
-      //ChangeNotifierProvider<LocaleProvider>(
-        //  create: (context) => LocaleProvider(),
-      /*ChangeNotifierProvider(
-        create: (context) => AuthService(),*/
         MultiProvider(
         providers: [
           ChangeNotifierProvider<LocaleProvider>(
@@ -73,13 +66,6 @@ class MyApp extends StatelessWidget {
               background: const Color(0xffD8CFB9)),
           useMaterial3: true,
         ),
-        /*localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: L10n.support,*/
         home: AuthGate(),//const MyHomePage(title: 'moyo Wedding App'),
       );
     });

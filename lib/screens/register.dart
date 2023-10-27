@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:moyo/components/moyo_button.dart';
 import 'package:moyo/components/moyo_text_field.dart';
+import 'package:moyo/services/auth_services.dart';
+import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
@@ -16,7 +18,32 @@ class RegisterPage extends StatefulWidget {
   final passwordController = TextEditingController();
   final confirmedPasswordController = TextEditingController();
 
-  void signUp() {}
+  Future<void> signUp() async {
+    if (passwordController.text != confirmedPasswordController.text) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Passwords do not match."),
+      ),
+      );
+      return;
+    }
+
+    //get auth service
+    final authService = Provider.of<AuthService>(context, listen: false);
+
+    try {
+      await authService.signUpWithEmailandPassword(
+          emailController.text,
+          passwordController.text,
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+            content: Text(e.toString()),
+        ),
+      );
+    }
+  }
 
   @override
     Widget build(BuildContext context) {

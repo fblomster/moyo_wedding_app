@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:moyo/services/auth_services.dart';
-import 'package:provider/provider.dart';
 
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);

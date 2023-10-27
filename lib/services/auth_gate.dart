@@ -1,8 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:moyo/screens/contact.dart';
-import 'package:moyo/screens/login.dart';
-import 'package:moyo/screens/music2.dart';
 import 'package:moyo/services/auth.dart';
 
 import '../screens/home_page.dart';
