@@ -163,6 +163,13 @@ class _HomePageState extends State<HomePage> {
                       title: Text("Silverskär"),
                       onTap: () {
                         Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const Accommodation()));
+                      },
+                    ),
+                    ListTile(
+                      title: Text("Silverskär location"),
+                      onTap: () {
+                        Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Location()));
                       },
                     ),
