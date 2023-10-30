@@ -51,11 +51,6 @@ class _AccommodationState extends State<Accommodation> {
                 height: 30,
               ),
               const Text(
-                  "Med tanke på att vi har valt att fira vår bröllopsdag på en avlägsen plats hoppas vi att de flesta av er väljer att övernatta på ön tillsammans med oss."),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text(
                 'Övernatta på Silverskär',
                 style: TextStyle(
                   fontSize: 24,
@@ -80,6 +75,11 @@ class _AccommodationState extends State<Accommodation> {
                 child: const Text('Bekanta dig med Silverskär',
                 style: TextStyle(color: Colors.black),),
               ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Text(
+                  "Med tanke på att vi har valt att fira vår bröllopsdag på en avlägsen plats hoppas vi att de flesta av er väljer att övernatta på ön tillsammans med oss."),
               const SizedBox(
                 height: 30,
               ),

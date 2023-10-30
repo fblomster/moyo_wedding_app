@@ -119,13 +119,23 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                       title: Text(AppLocalizations.of(context)!.weddingDay),
+                      leading: Icon(Icons.favorite_border_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const WeddingDay()));
                       },
                     ),
                     ListTile(
+                      title: Text("Brudföljet"),
+                      leading: Icon(Icons.people_alt_outlined),
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const Toastmadame()));
+                      },
+                    ),
+                    ListTile(
                       title: Text(AppLocalizations.of(context)!.accommodation),
+                      leading: Icon(Icons.hotel_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Accommodation()));
@@ -133,20 +143,15 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                       title: Text(AppLocalizations.of(context)!.transport),
+                      leading: Icon(Icons.bus_alert_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Accommodation()));
                       },
                     ),
                     ListTile(
-                      title: Text("Toastmadame"),
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const Toastmadame()));
-                      },
-                    ),
-                    ListTile(
                       title: Text(AppLocalizations.of(context)!.guestList),
+                      leading: Icon(Icons.people_outline_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const FetchData()));
@@ -154,20 +159,22 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                       title: Text(AppLocalizations.of(context)!.registry),
+                      leading: Icon(Icons.list_alt_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Accommodation()));
                       },
                     ),
-                    ListTile(
+                    /*ListTile(
                       title: Text("Silverskär"),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Accommodation()));
                       },
-                    ),
+                    ),*/
                     ListTile(
-                      title: Text("Silverskär location"),
+                      title: Text("Karta"),
+                      leading: Icon(Icons.map_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Location()));
@@ -175,6 +182,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                       title: Text("Kontakt"),
+                      leading: Icon(Icons.chat_bubble_outline),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Contact()));
@@ -182,6 +190,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                       title: Text("FAQ"),
+                      leading: Icon(Icons.info_outline),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const FaqPage()));
@@ -189,6 +198,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                       title: Text("Musik - Spotify"),
+                      leading: Icon(Icons.music_note_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Music()));
@@ -196,6 +206,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                       title: Text("Meny - TBA"),
+                      leading: Icon(Icons.menu_book_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Accommodation()));
@@ -203,6 +214,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                       title: Text("Bordsplacering - TBA"),
+                      leading: Icon(Icons.table_bar_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Accommodation()));
