@@ -103,6 +103,23 @@ class _AccommodationState extends State<Accommodation> {
                 child: const Text('info@silverskar.ax',
                   style: TextStyle(color: Colors.black),),
               ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Text(
+                'Övrigt boende',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                  "Tipsa om andra bra boenden"
+              ),
             ],
           ),
         ),

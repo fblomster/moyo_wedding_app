@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:moyo/models/language_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:moyo/screens/contact.dart';
+import 'package:moyo/screens/dinner_menu.dart';
 import 'package:moyo/screens/faq_page.dart';
 import 'package:moyo/screens/location.dart';
+import 'package:moyo/screens/notifications.dart';
+import 'package:moyo/screens/registry.dart';
+import 'package:moyo/screens/schedule.dart';
+import 'package:moyo/screens/seating.dart';
 import 'package:moyo/screens/toastmadame.dart';
+import 'package:moyo/screens/transport.dart';
 import 'package:moyo/services/auth/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:moyo/provider/locale_provider.dart';
@@ -126,6 +132,14 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                     ListTile(
+                      title: Text('Schema'),
+                      leading: Icon(Icons.schedule_outlined),
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const Schedule()));
+                      },
+                    ),
+                    ListTile(
                       title: Text("Brudföljet"),
                       leading: Icon(Icons.people_alt_outlined),
                       onTap: () {
@@ -146,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                       leading: Icon(Icons.bus_alert_outlined),
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const Accommodation()));
+                            MaterialPageRoute(builder: (context) => const Transport()));
                       },
                     ),
                     ListTile(
@@ -162,7 +176,7 @@ class _HomePageState extends State<HomePage> {
                       leading: Icon(Icons.list_alt_outlined),
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const Accommodation()));
+                            MaterialPageRoute(builder: (context) => const Registry()));
                       },
                     ),
                     ListTile(
@@ -182,11 +196,19 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                     ListTile(
-                      title: Text("Kontakt"),
+                      title: Text("Chatta med oss"),
                       leading: Icon(Icons.chat_bubble_outline),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Contact()));
+                      },
+                    ),
+                    ListTile(
+                      title: Text("Notiser"),
+                      leading: Icon(Icons.notification_add_outlined),
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const Notifications()));
                       },
                     ),
                     ListTile(
@@ -210,12 +232,20 @@ class _HomePageState extends State<HomePage> {
                       leading: Icon(Icons.menu_book_outlined),
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const Accommodation()));
+                            MaterialPageRoute(builder: (context) => const DinnerMenu()));
                       },
                     ),
                     ListTile(
                       title: Text("Bordsplacering - TBA"),
                       leading: Icon(Icons.table_bar_outlined),
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const Seating()));
+                      },
+                    ),
+                    ListTile(
+                      title: Text("Quiz - TBA"),
+                      leading: Icon(Icons.quiz_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Accommodation()));
