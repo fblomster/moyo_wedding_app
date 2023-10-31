@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moyo/model/language_model.dart';
+import 'package:moyo/models/language_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:moyo/screens/contact.dart';
 import 'package:moyo/screens/faq_page.dart';
@@ -12,7 +12,7 @@ import 'package:moyo/rsvp_form.dart';
 import 'package:moyo/rsvp_form2.dart';
 import 'package:moyo/screens/wedding_day.dart';
 import 'package:moyo/screens/accommodation.dart';
-import 'package:moyo/screens/music.dart';
+import 'package:moyo/screens/music_player.dart';
 import 'package:moyo/screens/fetch_data.dart';
 
 import '../services/auth/auth_services.dart';
@@ -165,13 +165,14 @@ class _HomePageState extends State<HomePage> {
                             MaterialPageRoute(builder: (context) => const Accommodation()));
                       },
                     ),
-                    /*ListTile(
-                      title: Text("Silverskär"),
+                    ListTile(
+                      title: Text("OSA"),
+                      leading: Icon(Icons.mail_lock_outlined),
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const Accommodation()));
+                            MaterialPageRoute(builder: (context) => const RSVPInsertData()));
                       },
-                    ),*/
+                    ),
                     ListTile(
                       title: Text("Karta"),
                       leading: Icon(Icons.map_outlined),
@@ -201,7 +202,7 @@ class _HomePageState extends State<HomePage> {
                       leading: Icon(Icons.music_note_outlined),
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const Music()));
+                            MaterialPageRoute(builder: (context) => const MusicPlayer()));
                       },
                     ),
                     ListTile(

@@ -55,15 +55,15 @@ class LoginPage extends StatefulWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(
-                        height: 50
+                        height: 70
                     ),
                     Icon(
-                      Icons.star_border,
+                      Icons.favorite_border_outlined,
                       size: 80,
                       color: Colors.grey[800],
                     ),
                     const SizedBox(
-                        height: 50
+                        height: 30
                     ),
                     const Text("Välkommen till bröllopsappen moyo",
                     style: TextStyle(

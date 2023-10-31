@@ -47,9 +47,15 @@ class RegisterPage extends StatefulWidget {
 
   @override
     Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[300],
-      body: SafeArea(
+    return Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: AssetImage('assets/wood-plank-texture-background.jpg'),
+          ),
+        ),
         child: SingleChildScrollView(
           child: Center(
             child: Padding(
@@ -58,10 +64,10 @@ class RegisterPage extends StatefulWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(
-                      height: 50
+                      height: 70
                   ),
                   Icon(
-                    Icons.star_border,
+                    Icons.favorite_border_outlined,
                     size: 80,
                     color: Colors.grey[800],
                   ),
@@ -133,8 +139,6 @@ class RegisterPage extends StatefulWidget {
             )
           ),
         )
-
-      )
     );
   }
   }

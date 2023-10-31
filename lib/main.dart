@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:moyo/model/language_model.dart';
+import 'package:moyo/models/language_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:moyo/screens/contact.dart';
 import 'package:moyo/screens/faq_page.dart';
@@ -18,7 +18,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:moyo/screens/wedding_day.dart';
 import 'package:moyo/screens/accommodation.dart';
-import 'package:moyo/screens/music.dart';
+import 'package:moyo/screens/music_player.dart';
 import 'package:moyo/screens/fetch_data.dart';
 
 Future<void> main() async {
@@ -257,7 +257,7 @@ class _MyHomePageState extends State<MyHomePage> {
                  title: Text("Musik - Spotify"),
                  onTap: () {
                    Navigator.push(context,
-                       MaterialPageRoute(builder: (context) => const Music()));
+                       MaterialPageRoute(builder: (context) => const MusicPlayer()));
                  },
                ),
                ListTile(

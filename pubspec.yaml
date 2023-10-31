@@ -53,6 +53,8 @@ dependencies:
   logger:
   flutter_dotenv:
   cloud_firestore: ^4.12.1
+  audio_video_progress_bar:
+  audioplayers:
 
 dev_dependencies:
   flutter_test:

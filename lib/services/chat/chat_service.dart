@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:moyo/model/message.dart';
+import 'package:moyo/models/message.dart';
 
 class ChatService extends ChangeNotifier {
   //auth and firestore instances
