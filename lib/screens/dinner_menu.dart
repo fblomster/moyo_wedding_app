@@ -1,6 +1,4 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class DinnerMenu extends StatefulWidget {
   const DinnerMenu({Key? key}) : super(key: key);

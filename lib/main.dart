@@ -1,25 +1,30 @@
 import 'dart:developer';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:moyo/models/language_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:moyo/screens/contact.dart';
-import 'package:moyo/screens/faq_page.dart';
-import 'package:moyo/screens/location.dart';
-import 'package:moyo/screens/toastmadame.dart';
-import 'package:moyo/services/auth/auth.dart';
+import 'package:moyo/screens/notifications.dart';
+import 'package:moyo/services/api/firebase_api.dart';
 import 'package:moyo/services/auth/auth_gate.dart';
 import 'package:moyo/services/auth/auth_services.dart';
 import 'package:provider/provider.dart';
 import 'package:moyo/provider/locale_provider.dart';
-import 'package:moyo/rsvp_form.dart';
-import 'package:moyo/rsvp_form2.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:moyo/screens/wedding_day.dart';
-import 'package:moyo/screens/accommodation.dart';
-import 'package:moyo/screens/music_player.dart';
-import 'package:moyo/screens/fetch_data.dart';
+
+final navigatorKey = GlobalKey<NavigatorState>();
+
+Future handleMessage (RemoteMessage message) async {
+  // if the message is null, do nothing
+  if (message.notification != null) {
+    print('some notification received');//return;
+  }
+
+  //navigate to new screen when message is received and users taps notification
+  navigatorKey.currentState!.pushNamed(
+      '/notification_page',
+      arguments: message);
+}
 
 Future<void> main() async {
 
@@ -27,9 +32,21 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await FirebaseMessaging.instance.setAutoInitEnabled(true);
-  final fcmToken = await FirebaseMessaging.instance.getToken();
-  log("FCMToken $fcmToken");
+
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    if (message.notification != null) {
+      print('Background notification tapped');
+      navigatorKey.currentState!.pushNamed(
+          '/notification_page',
+          arguments: message);
+    }
+  });
+
+  FirebaseApi().initNotifications();
+  FirebaseMessaging.onBackgroundMessage(handleMessage);
+  //await FirebaseMessaging.instance.setAutoInitEnabled(true);
+  //final fcmToken = await FirebaseMessaging.instance.getToken();
+ // log("FCMToken $fcmToken");
   runApp(
         MultiProvider(
         providers: [
@@ -54,6 +71,7 @@ class MyApp extends StatelessWidget {
     return Consumer<LocaleProvider>(
         builder: (context, appState, child){
       return MaterialApp(
+        navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         //title: 'moyo Wedding App',
         locale: Provider.of<LocaleProvider>(context).locale,
@@ -66,7 +84,10 @@ class MyApp extends StatelessWidget {
               background: const Color(0xffD8CFB9)),
           useMaterial3: true,
         ),
-        home: AuthGate(),//const MyHomePage(title: 'moyo Wedding App'),
+        home: AuthGate(),
+        routes: {
+          '/notification_page': (context) => const NotificationPage(),
+        },//const MyHomePage(title: 'moyo Wedding App'),
       );
     });
   }
@@ -92,7 +113,7 @@ class MyApp extends StatelessWidget {
     return token;
   }
 }*/
-
+/*
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -410,6 +431,6 @@ Widget menu() {
       ],
     ),
   );
-}
+}*/
 
 

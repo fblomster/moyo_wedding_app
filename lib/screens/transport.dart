@@ -1,6 +1,4 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Transport extends StatefulWidget {
   const Transport({Key? key}) : super(key: key);
@@ -50,12 +48,35 @@ class _TransportState extends State<Transport> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(
+                height: 20,
+              ),
+              Text(
+                  "Var ska jag vara och när?"
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                  "Tid: 14:00 (finsk tid)"
+              ),
+              SizedBox(
                 height: 10,
               ),
               Text(
-                  "Silverskär ligger i Ålands norra skärgård och består av fyra öar; Silverskär, Klobben, Sviskär och Champagne Island."
+                  "Datum:: 14:00 (finsk tid)"
               ),
-
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                  "Var: Jomala kyrka (Godbyvägen 445, 22150 Jomala)"
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                  "Parkering: Finns i anslutning till kyrkan. Parkera gärna på andra sidan vägen i första hand så det inte är helt fullt på den parkeringen närmast kyrkan vid eventuella andra evenemang de har under helgen."
+              ),
             ],
           ),
         ),

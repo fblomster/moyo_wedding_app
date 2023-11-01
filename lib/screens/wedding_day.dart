@@ -1,7 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:moyo/rsvp_form.dart';
 
 class WeddingDay extends StatefulWidget {
   const WeddingDay({Key? key}) : super(key: key);

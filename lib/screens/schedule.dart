@@ -1,6 +1,4 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Schedule extends StatefulWidget {
   const Schedule({Key? key}) : super(key: key);
@@ -10,9 +8,6 @@ class Schedule extends StatefulWidget {
 }
 
 class _ScheduleState extends State<Schedule> {
-
-  final Uri _url = Uri.parse('https://silverskar.ax');
-  final Uri _email = Uri.parse('mailto:info@silverskar.ax?subject=News&body=New%20plugin');
 
 
   @override
@@ -115,17 +110,5 @@ class _ScheduleState extends State<Schedule> {
         ),
       ),
     );
-  }
-
-  Future<void> _launchUrl() async {
-    if (!await launchUrl(_url)) {
-      throw Exception('Could not launch $_url');
-    }
-  }
-
-  Future<void> _launchEmail() async {
-    if (!await launchUrl(_email)) {
-      throw Exception('Could not launch $_email');
-    }
   }
 }

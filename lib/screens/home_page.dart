@@ -20,7 +20,6 @@ import 'package:moyo/screens/wedding_day.dart';
 import 'package:moyo/screens/accommodation.dart';
 import 'package:moyo/screens/music_player.dart';
 import 'package:moyo/screens/fetch_data.dart';
-
 import '../services/auth/auth_services.dart';
 
 class HomePage extends StatefulWidget {
@@ -208,7 +207,7 @@ class _HomePageState extends State<HomePage> {
                       leading: Icon(Icons.notification_add_outlined),
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const Notifications()));
+                            MaterialPageRoute(builder: (context) => const NotificationPage()));
                       },
                     ),
                     ListTile(
