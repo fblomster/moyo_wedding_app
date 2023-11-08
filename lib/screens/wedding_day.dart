@@ -135,6 +135,10 @@ class _InsertDataState extends State<WeddingDay> {
                   height: 10,
                 ),
                 Text("Vi hoppas att ni som övernattar får några timmars god sömn i era fina rum innan vi avslutar festhelgen men en härlig brunch. Det kan vara trevligt att avrunda kvällen vid den fina bastualtanen med två bastur, jacuzzi och trevliga relaxutrymmen, alternativt som morgonbastu!"),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Barnfritt"),
               ],
             ),
           ),

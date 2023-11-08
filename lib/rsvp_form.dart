@@ -17,8 +17,11 @@ class _InsertDataState extends State<RSVPInsertData> {
   final  userEmailController =TextEditingController();
   final  userPhoneController =TextEditingController();
   final  userAllergyController =TextEditingController();
+  final userCommentController = TextEditingController();
 
   late DatabaseReference dbRef;
+
+  bool _checked = false;
 
   @override
   void initState() {
@@ -32,6 +35,7 @@ class _InsertDataState extends State<RSVPInsertData> {
     userEmailController.clear();
     userPhoneController.clear();
     userAllergyController.clear();
+    userCommentController.clear();
   }
 
   @override
@@ -178,7 +182,35 @@ class _InsertDataState extends State<RSVPInsertData> {
                           hintText: 'Ange önskemål om specialkost',
                         ),
                       ),
-                      //Checkbox(value: value, onChanged: onChanged),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      TextFormField(
+                        controller: userCommentController,
+                        keyboardType: TextInputType.text,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Övriga kommentarer (ange här om spädbarn medföljer)',
+                          hintText: 'Annat viktigt att informera oss om',
+                        ),
+                        maxLines: 3,
+                        minLines: 1,
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      CheckboxListTile(
+                        checkColor: Colors.black,
+                            activeColor: Colors.white38,
+                            title: const Text('Jag godkänner bla bla'),
+                            controlAffinity: ListTileControlAffinity.leading,
+                            value: _checked,
+                            onChanged:(bool? value) {
+                              setState(() {
+                                _checked = value!;
+                              });
+                            },
+                          ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         child: ElevatedButton(
@@ -198,7 +230,8 @@ class _InsertDataState extends State<RSVPInsertData> {
                                 'lastname': userLastnameController.text,
                                 'email': userEmailController.text,
                                 'phone': userPhoneController.text,
-                                'allergy': userAllergyController.text
+                                'allergy': userAllergyController.text,
+                                'comment': userCommentController.text
                               };
 
                               dbRef.push().set(guests);
@@ -210,7 +243,7 @@ class _InsertDataState extends State<RSVPInsertData> {
                             }
                             clearText();
                           },
-                            child: const Text('Submit',
+                            child: const Text('Skicka',
                               style: TextStyle(color: Colors.black)),
                         ),
                       ),
