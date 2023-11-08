@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +19,7 @@ Future handleMessage (RemoteMessage message) async {
     print('some notification received');//return;
   }
 
-  //navigate to new screen when message is received and users taps notification
+  //navigate to new screen when message is received and user taps notification
   navigatorKey.currentState!.pushNamed(
       '/notification_page',
       arguments: message);
@@ -84,7 +83,7 @@ class MyApp extends StatelessWidget {
               background: const Color(0xffD8CFB9)),
           useMaterial3: true,
         ),
-        home: AuthGate(),
+        home: const AuthGate(),
         routes: {
           '/notification_page': (context) => const NotificationPage(),
         },//const MyHomePage(title: 'moyo Wedding App'),

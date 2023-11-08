@@ -44,7 +44,7 @@ class _UpdateRecordState extends State<UpdateRecord> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Updating record'),
+        title: const Text('Updating record'),
       ),
       body:  Container(
         height: double.infinity,
@@ -56,7 +56,7 @@ class _UpdateRecordState extends State<UpdateRecord> {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
               const SizedBox(
@@ -137,11 +137,11 @@ class _UpdateRecordState extends State<UpdateRecord> {
                   });
 
                 },
-                child: const Text('Update Data'),
                 color: Colors.greenAccent,
                 textColor: Colors.black,
                 minWidth: 300,
                 height: 40,
+                child: const Text('Update Data'),
               ),
             ],
           ),

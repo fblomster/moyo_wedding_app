@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "684459689725",
+    "firebase_url": "https://moyo-wedding-app-e8b92-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "moyo-wedding-app-e8b92",
+    "storage_bucket": "moyo-wedding-app-e8b92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684459689725:android:c92c324dd5acd299fd2094",
+        "android_client_info": {
+          "package_name": "com.example.moyo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj6VUW54MH0iFNu2h-ErEaxh11_2Ka4Xk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684459689725:android:7a0be2469c9e1be5fd2094",
+        "android_client_info": {
+          "package_name": "com.example.moyo_wedding_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj6VUW54MH0iFNu2h-ErEaxh11_2Ka4Xk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

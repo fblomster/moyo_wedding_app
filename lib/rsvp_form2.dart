@@ -47,7 +47,7 @@ class _MyRSVPFormState extends State<MyRSVPForm> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text("Vi ber om att ta emot ditt svar senast den XX XX 2024."),
+          const Text("Vi ber om att ta emot ditt svar senast den XX XX 2024."),
           Form(
             key: _formKey,
             child: Padding(

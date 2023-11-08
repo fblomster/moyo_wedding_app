@@ -34,7 +34,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   LanguageModel? _chosenValue;
-  List<LanguageModel> _languages = List.empty(growable: true);
+  final List<LanguageModel> _languages = List.empty(growable: true);
 
   //sign user out
   void signOut() {
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          drawer: Container(
+          drawer: SizedBox(
             width: MediaQuery.of(context).size.width * 0.75,
             child: Drawer(
               child: Container(
@@ -124,23 +124,23 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                       title: Text(AppLocalizations.of(context)!.weddingDay),
-                      leading: Icon(Icons.favorite_border_outlined),
+                      leading: const Icon(Icons.favorite_border_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const WeddingDay()));
                       },
                     ),
                     ListTile(
-                      title: Text('Schema'),
-                      leading: Icon(Icons.schedule_outlined),
+                      title: const Text('Schema'),
+                      leading: const Icon(Icons.schedule_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Schedule()));
                       },
                     ),
                     ListTile(
-                      title: Text("Brudföljet"),
-                      leading: Icon(Icons.people_alt_outlined),
+                      title: const Text("Brudföljet"),
+                      leading: const Icon(Icons.people_alt_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Toastmadame()));
@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                       title: Text(AppLocalizations.of(context)!.accommodation),
-                      leading: Icon(Icons.hotel_outlined),
+                      leading: const Icon(Icons.hotel_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Accommodation()));
@@ -156,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                       title: Text(AppLocalizations.of(context)!.transport),
-                      leading: Icon(Icons.bus_alert_outlined),
+                      leading: const Icon(Icons.bus_alert_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Transport()));
@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                       title: Text(AppLocalizations.of(context)!.guestList),
-                      leading: Icon(Icons.people_outline_outlined),
+                      leading: const Icon(Icons.people_outline_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const FetchData()));
@@ -172,79 +172,79 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                       title: Text(AppLocalizations.of(context)!.registry),
-                      leading: Icon(Icons.list_alt_outlined),
+                      leading: const Icon(Icons.list_alt_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Registry()));
                       },
                     ),
                     ListTile(
-                      title: Text("OSA"),
-                      leading: Icon(Icons.mail_lock_outlined),
+                      title: const Text("OSA"),
+                      leading: const Icon(Icons.mail_lock_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const RSVPInsertData()));
                       },
                     ),
                     ListTile(
-                      title: Text("Karta"),
-                      leading: Icon(Icons.map_outlined),
+                      title: const Text("Karta"),
+                      leading: const Icon(Icons.map_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Location()));
                       },
                     ),
                     ListTile(
-                      title: Text("Chatta med oss"),
-                      leading: Icon(Icons.chat_bubble_outline),
+                      title: const Text("Chatta med oss"),
+                      leading: const Icon(Icons.chat_bubble_outline),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Contact()));
                       },
                     ),
                     ListTile(
-                      title: Text("Notiser"),
-                      leading: Icon(Icons.notification_add_outlined),
+                      title: const Text("Notiser"),
+                      leading: const Icon(Icons.notification_add_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const NotificationPage()));
                       },
                     ),
                     ListTile(
-                      title: Text("FAQ"),
-                      leading: Icon(Icons.info_outline),
+                      title: const Text("FAQ"),
+                      leading: const Icon(Icons.info_outline),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const FaqPage()));
                       },
                     ),
                     ListTile(
-                      title: Text("Musik - Spotify"),
-                      leading: Icon(Icons.music_note_outlined),
+                      title: const Text("Musik - Spotify"),
+                      leading: const Icon(Icons.music_note_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const MusicPlayer()));
                       },
                     ),
                     ListTile(
-                      title: Text("Meny - TBA"),
-                      leading: Icon(Icons.menu_book_outlined),
+                      title: const Text("Meny - TBA"),
+                      leading: const Icon(Icons.menu_book_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const DinnerMenu()));
                       },
                     ),
                     ListTile(
-                      title: Text("Bordsplacering - TBA"),
-                      leading: Icon(Icons.table_bar_outlined),
+                      title: const Text("Bordsplacering - TBA"),
+                      leading: const Icon(Icons.table_bar_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Seating()));
                       },
                     ),
                     ListTile(
-                      title: Text("Quiz - TBA"),
-                      leading: Icon(Icons.quiz_outlined),
+                      title: const Text("Quiz - TBA"),
+                      leading: const Icon(Icons.quiz_outlined),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => const Accommodation()));

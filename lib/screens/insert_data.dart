@@ -28,11 +28,11 @@ class _InsertDataState extends State<InsertData> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('OSA'),
+        title: const Text('OSA'),
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
               const SizedBox(
@@ -109,11 +109,11 @@ class _InsertDataState extends State<InsertData> {
                   dbRef.push().set(guests);
 
                 },
-                child: const Text('Insert Data'),
                 color: Colors.blue,
                 textColor: Colors.white,
                 minWidth: 300,
                 height: 40,
+                child: const Text('Insert Data'),
               ),
             ],
           ),

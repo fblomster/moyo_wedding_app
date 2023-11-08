@@ -31,14 +31,14 @@ class _FetchDataState extends State<FetchData> {
             children: [
               Text(
                 guest['name'],
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
               ),
               const SizedBox(
                 width: 4,
               ),
               Text(
                 guest['lastname'],
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
               ),
             ],
           ),
