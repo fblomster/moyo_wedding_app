@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:moyo/models/language_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -26,6 +28,7 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
 
   final String title;
+  //final user = FirebaseAuth.instance.currentUser;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -114,14 +117,26 @@ class _HomePageState extends State<HomePage> {
                 color: const Color(0xffc2fedc),
                 child: ListView(
                   children: <Widget>[
-                    const DrawerHeader(
+                    const UserAccountsDrawerHeader(
+                      decoration: BoxDecoration(color: Colors.black87),
+                        accountName: Text('Jenny Hedlöf',
+                          textAlign: TextAlign.justify,
+                          textScaleFactor: 1.3,),
+                        accountEmail: Text('jenny@moyo.ax',
+                          textAlign: TextAlign.justify,
+                          textScaleFactor: 1.0,),
+                        currentAccountPicture: CircleAvatar(
+                          backgroundImage: AssetImage('assets/jenny.jpg'),
+                        ),
+                    ),
+                    /*const DrawerHeader(
                       decoration: BoxDecoration(color: Colors.black87),
                       child: Text("Frida Blomster",
                         style: TextStyle(color: Colors.white),
                         textAlign: TextAlign.justify,
                         textScaleFactor: 2.0,
                       ),
-                    ),
+                    ),*/
                     ListTile(
                       title: Text(AppLocalizations.of(context)!.weddingDay),
                       leading: const Icon(Icons.favorite_border_outlined),
@@ -339,7 +354,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                const LoginOrRegister(),
+                const Transport(),
                 const MyRSVPForm(),
                 const RSVPInsertData(),
               ]),
