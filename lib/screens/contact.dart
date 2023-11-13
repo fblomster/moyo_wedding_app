@@ -30,7 +30,21 @@ class _ContactState extends State<Contact> {
         backgroundColor: Colors.black87,
         //elevation: 0.0,
       ),
-      body: _buildUserList(),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: AssetImage('assets/wood-plank-texture-background.jpg'),
+          ),
+        ),
+        child: Column(
+            children: [
+              Text('Maila oss gärna vid frågor eller chatta med oss direkt här.'),
+            //messages
+            Expanded(
+            child: _buildUserList(),
       /*Container(
         height: double.infinity,
         width: double.infinity,
@@ -78,6 +92,9 @@ class _ContactState extends State<Contact> {
           ),
         ),
       ),*/
+    ),
+    ]),
+    ),
     );
   }
 

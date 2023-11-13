@@ -41,7 +41,19 @@ class _InsertDataState extends State<RSVPInsertData> {
   @override
   Widget build(BuildContext context) {
 // Build a Form widget using the _formKey created above.
-      return Container(
+    return Scaffold(
+        appBar: AppBar(
+          leading: const BackButton(
+              color: Colors.white
+          ),
+          title: const Text('OSA',
+            style: TextStyle(
+              color: Colors.white,
+            ),),
+          backgroundColor: Colors.black87,
+          //elevation: 0.0,
+        ),
+      body: Container(
         height: double.infinity,
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -254,6 +266,7 @@ class _InsertDataState extends State<RSVPInsertData> {
             ],
           ),
         ),
+      ),
       );
   }
 }

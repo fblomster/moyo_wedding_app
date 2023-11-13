@@ -41,13 +41,31 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.receiverUserEmail)),
-        body: Column(
+        leading: const BackButton(
+            color: Colors.white
+        ),
+          backgroundColor: Colors.black87,
+        title: Text(widget.receiverUserEmail,
+        style: const TextStyle(
+          color: Colors.white,
+        ),
+    ),
+      ),
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: AssetImage('assets/wood-plank-texture-background.jpg'),
+            ),
+          ),
+        child: Column(
           children: [
             //messages
-            Expanded(
-              child: _buildMessageList(),
-            ),
+              Expanded(
+                child: _buildMessageList(),
+              ),
 
             //user input
             _buildMessageInput(),
@@ -55,6 +73,7 @@ class _ChatPageState extends State<ChatPage> {
             const SizedBox(height: 25)
           ],
         )
+        ),
     );
   }
 
@@ -103,6 +122,7 @@ class _ChatPageState extends State<ChatPage> {
             ? MainAxisAlignment.end
             : MainAxisAlignment.start,
         children: [
+          const SizedBox(height: 10),
         Text(data['senderEmail']),
           const SizedBox(height: 5),
           ChatBubble(message: data['message'],)
@@ -114,7 +134,7 @@ class _ChatPageState extends State<ChatPage> {
   //build message input
   Widget _buildMessageInput() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
       child: Row(
         children: [
           //textfield
@@ -127,7 +147,7 @@ class _ChatPageState extends State<ChatPage> {
           ),
 
           //send button
-          IconButton(onPressed: sendMessage, icon: const Icon(Icons.arrow_upward))
+          IconButton(onPressed: sendMessage, icon: const Icon(Icons.arrow_upward)), //color: Colors.black87,)
         ],
       ),
     );
