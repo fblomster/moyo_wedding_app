@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  User user = FirebaseAuth.instance.currentUser!;
+  final currentUser = FirebaseAuth.instance.currentUser!;
 
   //sign user out
   void signOut() {
@@ -65,8 +65,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     String selectedValue = "SV";
-    String? name = user.displayName;
-    String? email = user.email;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: DefaultTabController(
@@ -148,17 +146,16 @@ class _HomePageState extends State<HomePage> {
                           color: const Color(0xffc2fedc),
                           child: ListView(
                             children: <Widget>[
-                              const UserAccountsDrawerHeader(
-                                decoration: BoxDecoration(
+                               UserAccountsDrawerHeader(
+                                decoration: const BoxDecoration(
                                     color: Colors.black87),
-                                accountName: Text('XX',//email!, //Text((snapshot.data as Map<String, dynamic>)['name'] ?? 'Guest',
-                                  //snapshot.data ?? 'Guest', //Username: ${snapshot.data?['username']}',
+                                accountName: Text(currentUser.displayName!,
                                   textAlign: TextAlign.justify,
                                   textScaleFactor: 1.3,),
-                                accountEmail: Text('jenny@moyo.ax',
+                                accountEmail: Text(currentUser.email!,
                                   textAlign: TextAlign.justify,
                                   textScaleFactor: 1.0,),
-                                currentAccountPicture: CircleAvatar(
+                                currentAccountPicture: const CircleAvatar(
                                   backgroundImage: AssetImage(
                                       'assets/jenny.jpg'),
                                 ),
@@ -267,7 +264,7 @@ class _HomePageState extends State<HomePage> {
                                               context) => const Contact()));
                                 },
                               ),
-                              ListTile(
+                              /*ListTile(
                                 title: const Text("Notiser"),
                                 leading: const Icon(
                                     Icons.notification_add_outlined),
@@ -276,7 +273,7 @@ class _HomePageState extends State<HomePage> {
                                       MaterialPageRoute(builder: (
                                           context) => const NotificationPage()));
                                 },
-                              ),
+                              ),*/
                               ListTile(
                                 title: const Text("FAQ"),
                                 leading: const Icon(Icons.info_outline),
@@ -423,7 +420,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const Transport(),
-                  const MyRSVPForm(),
+                  const LoginOrRegister(),
                   const RSVPInsertData(),
                 ])
             ,

@@ -17,6 +17,7 @@ class RegisterPage extends StatefulWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmedPasswordController = TextEditingController();
+  final userCategoryController = TextEditingController();
 
   Future<void> signUp() async {
     if (passwordController.text != confirmedPasswordController.text) {

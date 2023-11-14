@@ -243,7 +243,7 @@ class _InsertDataState extends State<RSVPInsertData> {
                                 'email': userEmailController.text,
                                 'phone': userPhoneController.text,
                                 'allergy': userAllergyController.text,
-                                'comment': userCommentController.text
+                                'comment': userCommentController.text,
                               };
 
                               dbRef.push().set(guests);

@@ -4,6 +4,8 @@ import 'package:moyo/components/moyo_text_field.dart';
 import 'package:moyo/services/auth/auth_services.dart';
 import 'package:provider/provider.dart';
 
+import 'forgot_password_page.dart';
+
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
   const LoginPage ({super.key,
@@ -85,6 +87,25 @@ class LoginPage extends StatefulWidget {
                       controller: passwordController,
                       hintText: 'Password',
                       obscureText: true,
+                    ),
+                    const SizedBox(
+                        height: 5
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (
+                                    context) => const ForgotPasswordPage()));
+                          },
+                          child: const Text("Forgot password?",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold
+                            ),),
+                        )
+                      ],
                     ),
                     const SizedBox(
                         height: 25

@@ -37,9 +37,20 @@ class _NotificationPageState extends State<NotificationPage> {
         ),
         child: Column (
           children: [
-            Text(message.notification!.title.toString()),
+            const SizedBox(
+              height: 30,
+            ),
+            Text(message.notification!.title.toString(),
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.center,),
+            const SizedBox(
+              height: 20,
+            ),
             Text(message.notification!.body.toString()),
-            Text(message.data.toString()),
+            //Text(message.data.toString()),
           ]
         )
       ),

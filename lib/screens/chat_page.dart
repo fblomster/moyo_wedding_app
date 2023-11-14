@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:moyo/components/chat_bubble.dart';
 import 'package:moyo/components/moyo_text_field.dart';
 import 'package:moyo/services/chat/chat_service.dart';
@@ -20,6 +21,7 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   final TextEditingController _messageController = TextEditingController();
+  //final ScrollController _scrollController = ScrollController();
   final ChatService _chatService = ChatService();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
@@ -97,6 +99,7 @@ class _ChatPageState extends State<ChatPage> {
               .toList();
 
           return ListView(
+            //controller: _scrollController,
             children: messageWidgets,
           );
         },
