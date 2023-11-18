@@ -202,7 +202,38 @@ class _MusicPlayerState extends State<MusicPlayer> {
                                   icon: const Icon(Icons.loop,
                                       color: Color(0xFF1BB751))),
                             ],
-                          )
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.white,
+                                    ),
+                                    child: const Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Padding(
+                                          padding:
+                                          EdgeInsets.fromLTRB(0.0, 0.0, 8.0, 0.0),
+                                          child: Icon(Icons.search),
+                                        ),
+                                        Text('Artists,Songs or Podcasts',
+                                            style: TextStyle(
+                                                color: Colors.black54,
+                                                fontSize: 16.0,
+                                                fontWeight: FontWeight.bold))
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                   )

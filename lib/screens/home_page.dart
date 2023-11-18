@@ -42,6 +42,8 @@ class _HomePageState extends State<HomePage> {
 
   final currentUser = FirebaseAuth.instance.currentUser!;
 
+  //bool isVisible = false;
+
   //sign user out
   void signOut() {
     //get auth service
@@ -309,7 +311,7 @@ class _HomePageState extends State<HomePage> {
                                   context) => const MusicPlayer()));
                         },
                       ),
-                      ListTile(
+                        ListTile(
                         title: const Text("Meny - TBA"),
                         leading: const Icon(Icons.menu_book_outlined),
                         onTap: () {
@@ -331,6 +333,15 @@ class _HomePageState extends State<HomePage> {
                       ListTile(
                         title: const Text("Quiz - TBA"),
                         leading: const Icon(Icons.quiz_outlined),
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (
+                                  context) => const Accommodation()));
+                        },
+                      ),
+                      ListTile(
+                        title: const Text("L O G G A UT"),
+                        leading: const Icon(Icons.logout),
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (
@@ -446,7 +457,7 @@ class _HomePageState extends State<HomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),*/
-            bottomNavigationBar: Container(
+            bottomNavigationBar: menu(), /*Container(
               color: Colors.black,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
@@ -477,7 +488,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
         ),
-            ),
+            ),*/
             // This trailing comma makes auto-formatting nicer for build methods.
 
           ),
@@ -521,28 +532,28 @@ class _HomePageState extends State<HomePage> {
   Widget menu() {
     return Container(
       color: Colors.black87, // const Color(0xFF3F5AA6),
-      child: const TabBar(
+      child: TabBar(
         labelColor: Colors.white,
         unselectedLabelColor: Colors.white70,
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorPadding: EdgeInsets.all(5.0),
         indicatorColor: Colors.greenAccent,
         tabs: [
-          Tab(
+          const Tab(
             text: "Hem",
             icon: Icon(Icons.home),
           ),
           Tab(
-            text: "Boende",
-            icon: Icon(Icons.hotel),
+            text: AppLocalizations.of(context)!.accommodation,
+            icon: const Icon(Icons.hotel),
           ),
           Tab(
-            text: "Transport",
-            icon: Icon(Icons.bus_alert),
+            text: AppLocalizations.of(context)!.transport,
+            icon: const Icon(Icons.bus_alert),
           ),
           Tab(
-            text: "OSA",
-            icon: Icon(Icons.mail),
+            text: AppLocalizations.of(context)!.rsvp,
+            icon: const Icon(Icons.mail),
           ),
         ],
       ),
