@@ -45,9 +45,9 @@ Future<void> main() async {
   FirebaseMessaging.onBackgroundMessage(handleMessage);
   //await FirebaseMessaging.instance.setAutoInitEnabled(true);
   //final fcmToken = await FirebaseMessaging.instance.getToken();
- // log("FCMToken $fcmToken");
+  // log("FCMToken $fcmToken");
   runApp(
-        MultiProvider(
+      MultiProvider(
         providers: [
           ChangeNotifierProvider<LocaleProvider>(
             create: (context) => LocaleProvider(),
@@ -56,7 +56,7 @@ Future<void> main() async {
             create: (context) => AuthService() ,
           ),
         ],
-  child: const MyApp(),
+        child: const MyApp(),
       )
   );
 }
@@ -69,27 +69,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<LocaleProvider>(
         builder: (context, appState, child){
-      return MaterialApp(
-        navigatorKey: navigatorKey,
-        debugShowCheckedModeBanner: false,
-        //title: 'moyo Wedding App',
-        locale: Provider.of<LocaleProvider>(context).locale,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        theme: ThemeData(
-            fontFamily: 'Literata',
-          // This is the theme of your application.
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent,
-              background: const Color(0xffD8CFB9)),
-          useMaterial3: true,
-        ),
-        home: const AuthGate(),
-        routes: {
-          '/notification_page': (context) => const NotificationPage(),
-        },//const MyHomePage(title: 'moyo Wedding App'),
-      );
-    });
+          return MaterialApp(
+            navigatorKey: navigatorKey,
+            debugShowCheckedModeBanner: false,
+            //title: 'moyo Wedding App',
+            locale: Provider.of<LocaleProvider>(context).locale,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            theme: ThemeData(
+              fontFamily: 'Literata',
+              // This is the theme of your application.
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent,
+                  background: const Color(0xffD8CFB9)),
+              useMaterial3: true,
+            ),
+            home: const AuthGate(),
+            routes: {
+              '/notification_page': (context) => const NotificationPage(),
+            },//const MyHomePage(title: 'moyo Wedding App'),
+          );
+        });
   }
 }
-
-

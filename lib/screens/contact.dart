@@ -41,7 +41,7 @@ class _ContactState extends State<Contact> {
         ),
         child: Column(
             children: [
-              Text('Maila oss gärna vid frågor eller chatta med oss direkt här.'),
+              const Text('Maila oss gärna vid frågor eller chatta med oss direkt här.'),
             //messages
             Expanded(
             child: _buildUserList(),

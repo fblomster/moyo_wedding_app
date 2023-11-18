@@ -9,6 +9,8 @@ class AuthService extends ChangeNotifier {
   //firestore instance
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
 
+  String role = 'guest';
+
   //sign in
   Future<UserCredential> signInWithEmailandPassword(String email, String password) async {
     try {
@@ -22,6 +24,7 @@ class AuthService extends ChangeNotifier {
       _fireStore.collection('users').doc(userCredential.user!.uid).set({
         'uid': userCredential.user!.uid,
         'email': email,
+        'role': role,
       }, SetOptions(merge: true));
       return userCredential;
     }
@@ -45,6 +48,7 @@ class AuthService extends ChangeNotifier {
       _fireStore.collection('users').doc(userCredential.user!.uid).set({
         'uid': userCredential.user!.uid,
         'email': email,
+        'role': role,
       });
       return userCredential;
     }
@@ -60,4 +64,4 @@ class AuthService extends ChangeNotifier {
   }
 
 
-  }
+}

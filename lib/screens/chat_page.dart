@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:moyo/components/chat_bubble.dart';
 import 'package:moyo/components/moyo_text_field.dart';
 import 'package:moyo/services/chat/chat_service.dart';
