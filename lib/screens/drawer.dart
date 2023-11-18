@@ -37,7 +37,7 @@ class _MyDrawerState extends State<MyDrawer> {
             UserAccountsDrawerHeader(
               decoration: const BoxDecoration(
                   color: Colors.black87),
-              accountName: Text(currentUser.displayName!,
+              accountName: const Text('',
                 textAlign: TextAlign.justify,
                 textScaleFactor: 1.3,),
               accountEmail: Text(currentUser.email!,

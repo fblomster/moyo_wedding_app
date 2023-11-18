@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:moyo/models/language_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:moyo/screens/contact.dart';
@@ -156,6 +157,25 @@ class _HomePageState extends State<HomePage> {
                               'assets/jenny.jpg'),
                         ),
                       ),
+                      ExpansionTile(title: Text('Inför bröllopsdagen'),
+                      leading: Icon(Icons.favorite_border_outlined),
+                      children: [
+                        Column(
+                          children: [
+                          ListTile(
+                            title: Text(
+                                AppLocalizations.of(context)!.weddingDay),
+                            leading: const Icon(
+                                Icons.favorite_border_outlined),
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (
+                                      context) => const WeddingDay()));
+                            },
+                          ),
+                          ],
+                        ),
+                      ],),
                       ListTile(
                         title: Text(
                             AppLocalizations.of(context)!.weddingDay),
@@ -415,8 +435,8 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
+                  const Accommodation(),
                   const Transport(),
-                  const LoginOrRegister(),
                   const RSVPInsertData(),
                 ])
             ,
@@ -426,7 +446,38 @@ class _HomePageState extends State<HomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),*/
-            bottomNavigationBar: menu(),
+            bottomNavigationBar: Container(
+              color: Colors.black,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
+              child: GNav(
+                backgroundColor: Colors.black87,
+                color: Colors.white,
+                activeColor: Colors.white,
+                tabBackgroundColor: Colors.grey.shade800,
+                gap: 8,
+                padding: EdgeInsets.all(16),//menu(),
+                tabs: [
+                  GButton(
+                    text: "Hem",
+                    icon: Icons.home,
+                  ),
+                  GButton(
+                    text: AppLocalizations.of(context)!.accommodation,
+                    icon: Icons.hotel,
+                  ),
+                  GButton(
+                    text: AppLocalizations.of(context)!.transport,
+                    icon: Icons.bus_alert,
+                  ),
+                  GButton(
+                    text: AppLocalizations.of(context)!.rsvp,
+                    icon: Icons.mail,
+                  ),
+                ],
+              ),
+        ),
+            ),
             // This trailing comma makes auto-formatting nicer for build methods.
 
           ),
@@ -478,16 +529,16 @@ class _HomePageState extends State<HomePage> {
         indicatorColor: Colors.greenAccent,
         tabs: [
           Tab(
+            text: "Hem",
+            icon: Icon(Icons.home),
+          ),
+          Tab(
             text: "Boende",
             icon: Icon(Icons.hotel),
           ),
           Tab(
             text: "Transport",
             icon: Icon(Icons.bus_alert),
-          ),
-          Tab(
-            text: "Info",
-            icon: Icon(Icons.info),
           ),
           Tab(
             text: "OSA",

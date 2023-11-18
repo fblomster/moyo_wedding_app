@@ -57,6 +57,7 @@ dependencies:
   audioplayers:
   flutter_local_notifications: ^16.1.0
   http:
+  google_nav_bar:
 
 dev_dependencies:
   flutter_test:

@@ -124,7 +124,7 @@ class _ContactState extends State<Contact> {
     Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
     //display all users except current user
-  if (_auth.currentUser!.email != data['email']) {
+  if (_auth.currentUser!.email != data['email'] && data['role'] != 'guest') {
     return ListTile(
       title: Text(data['email']),
       onTap: () {
