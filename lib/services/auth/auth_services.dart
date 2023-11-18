@@ -21,11 +21,11 @@ class AuthService extends ChangeNotifier {
           password: password
       );
       //add a new document for the user in the users collection if it doesn't already exists
-      _fireStore.collection('users').doc(userCredential.user!.uid).set({
+      /*_fireStore.collection('users').doc(userCredential.user!.uid).set({
         'uid': userCredential.user!.uid,
         'email': email,
         'role': role,
-      }, SetOptions(merge: true));
+      }, SetOptions(merge: true));*/
       return userCredential;
     }
     //catch if errors

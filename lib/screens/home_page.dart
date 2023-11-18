@@ -168,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                         },
                       ),
                       ListTile(
-                        title: const Text('Schema'),
+                        title: const Text('S C H E M A'),
                         leading: const Icon(Icons.schedule_outlined),
                         onTap: () {
                           Navigator.push(context,
@@ -232,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                         },
                       ),
                       ListTile(
-                        title: const Text("OSA"),
+                        title: const Text("O S A"),
                         leading: const Icon(Icons.mail_lock_outlined),
                         onTap: () {
                           Navigator.push(context,
@@ -241,7 +241,7 @@ class _HomePageState extends State<HomePage> {
                         },
                       ),
                       ListTile(
-                        title: const Text("Karta"),
+                        title: const Text("K A R T A"),
                         leading: const Icon(Icons.map_outlined),
                         onTap: () {
                           Navigator.push(context,

@@ -24,11 +24,25 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  //sign user in
-  void signUserIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text,
-      password: passwordController.text,
+  void wrongEmailMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AlertDialog(
+          title: Text('Incorrect email'),
+        );
+      },
+    );
+  }
+
+  void wrongPasswordMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AlertDialog(
+          title: Text('Incorrect password'),
+        );
+      },
     );
   }
 
@@ -114,8 +128,8 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: InputDecoration(
                         suffixIcon: IconButton(
                             icon: Icon(_isObscure
-                                ? Icons.visibility
-                                : Icons.visibility_off),
+                                ? Icons.visibility_off
+                                : Icons.visibility),
                             onPressed: () {
                               setState(() {
                                 _isObscure = !_isObscure;

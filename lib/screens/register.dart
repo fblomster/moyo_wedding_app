@@ -204,7 +204,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(
                       height: 20,
                     ),
-                    MaterialButton(
+                    /*MaterialButton(
                       shape: const RoundedRectangleBorder(
                           borderRadius:
                           BorderRadius.all(Radius.circular(20.0))),
@@ -224,7 +224,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           fontSize: 20,
                         ),
                       ),
-                    ),
+                    ),*/
                     MoyoButton(onTap: signUp2, text: 'Registrera dig'),
                     const SizedBox(
                         height: 50
@@ -256,6 +256,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future<void> signUp2() async {
+    const CircularProgressIndicator();
     if (passwordController.text != confirmPasswordController.text) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

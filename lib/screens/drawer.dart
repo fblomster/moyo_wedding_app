@@ -60,7 +60,7 @@ class _MyDrawerState extends State<MyDrawer> {
               },
             ),
             ListTile(
-              title: const Text('Schema'),
+              title: const Text('S C H E M A'),
               leading: const Icon(Icons.schedule_outlined),
               onTap: () {
                 Navigator.push(context,
