@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -11,6 +13,8 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+
+  final FirebaseStorage _storage = FirebaseStorage.instance;
 
   final  userNameController = TextEditingController();
   final  userLastnameController = TextEditingController();
@@ -38,6 +42,18 @@ class _ProfilePageState extends State<ProfilePage> {
 
   }
 
+  /*Future uploadProfilePicture(User user, File profilePicture) async {
+    UploadTask uploadTask = _storage
+        .ref()
+        .child('userProfilePictures/${user.uid}/profilePicture.jpg')
+        .putFile(profilePicture);
+
+    TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
+    String downloadURL = await taskSnapshot.ref.getDownloadURL();
+
+    return downloadURL;
+  }*/
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,79 +69,83 @@ class _ProfilePageState extends State<ProfilePage> {
         //elevation: 0.0,
       ),
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage('assets/wood-plank-texture-background.jpg'),
+            height: double.infinity,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                  // using Image.network to load an image from the network
+                  //image: Image.network('${data['profilePictureURL']}')
+                image: AssetImage('assets/wood-plank-texture-background.jpg'),
+              ),
+            ),
+        child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(30.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Center(
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/jenny.jpg'),
+                      radius: 40.0,
+                    ),
+                  ),
+                  const Divider(
+                    height: 60.0,
+                    color: Colors.greenAccent,
+                  ),
+                  Text(
+                    'Namn',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+              Row(
+                children: [
+                  Text(userNameController.text,
+                    style: const TextStyle(
+                      letterSpacing: 2.0,
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(userLastnameController.text,
+                    style: const TextStyle(
+                      letterSpacing: 2.0,
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Text(userNameController.text),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextField(
+                    controller: userLastnameController,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Efternamn',
+                      hintText: 'Skriv ditt efternamn',
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-        child: Padding(
-          padding: EdgeInsets.all(30.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/jenny.jpg'),
-                  radius: 40.0,
-                ),
-              ),
-              Divider(
-                height: 60.0,
-                color: Colors.greenAccent,
-              ),
-              Text(
-                'Namn',
-                style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-          Row(
-            children: [
-              Text(userNameController.text,
-                style: const TextStyle(
-                  letterSpacing: 2.0,
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              Text(userLastnameController.text,
-                style: const TextStyle(
-                  letterSpacing: 2.0,
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-              SizedBox(
-                height: 30,
-              ),
-              Text(userNameController.text),
-              const SizedBox(
-                height: 30,
-              ),
-              TextField(
-                controller: userLastnameController,
-                keyboardType: TextInputType.text,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Efternamn',
-                  hintText: 'Skriv ditt efternamn',
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

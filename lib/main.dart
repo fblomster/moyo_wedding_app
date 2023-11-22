@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               fontFamily: 'Literata',
               // This is the theme of your application.
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent,
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent, onPrimary: Colors.greenAccent,
                   background: const Color(0xffD8CFB9)),
               useMaterial3: true,
             ),

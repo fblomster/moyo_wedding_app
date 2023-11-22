@@ -13,6 +13,7 @@ class MusicPlayer extends StatefulWidget {
 
 class _MusicPlayerState extends State<MusicPlayer> {
   final player = AudioPlayer();
+  final TextEditingController searchSongController = TextEditingController();
   Music music = Music(trackId: '7MXVkk9YMctZqd1Srtv4MB');
 
   playSong() async {
@@ -24,6 +25,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
     print(res);*/
     var trackId1 = "0ct6r3EGTcMLPtrXHDvVjc";
     SpotifySdk.play(spotifyUri: "spotify:track:$trackId1");
+    //SpotifySdk.play(spotifyUri: "spotify:playlist:6KHPySUQgQkArawZ3qdtwA?si=2298ba75ac854b47");
   }
 
   @override
@@ -234,6 +236,27 @@ class _MusicPlayerState extends State<MusicPlayer> {
                               ),
                             ],
                           ),
+                          TextFormField(
+                            controller: searchSongController,
+
+                            decoration: InputDecoration(
+                              icon: const Icon(Icons.search),
+                              filled: true,
+                              fillColor: Colors.white,
+                              hintText: 'Artists,Songs or Podcasts',
+                              enabled: true,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                borderSide: BorderSide(color: Colors.grey.shade200),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey.shade200),
+                              ),
+                            ),
+                            onSaved: (value) {
+                              searchSongController.text = value!;
+                            },
+                          ),
                         ],
                       ),
                   )
@@ -242,11 +265,11 @@ class _MusicPlayerState extends State<MusicPlayer> {
             ),
           ),
 
-      /*floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: playSong,
         tooltip: 'Increment',
         child: const Icon(Icons.play_arrow),
-      ),*/
+      ),
     );
   }
 }

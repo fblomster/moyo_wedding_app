@@ -3,15 +3,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:moyo/components/drawer_field.dart';
+import 'package:moyo/components/moyo_button.dart';
 import 'package:moyo/models/language_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:moyo/screens/bridal_party.dart';
 import 'package:moyo/screens/contact.dart';
+import 'package:moyo/screens/contact_details.dart';
 import 'package:moyo/screens/dinner_menu.dart';
 import 'package:moyo/screens/faq_page.dart';
 import 'package:moyo/screens/location.dart';
 import 'package:moyo/screens/registry.dart';
 import 'package:moyo/screens/schedule.dart';
 import 'package:moyo/screens/seating.dart';
+import 'package:moyo/screens/speech_form.dart';
 import 'package:moyo/screens/toastmadame.dart';
 import 'package:moyo/screens/transport.dart';
 import 'package:moyo/services/auth/auth.dart';
@@ -39,6 +44,7 @@ class _HomePageState extends State<HomePage> {
   final List<LanguageModel> _languages = List.empty(growable: true);
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
 
   final currentUser = FirebaseAuth.instance.currentUser!;
 
@@ -159,26 +165,196 @@ class _HomePageState extends State<HomePage> {
                               'assets/jenny.jpg'),
                         ),
                       ),
-                      ExpansionTile(title: Text('Inför bröllopsdagen'),
-                      leading: Icon(Icons.favorite_border_outlined),
-                      children: [
-                        Column(
-                          children: [
-                          ListTile(
-                            title: Text(
-                                AppLocalizations.of(context)!.weddingDay),
-                            leading: const Icon(
-                                Icons.favorite_border_outlined),
-                            onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (
-                                      context) => const WeddingDay()));
-                            },
-                          ),
-                          ],
+                      Container(
+                        color: Colors.red,
+                        child: ListTile(
+                          title: Text(AppLocalizations.of(context)!.weddingDay),
+                          leading: const Icon(
+                              Icons.favorite_border_outlined),
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (
+                                    context) => const WeddingDay()));
+                          },
                         ),
-                      ],),
-                      ListTile(
+                      ),
+                      Theme(
+                        data: ThemeData(
+                          colorScheme: ColorScheme.fromSeed(
+                            seedColor: Colors.greenAccent,
+                          ),
+                        ),
+                        child: ExpansionTile(title: Text('Inför bröllopsdagen'),
+                        leading: Icon(Icons.favorite_border_outlined),
+                        children: [
+                          Column(
+                            children: [
+                              ListTile(
+                                title: Text(AppLocalizations.of(context)!.weddingDay),
+                                leading: const Icon(
+                                    Icons.favorite_border_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (
+                                          context) => const WeddingDay()));
+                                },
+                              ),
+                              ListTile(
+                                title: const Text("Brudföljet"),
+                                leading: const Icon(Icons.people_alt_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (
+                                          context) => const BridalParty()));
+                                },
+                              ),
+                              ListTile(
+                                title: Text(
+                                    AppLocalizations.of(context)!
+                                        .accommodation),
+                                leading: const Icon(Icons.hotel_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (
+                                          context) => const Accommodation()));
+                                },
+                              ),
+                              ListTile(
+                                title: Text(
+                                    AppLocalizations.of(context)!.transport),
+                                leading: const Icon(Icons.bus_alert_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const Transport()));
+                                },
+                              ),
+                              ListTile(
+                                title: const Text("K A R T A"),
+                                leading: const Icon(Icons.map_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const Location()));
+                                },
+                              ),
+                            ],
+                          ),
+                        ],),
+                      ),
+                      ExpansionTile(title: Text('Under bröllopsdagen'),
+                        leading: Icon(Icons.favorite_border_outlined),
+                        children: [
+                          Column(
+                            children: [
+                              ListTile(
+                                title: const Text('S C H E M A'),
+                                leading: const Icon(Icons.schedule_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const Schedule()));
+                                },
+                              ),
+
+              //if _fireStore.collection('users').doc(user!.uid).collection.get() data['role'] != 'guest' ?
+              ListTile(
+                                title: const Text("Meny - TBA"),
+                                leading: const Icon(Icons.menu_book_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (
+                                          context) => const DinnerMenu()));
+                                },
+                              ), //: Container(),
+                              ListTile(
+                                title: const Text("Bordsplacering - TBA"),
+                                leading: const Icon(Icons.table_bar_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const Seating()));
+                                },
+                              ),
+                              ListTile(
+                                title: const Text("Quiz - TBA"),
+                                leading: const Icon(Icons.quiz_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (
+                                          context) => const Accommodation()));
+                                },
+                              ),
+                            ],
+                          ),
+                        ],),
+                      ExpansionTile(title: Text('I N B J U D A N'),
+                        leading: Icon(Icons.favorite_border_outlined),
+                        children: [
+                          Column(
+                          ),
+                        ],),
+                ExpansionTile(title: Text('V I K T I G  I N F O'),
+                    leading: Icon(Icons.favorite_border_outlined),
+                    children: [
+                    Column(
+                    ),
+                    ],),
+                      ExpansionTile(title: Text('Ö V R I G T'),
+                        leading: Icon(Icons.favorite_border_outlined),
+                        children: [
+                          Column(
+                            children: [
+                              ListTile(
+                                title: Text(
+                                    AppLocalizations.of(context)!.guestList),
+                                leading: const Icon(
+                                    Icons.people_outline_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const FetchData()));
+                                },
+                              ),
+                              ListTile(
+                                title: Text(
+                                    AppLocalizations.of(context)!.registry),
+                                leading: const Icon(Icons.list_alt_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const Registry()));
+                                },
+                              ),
+                              ListTile(
+                                title: const Text("FAQ"),
+                                leading: const Icon(Icons.info_outline),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const FaqPage()));
+                                },
+                              ),
+                              ListTile(
+                                title: const Text("Musik - Spotify"),
+                                leading: const Icon(Icons.music_note_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (
+                                          context) => const MusicPlayer()));
+                                },
+                              ),
+                            ],
+                          ),
+                        ],),
+                      /*ListTile(
                         title: Text(
                             AppLocalizations.of(context)!.weddingDay),
                         leading: const Icon(
@@ -252,7 +428,7 @@ class _HomePageState extends State<HomePage> {
                                   builder: (
                                       context) => const Registry()));
                         },
-                      ),
+                      ),*/
                       ListTile(
                         title: const Text("O S A"),
                         leading: const Icon(Icons.mail_lock_outlined),
@@ -262,7 +438,7 @@ class _HomePageState extends State<HomePage> {
                                   context) => const RSVPInsertData()));
                         },
                       ),
-                      ListTile(
+                      /*ListTile(
                         title: const Text("K A R T A"),
                         leading: const Icon(Icons.map_outlined),
                         onTap: () {
@@ -271,9 +447,47 @@ class _HomePageState extends State<HomePage> {
                                   builder: (
                                       context) => const Location()));
                         },
-                      ),
-                      ListTile(
-                        title: const Text("Chatta med oss"),
+                      ),*/
+                      ExpansionTile(title: Text('K O N T A K T'),
+                        leading: Icon(Icons.phone_outlined),
+                        children: [
+                          Column(
+                            children: [
+                              ListTile(
+                              title: const Text("C H A T T A  med oss"),
+                              leading: const Icon(Icons.chat_bubble_outline),
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(
+                                        builder: (
+                                            context) => const Contact()));
+                              },
+                            ),
+                              ListTile(
+                                title: const Text("K O N T A K T U P P G I F T E R"),
+                                leading: const Icon(Icons.email_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const ContactDetails()));
+                                },
+                              ),
+                              ListTile(
+                                title: const Text("T A L"),
+                                leading: const Icon(Icons.list_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const SpeechForm()));
+                                },
+                              ),
+                            ],
+                          ),
+                        ],),
+                      /*ListTile(
+                        title: const Text("C H A T T A  med oss"),
                         leading: const Icon(Icons.chat_bubble_outline),
                         onTap: () {
                           Navigator.push(context,
@@ -281,7 +495,7 @@ class _HomePageState extends State<HomePage> {
                                   builder: (
                                       context) => const Contact()));
                         },
-                      ),
+                      ),*/
                       /*ListTile(
                                 title: const Text("Notiser"),
                                 leading: const Icon(
@@ -292,7 +506,7 @@ class _HomePageState extends State<HomePage> {
                                           context) => const NotificationPage()));
                                 },
                               ),*/
-                      ListTile(
+                      /*ListTile(
                         title: const Text("FAQ"),
                         leading: const Icon(Icons.info_outline),
                         onTap: () {
@@ -338,8 +552,12 @@ class _HomePageState extends State<HomePage> {
                               MaterialPageRoute(builder: (
                                   context) => const Accommodation()));
                         },
+                      ),*/
+                      const Divider(
+                        height: 30,
+                        color: Colors.black45,
                       ),
-                      ListTile(
+               ListTile(
                         title: const Text("L O G G A UT"),
                         leading: const Icon(Icons.logout),
                         onTap: () {
@@ -446,8 +664,8 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
+                  const WeddingDay(),
                   const Accommodation(),
-                  const Transport(),
                   const RSVPInsertData(),
                 ])
             ,
@@ -457,7 +675,7 @@ class _HomePageState extends State<HomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),*/
-            bottomNavigationBar: menu(), /*Container(
+            bottomNavigationBar: Container(
               color: Colors.black,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
@@ -467,28 +685,43 @@ class _HomePageState extends State<HomePage> {
                 activeColor: Colors.white,
                 tabBackgroundColor: Colors.grey.shade800,
                 gap: 8,
-                padding: EdgeInsets.all(16),//menu(),
+                padding: const EdgeInsets.all(16),//menu(),
                 tabs: [
                   GButton(
                     text: "Hem",
                     icon: Icons.home,
                   ),
                   GButton(
-                    text: AppLocalizations.of(context)!.accommodation,
-                    icon: Icons.hotel,
+                    text: AppLocalizations.of(context)!.inviteButton,
+                    icon: Icons.insert_invitation_outlined,
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (
+                              context) => const WeddingDay()));
+                    },
                   ),
                   GButton(
-                    text: AppLocalizations.of(context)!.transport,
-                    icon: Icons.bus_alert,
+                    text: AppLocalizations.of(context)!.accommodation,
+                    icon: Icons.hotel,
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (
+                              context) => const Accommodation()));
+                    },
                   ),
                   GButton(
                     text: AppLocalizations.of(context)!.rsvp,
                     icon: Icons.mail,
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (
+                              context) => const RSVPInsertData()));
+                    },
                   ),
                 ],
               ),
         ),
-            ),*/
+            ),
             // This trailing comma makes auto-formatting nicer for build methods.
 
           ),
@@ -544,12 +777,12 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.home),
           ),
           Tab(
-            text: AppLocalizations.of(context)!.accommodation,
-            icon: const Icon(Icons.hotel),
+            text: AppLocalizations.of(context)!.inviteButton,
+            icon: const Icon(Icons.insert_invitation_outlined),
           ),
           Tab(
-            text: AppLocalizations.of(context)!.transport,
-            icon: const Icon(Icons.bus_alert),
+            text: AppLocalizations.of(context)!.accommodation,
+            icon: const Icon(Icons.hotel),
           ),
           Tab(
             text: AppLocalizations.of(context)!.rsvp,
