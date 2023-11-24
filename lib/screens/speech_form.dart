@@ -1,6 +1,12 @@
+import 'dart:io';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../components/text_fields.dart';
+import '../models/message.dart';
 
 class SpeechForm extends StatefulWidget {
   const SpeechForm({Key? key}) : super(key: key);
@@ -13,28 +19,33 @@ class _SpeechFormState extends State<SpeechForm> {
 
   final _formKey = GlobalKey<FormState>();
 
-  final  userNameController = TextEditingController();
+  /*final  userNameController = TextEditingController();
   final  userLastnameController= TextEditingController();
   final  userEmailController =TextEditingController();
   final  userPhoneController =TextEditingController();
   final  speechCategoryController =TextEditingController();
   final propsController = TextEditingController();
   final timeController = TextEditingController();
-  final relationController = TextEditingController();
+  final relationController = TextEditingController();*/
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController subjectController = TextEditingController();
+  TextEditingController messageController = TextEditingController();
 
   late DatabaseReference dbRef;
 
+  bool _enableBtn = false;
   bool _checked = false;
 
   final Uri _email = Uri.parse('mailto:jenny@');
 
-  @override
+  /*@override
   void initState() {
     super.initState();
     dbRef = FirebaseDatabase.instance.ref().child('Guests');
-  }
+  }*/
 
-  void clearText() {
+  /*void clearText() {
     userNameController.clear();
     userLastnameController.clear();
     userEmailController.clear();
@@ -43,7 +54,7 @@ class _SpeechFormState extends State<SpeechForm> {
     propsController.clear();
     timeController.clear();
     relationController.clear();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +140,7 @@ class _SpeechFormState extends State<SpeechForm> {
               const SizedBox(
                 height: 30,
               ),
-              Form(
+              /*Form(
                 key: _formKey,
                   child: Column(
                     children: [
@@ -269,7 +280,91 @@ class _SpeechFormState extends State<SpeechForm> {
                       ),
                     ],
                   ),
+                ),*/
+              Form(
+                key: _formKey,
+                onChanged: (() {
+                  setState(() {
+                    _enableBtn = _formKey.currentState!.validate();
+                  });
+                }),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      TextFields(
+                          controller: subjectController,
+                          name: "Subject",
+                          validator: ((value) {
+                            if (value!.isEmpty) {
+                              return 'Name is required';
+                            }
+                            return null;
+                          })),
+                      TextFields(
+                          controller: emailController,
+                          name: "Email",
+                          validator: ((value) {
+                            if (value!.isEmpty) {
+                              return 'Email is required';
+                            } else if (!value.contains('@')) {
+                              return 'Please enter a valid email address';
+                            }
+                            return null;
+                          })),
+                      TextFields(
+                          controller: messageController,
+                          name: "Message",
+                          validator: ((value) {
+                            if (value!.isEmpty) {
+                              setState(() {
+                                _enableBtn = true;
+                              });
+                              return 'Message is required';
+                            }
+                            return null;
+                          }),
+                          maxLines: null,
+                          type: TextInputType.multiline),
+                      Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor:
+                                MaterialStateProperty.resolveWith<Color>(
+                                      (Set<MaterialState> states) {
+                                    if (states.contains(MaterialState.pressed))
+                                      return Theme.of(context)
+                                          .colorScheme
+                                          .primary
+                                          .withOpacity(0.5);
+                                    else if (states.contains(MaterialState.disabled))
+                                      return Colors.grey;
+                                    return Colors.blue; // Use the component's default.
+                                  },
+                                ),
+                                shape:
+                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(40.0),
+                                    ))),
+                            onPressed: _enableBtn
+                                ? (() async {
+                              final Email email = Email(
+                                body: messageController.text,
+                                subject: subjectController.text,
+                                recipients: [emailController.text],
+                                isHTML: false,
+                              );
+                              await FlutterEmailSender.send(email);
+                            })
+                                : null,
+                            child: Text('Submit'),
+                          )),
+                    ],
+                  ),
                 ),
+              ),
             ],
           ),
         ),

@@ -60,6 +60,11 @@ dependencies:
   google_nav_bar:
   firebase_storage:
   persistent_bottom_nav_bar: any
+  image_picker:
+  flutter_mailer: ^2.1.1
+  mailer:
+  flutter_email_sender:
+  path_provider:
 
 dev_dependencies:
   flutter_test:

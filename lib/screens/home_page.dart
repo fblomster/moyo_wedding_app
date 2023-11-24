@@ -1,8 +1,12 @@
 
+import 'dart:ffi';
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:moyo/components/drawer_field.dart';
 import 'package:moyo/components/moyo_button.dart';
 import 'package:moyo/models/language_model.dart';
@@ -13,6 +17,7 @@ import 'package:moyo/screens/contact_details.dart';
 import 'package:moyo/screens/dinner_menu.dart';
 import 'package:moyo/screens/faq_page.dart';
 import 'package:moyo/screens/location.dart';
+import 'package:moyo/screens/mailer.dart';
 import 'package:moyo/screens/registry.dart';
 import 'package:moyo/screens/schedule.dart';
 import 'package:moyo/screens/seating.dart';
@@ -20,6 +25,7 @@ import 'package:moyo/screens/speech_form.dart';
 import 'package:moyo/screens/toastmadame.dart';
 import 'package:moyo/screens/transport.dart';
 import 'package:moyo/services/auth/auth.dart';
+import 'package:moyo/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:moyo/provider/locale_provider.dart';
 import 'package:moyo/rsvp_form.dart';
@@ -48,6 +54,8 @@ class _HomePageState extends State<HomePage> {
 
   final currentUser = FirebaseAuth.instance.currentUser!;
 
+  Uint8List? _image;
+
   //bool isVisible = false;
 
   //sign user out
@@ -64,6 +72,14 @@ class _HomePageState extends State<HomePage> {
     _languages.add(LanguageModel(code: 'sv', name: 'SV'));
     _languages.add(LanguageModel(code: 'en', name: 'EN'));
     _languages.add(LanguageModel(code: 'fi', name: 'FI'));
+  }
+
+  Future<void> selectImage () async {
+    Uint8List img = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = img;
+    });
+
   }
 
   @override
@@ -160,9 +176,27 @@ class _HomePageState extends State<HomePage> {
                         accountEmail: Text(currentUser.email!,
                           textAlign: TextAlign.justify,
                           textScaleFactor: 1.0,),
-                        currentAccountPicture: const CircleAvatar(
-                          backgroundImage: AssetImage(
-                              'assets/jenny.jpg'),
+                        currentAccountPicture:
+                        Stack(
+                          children: [
+                            _image != null ?
+                                CircleAvatar(
+                                  radius: 64,
+                                  backgroundImage: MemoryImage(_image!),
+                                ) :
+                             const CircleAvatar(
+                              radius: 64,
+                              backgroundImage: AssetImage(
+                                  'assets/no-profile-picture.png'),
+                            ),
+                        Positioned(
+                          bottom: -10,
+                          left: 40,
+                          child: IconButton(onPressed: selectImage,
+                        icon: const Icon(Icons.add_a_photo,
+                        color: Colors.greenAccent,)),
+                      ),
+                          ],
                         ),
                       ),
                       Container(
@@ -707,6 +741,15 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (
                               context) => const Accommodation()));
+                    },
+                  ),
+                  GButton(
+                    text: 'Mailer',
+                    icon: Icons.mail_lock_outlined,
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (
+                              context) => Mailer()));
                     },
                   ),
                   GButton(
