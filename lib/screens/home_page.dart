@@ -88,6 +88,8 @@ class _HomePageState extends State<HomePage> {
     String selectedValue = "SV";
     return MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+        fontFamily: 'ClashGrotesk'),
         home: DefaultTabController(
           length: 4,
           child: Scaffold(
@@ -163,8 +165,9 @@ class _HomePageState extends State<HomePage> {
                   .size
                   .width * 0.75,
               child: Drawer(
+                backgroundColor: Colors.black,
                 child: Container(
-                  color: const Color(0xffc2fedc),
+                  //color: Colors.black,//(0xffc2fedc),
                   child: ListView(
                     children: <Widget>[
                       UserAccountsDrawerHeader(
@@ -199,8 +202,8 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      Container(
-                        color: Colors.red,
+                      /*Container(
+                        //color: Colors.red,
                         child: ListTile(
                           title: Text(AppLocalizations.of(context)!.weddingDay),
                           leading: const Icon(
@@ -211,11 +214,12 @@ class _HomePageState extends State<HomePage> {
                                     context) => const WeddingDay()));
                           },
                         ),
-                      ),
+                      ),*/
                       Theme(
                         data: ThemeData(
                           colorScheme: ColorScheme.fromSeed(
-                            seedColor: Colors.greenAccent,
+                            primary: Colors.white,
+                            seedColor: Colors.white,
                           ),
                         ),
                         child: ExpansionTile(title: Text('Inför bröllopsdagen'),
@@ -278,7 +282,14 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],),
                       ),
-                      ExpansionTile(title: Text('Under bröllopsdagen'),
+                Theme(
+                  data: ThemeData(
+                    colorScheme: ColorScheme.fromSeed(
+                      primary: Colors.white,
+                      seedColor: Colors.white,
+                    ),
+                  ),
+                      child: ExpansionTile(title: Text('Under bröllopsdagen'),
                         leading: Icon(Icons.favorite_border_outlined),
                         children: [
                           Column(
@@ -326,13 +337,14 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ],),
-                      ExpansionTile(title: Text('I N B J U D A N'),
+                ),
+                      const ExpansionTile(title: Text('I N B J U D A N'),
                         leading: Icon(Icons.favorite_border_outlined),
                         children: [
                           Column(
                           ),
                         ],),
-                ExpansionTile(title: Text('V I K T I G  I N F O'),
+                const ExpansionTile(title: Text('V I K T I G  I N F O'),
                     leading: Icon(Icons.favorite_border_outlined),
                     children: [
                     Column(
@@ -482,44 +494,61 @@ class _HomePageState extends State<HomePage> {
                                       context) => const Location()));
                         },
                       ),*/
-                      ExpansionTile(title: Text('K O N T A K T'),
-                        leading: Icon(Icons.phone_outlined),
-                        children: [
-                          Column(
-                            children: [
-                              ListTile(
-                              title: const Text("C H A T T A  med oss"),
-                              leading: const Icon(Icons.chat_bubble_outline),
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(
-                                        builder: (
-                                            context) => const Contact()));
-                              },
+                      ListTileTheme(
+                        tileColor: Colors.greenAccent,
+                        selectedTileColor: Colors.greenAccent,
+                        iconColor: Colors.greenAccent,
+                        textColor: Colors.greenAccent,
+                        child: Theme(
+                          data: ThemeData(
+                            colorScheme: ColorScheme.fromSeed(
+                              primary: Colors.white,
+                              seedColor: Colors.white,
                             ),
-                              ListTile(
-                                title: const Text("K O N T A K T U P P G I F T E R"),
-                                leading: const Icon(Icons.email_outlined),
-                                onTap: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(
-                                          builder: (
-                                              context) => const ContactDetails()));
-                                },
-                              ),
-                              ListTile(
-                                title: const Text("T A L"),
-                                leading: const Icon(Icons.list_outlined),
-                                onTap: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(
-                                          builder: (
-                                              context) => const SpeechForm()));
-                                },
-                              ),
-                            ],
                           ),
-                        ],),
+                        child: ExpansionTile(
+                          iconColor: Colors.white,
+                          title: Text('K O N T A K T',
+                        style: TextStyle(color: Colors.white,),),
+                          leading: Icon(Icons.phone_outlined, color: Colors.white,),
+                          children: [
+                            Column(
+                              children: [
+                                ListTile(
+                                title: const Text("C H A T T A  med oss"),
+                                leading: const Icon(Icons.chat_bubble_outline),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const Contact()));
+                                },
+                              ),
+                                ListTile(
+                                  title: const Text("K O N T A K T U P P G I F T E R"),
+                                  leading: const Icon(Icons.email_outlined),
+                                  onTap: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(
+                                            builder: (
+                                                context) => const ContactDetails()));
+                                  },
+                                ),
+                                ListTile(
+                                  title: const Text("T A L",),
+                                  leading: const Icon(Icons.list_outlined),
+                                  onTap: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(
+                                            builder: (
+                                                context) => const SpeechForm()));
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],),
+                        ),
+                      ),
                       /*ListTile(
                         title: const Text("C H A T T A  med oss"),
                         leading: const Icon(Icons.chat_bubble_outline),
@@ -589,11 +618,14 @@ class _HomePageState extends State<HomePage> {
                       ),*/
                       const Divider(
                         height: 30,
-                        color: Colors.black45,
+                        color: Colors.white38,
                       ),
                ListTile(
-                        title: const Text("L O G G A UT"),
-                        leading: const Icon(Icons.logout),
+                        title: const Text("L O G G A UT",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'ClashGrotesk'),),
+                        leading: const Icon(Icons.logout, color: Colors.white,),
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (
@@ -632,71 +664,73 @@ class _HomePageState extends State<HomePage> {
                             'assets/wood-plank-texture-background.jpg'),
                       ),
                     ),
-                    child: Column(
-                      // Column is also a layout widget. It takes a list of children and
-                      // arranges them vertically. By default, it sizes itself to fit its
-                      // children horizontally, and tries to be as tall as its parent.
-                      //
-                      // Column has various properties to control how it sizes itself and
-                      // how it positions its children. Here we use mainAxisAlignment to
-                      // center the children vertically; the main axis here is the vertical
-                      // axis because Columns are vertical (the cross axis would be
-                      // horizontal).
-                      //
-                      // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-                      // action in the IDE, or press "p" in the console), to see the
-                      // wireframe for each widget.
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        const Text(
-                          'Frida & Jonas',
-                          style: TextStyle(
-                            fontFamily: 'Literata',
-                            fontSize: 26,
+                    //child: SingleChildScrollView(
+                      child: Column(
+                        // Column is also a layout widget. It takes a list of children and
+                        // arranges them vertically. By default, it sizes itself to fit its
+                        // children horizontally, and tries to be as tall as its parent.
+                        //
+                        // Column has various properties to control how it sizes itself and
+                        // how it positions its children. Here we use mainAxisAlignment to
+                        // center the children vertically; the main axis here is the vertical
+                        // axis because Columns are vertical (the cross axis would be
+                        // horizontal).
+                        //
+                        // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
+                        // action in the IDE, or press "p" in the console), to see the
+                        // wireframe for each widget.
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Text(
+                            'Frida & Jonas',
+                            style: TextStyle(
+                              //fontFamily: 'ClashGrotesk',
+                              fontSize: 26,
+                            ),
                           ),
-                        ),
-                        Text(
-                          AppLocalizations.of(context)!.weddingDate,
-                          style: const TextStyle(
-                            fontFamily: 'Literata',
-                            fontSize: 18,
+                          Text(
+                            AppLocalizations.of(context)!.weddingDate,
+                            style: const TextStyle(
+                             // fontFamily: 'Literata',
+                              fontSize: 18,
+                            ),
                           ),
-                        ),
-                        /*  Text(
+                          /*  Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),*/
-                        const SizedBox(
-                          height: 20.0,
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(10.0),
-                          color: Colors.white,
-                          margin: const EdgeInsets.all(20.0),
-                          child: Image.asset(
-                              'assets/kiss_filtered_blurred3.jpg'),
-                        ),
-                        const SizedBox(
-                          height: 20.0,
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (
-                                    context) => const WeddingDay()));
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.greenAccent,
+                          const SizedBox(
+                            height: 20.0,
                           ),
-                          child: Text(AppLocalizations.of(context)!
-                              .weddingDay,
-                              style: const TextStyle(color: Colors.black)),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                      ],
-                    ),
+                          Container(
+                            padding: const EdgeInsets.all(10.0),
+                            color: Colors.white,
+                            margin: const EdgeInsets.all(20.0),
+                            child: Image.asset(
+                                'assets/kiss_filtered_blurred3.jpg'),
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (
+                                      context) => const WeddingDay()));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.greenAccent,
+                            ),
+                            child: Text(AppLocalizations.of(context)!
+                                .weddingDay,
+                                style: const TextStyle(color: Colors.black)),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                        ],
+                      ),
+                    //),
                   ),
                   const WeddingDay(),
                   const Accommodation(),
@@ -709,7 +743,7 @@ class _HomePageState extends State<HomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),*/
-            bottomNavigationBar: Container(
+            bottomNavigationBar: menu(), /*Container(
               color: Colors.black,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
@@ -764,7 +798,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
         ),
-            ),
+            ),*/
             // This trailing comma makes auto-formatting nicer for build methods.
 
           ),

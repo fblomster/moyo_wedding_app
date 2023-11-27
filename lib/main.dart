@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             theme: ThemeData(
-              fontFamily: 'Literata',
+              fontFamily: 'ClashGrotesk',
               // This is the theme of your application.
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent, onPrimary: Colors.greenAccent,
                   background: const Color(0xffD8CFB9)),

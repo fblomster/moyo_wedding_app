@@ -65,6 +65,7 @@ dependencies:
   mailer:
   flutter_email_sender:
   path_provider:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
@@ -108,6 +109,14 @@ flutter:
     - family: Literata
       fonts:
         - asset: fonts/Literata-Light.ttf
+    - family: ClashGrotesk
+      fonts:
+        - asset: fonts/ClashGrotesk-Bold.ttf
+        - asset: fonts/ClashGrotesk-ExtraLight.ttf
+        - asset: fonts/ClashGrotesk-Light.ttf
+        - asset: fonts/ClashGrotesk-Medium.ttf
+        - asset: fonts/ClashGrotesk-Regular.ttf
+        - asset: fonts/ClashGrotesk-Semibold.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

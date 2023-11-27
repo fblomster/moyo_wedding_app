@@ -6,10 +6,10 @@ class WeddingDay extends StatefulWidget {
   const WeddingDay({Key? key}) : super(key: key);
 
   @override
-  State<WeddingDay> createState() => _InsertDataState();
+  State<WeddingDay> createState() => _WeddingDayState();
 }
 
-class _InsertDataState extends State<WeddingDay> {
+class _WeddingDayState extends State<WeddingDay> {
 
   final  userNameController = TextEditingController();
   final  userLastnameController= TextEditingController();
