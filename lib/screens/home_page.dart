@@ -165,15 +165,15 @@ class _HomePageState extends State<HomePage> {
                   .size
                   .width * 0.75,
               child: Drawer(
-                backgroundColor: Colors.black,
+                backgroundColor: Colors.white,
                 child: Container(
-                  //color: Colors.black,//(0xffc2fedc),
+                  color: Colors.black26,//(0xffc2fedc),
                   child: ListView(
                     children: <Widget>[
                       UserAccountsDrawerHeader(
                         decoration: const BoxDecoration(
-                            color: Colors.black87),
-                        accountName: Text(currentUser.email!,
+                            color: Colors.black),
+                        accountName: const Text('',
                           textAlign: TextAlign.justify,
                           textScaleFactor: 1.3,),
                         accountEmail: Text(currentUser.email!,
@@ -215,14 +215,8 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                       ),*/
-                      Theme(
-                        data: ThemeData(
-                          colorScheme: ColorScheme.fromSeed(
-                            primary: Colors.white,
-                            seedColor: Colors.white,
-                          ),
-                        ),
-                        child: ExpansionTile(title: Text('Inför bröllopsdagen'),
+               ExpansionTile(
+                          title: Text('Inför bröllopsdagen'),
                         leading: Icon(Icons.favorite_border_outlined),
                         children: [
                           Column(
@@ -281,15 +275,8 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ],),
-                      ),
-                Theme(
-                  data: ThemeData(
-                    colorScheme: ColorScheme.fromSeed(
-                      primary: Colors.white,
-                      seedColor: Colors.white,
-                    ),
-                  ),
-                      child: ExpansionTile(title: Text('Under bröllopsdagen'),
+             ExpansionTile(
+               title: Text('Under bröllopsdagen'),
                         leading: Icon(Icons.favorite_border_outlined),
                         children: [
                           Column(
@@ -337,20 +324,31 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ],),
-                ),
-                      const ExpansionTile(title: Text('I N B J U D A N'),
-                        leading: Icon(Icons.favorite_border_outlined),
-                        children: [
-                          Column(
-                          ),
-                        ],),
+                    const ExpansionTile(
+                      title: Text('I N B J U D A N'),
+                          leading: Icon(Icons.favorite_border_outlined),
+                          children: [
+                            Column(
+                            ),
+                          ],),
                 const ExpansionTile(title: Text('V I K T I G  I N F O'),
                     leading: Icon(Icons.favorite_border_outlined),
                     children: [
                     Column(
                     ),
                     ],),
-                      ExpansionTile(title: Text('Ö V R I G T'),
+                /*ListTileTheme(
+                  tileColor: Colors.greenAccent,
+                  iconColor: Colors.black87,
+                  textColor: Colors.black87,
+                  child: Theme(
+                    data: ThemeData(
+                      colorScheme: ColorScheme.fromSeed(
+                        primary: Colors.white,
+                        seedColor: Colors.white,
+                      ),
+                    ),
+                    child:*/ ExpansionTile(title: Text('Ö V R I G T'),
                         leading: Icon(Icons.favorite_border_outlined),
                         children: [
                           Column(
@@ -400,6 +398,8 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ],),
+                  //),
+                //),
                       /*ListTile(
                         title: Text(
                             AppLocalizations.of(context)!.weddingDay),
@@ -494,11 +494,10 @@ class _HomePageState extends State<HomePage> {
                                       context) => const Location()));
                         },
                       ),*/
-                      ListTileTheme(
+                     /* ListTileTheme(
                         tileColor: Colors.greenAccent,
-                        selectedTileColor: Colors.greenAccent,
-                        iconColor: Colors.greenAccent,
-                        textColor: Colors.greenAccent,
+                        iconColor: Colors.black87,
+                        textColor: Colors.black87,
                         child: Theme(
                           data: ThemeData(
                             colorScheme: ColorScheme.fromSeed(
@@ -506,11 +505,10 @@ class _HomePageState extends State<HomePage> {
                               seedColor: Colors.white,
                             ),
                           ),
-                        child: ExpansionTile(
+                        child:*/ ExpansionTile(
                           iconColor: Colors.white,
-                          title: Text('K O N T A K T',
-                        style: TextStyle(color: Colors.white,),),
-                          leading: Icon(Icons.phone_outlined, color: Colors.white,),
+                          title: Text('K O N T A K T'),
+                          leading: Icon(Icons.phone_outlined),
                           children: [
                             Column(
                               children: [
@@ -547,8 +545,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           ],),
-                        ),
-                      ),
+
                       /*ListTile(
                         title: const Text("C H A T T A  med oss"),
                         leading: const Icon(Icons.chat_bubble_outline),
@@ -618,20 +615,19 @@ class _HomePageState extends State<HomePage> {
                       ),*/
                       const Divider(
                         height: 30,
-                        color: Colors.white38,
+                        color: Colors.black54,
                       ),
-               ListTile(
-                        title: const Text("L O G G A UT",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'ClashGrotesk'),),
-                        leading: const Icon(Icons.logout, color: Colors.white,),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (
-                                  context) => const Accommodation()));
-                        },
-                      ),
+              ListTile(
+                          title: const Text("L O G G A UT",
+                          style: TextStyle(
+                              fontFamily: 'ClashGrotesk'),),
+                          leading: const Icon(Icons.logout),
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (
+                                    context) => const Accommodation()));
+                          },
+                        ),
                       /* ListTile(
                      leading: const Icon(Icons.language),
                      title: Text(AppLocalizations.of(context)!.chooseLanguage),

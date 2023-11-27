@@ -28,9 +28,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
-  final TextEditingController name = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController mobile = TextEditingController();
+  //final TextEditingController mobile = TextEditingController();
   bool _isObscure = true;
   var role = "guest";
 
@@ -82,6 +83,48 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(
                         height: 25
                     ),
+                    TextFormField(
+                      controller: firstNameController,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        hintText: 'Firstname',
+                        hintStyle: const TextStyle(color: Colors.grey),
+                        enabled: true,
+                        // contentPadding: const EdgeInsets.only(
+                        //   left: 14.0, bottom: 8.0, top: 8.0),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide: BorderSide(color: Colors.grey.shade200),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey.shade200),
+                        ),
+                      ),
+                      keyboardType: TextInputType.name,
+                    ),
+                    SizedBox(height: 20,),
+                    TextFormField(
+                      controller: lastNameController,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        hintText: 'Lastname',
+                        hintStyle: const TextStyle(color: Colors.grey),
+                        enabled: true,
+                        // contentPadding: const EdgeInsets.only(
+                        //   left: 14.0, bottom: 8.0, top: 8.0),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide: BorderSide(color: Colors.grey.shade200),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey.shade200),
+                        ),
+                      ),
+                      keyboardType: TextInputType.name,
+                    ),
+                    SizedBox(height: 20,),
                     TextFormField(
                       controller: emailController,
                       decoration: InputDecoration(
@@ -273,6 +316,8 @@ class _RegisterPageState extends State<RegisterPage> {
       await authService.signUpWithEmailandPassword(
         emailController.text,
         passwordController.text,
+        firstNameController.text,
+        lastNameController.text,
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
