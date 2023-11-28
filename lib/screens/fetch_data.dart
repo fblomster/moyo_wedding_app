@@ -36,8 +36,10 @@ class _FetchDataState extends State<FetchData> {
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (_) => ProfilePage(guestKey: guest['key'])));
             },
-          child: Row(
+          child:
+          Row(
             children: [
+              if ((guest['guestlist_approved']) == 'true')
               Text(
                 guest['name'],
                 style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
@@ -45,6 +47,7 @@ class _FetchDataState extends State<FetchData> {
               const SizedBox(
                 width: 4,
               ),
+              if ((guest['guestlist_approved']) == 'true')
               Text(
                 guest['lastname'],
                 style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
@@ -59,6 +62,7 @@ class _FetchDataState extends State<FetchData> {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              if ((guest['guestlist_approved']) == 'true')
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) => UpdateRecord(guestKey: guest['key'])));

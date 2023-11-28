@@ -18,6 +18,7 @@ class _InsertDataState extends State<RSVPInsertData> {
   final  userPhoneController =TextEditingController();
   final  userAllergyController =TextEditingController();
   final userCommentController = TextEditingController();
+  final descriptionController = TextEditingController();
 
   late DatabaseReference dbRef;
 
@@ -36,6 +37,7 @@ class _InsertDataState extends State<RSVPInsertData> {
     userPhoneController.clear();
     userAllergyController.clear();
     userCommentController.clear();
+    descriptionController.clear();
   }
 
   @override
@@ -211,6 +213,20 @@ class _InsertDataState extends State<RSVPInsertData> {
                       const SizedBox(
                         height: 30,
                       ),
+                      TextFormField(
+                        controller: descriptionController,
+                        keyboardType: TextInputType.text,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Beskrivning',
+                          hintText: 'Berätta kort (eller långt) om din relation till brudparet',
+                        ),
+                        maxLines: 3,
+                        minLines: 1,
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
                       CheckboxListTile(
                         checkColor: Colors.black,
                             activeColor: Colors.white38,
@@ -244,6 +260,8 @@ class _InsertDataState extends State<RSVPInsertData> {
                                 'phone': userPhoneController.text,
                                 'allergy': userAllergyController.text,
                                 'comment': userCommentController.text,
+                                'description': descriptionController.text,
+                                'guestlist_approved': _checked.toString(),
                               };
 
                               dbRef.push().set(guests);

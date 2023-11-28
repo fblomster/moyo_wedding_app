@@ -216,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),*/
                ExpansionTile(
-                          title: Text('Inför bröllopsdagen'),
+                          title: Text('V I G S E L'),
                         leading: Icon(Icons.favorite_border_outlined),
                         children: [
                           Column(
@@ -276,7 +276,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],),
              ExpansionTile(
-               title: Text('Under bröllopsdagen'),
+               title: Text('M I D D A G  &  F E S T'),
                         leading: Icon(Icons.favorite_border_outlined),
                         children: [
                           Column(
