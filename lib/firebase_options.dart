@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBj6VUW54MH0iFNu2h-ErEaxh11_2Ka4Xk',
+    apiKey: 'AIzaSyBshPACxYfxUsLI9fMFdGOQeq2oVTT7Qk4',
     appId: '1:684459689725:android:c92c324dd5acd299fd2094',
     messagingSenderId: '684459689725',
     projectId: 'moyo-wedding-app-e8b92',
@@ -64,7 +64,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDLiY7jWDdVDlz13qTDrZ4CxnZN2XJJSbk',
+    apiKey: 'AIzaSyCpwz1uJI6k_lMkMe1XSYWaIFWl_ekOJQ0',
     appId: '1:684459689725:ios:02db528e1ed5c9a4fd2094',
     messagingSenderId: '684459689725',
     projectId: 'moyo-wedding-app-e8b92',
@@ -74,7 +74,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDLiY7jWDdVDlz13qTDrZ4CxnZN2XJJSbk',
+    apiKey: 'AIzaSyCpwz1uJI6k_lMkMe1XSYWaIFWl_ekOJQ0',
     appId: '1:684459689725:ios:c77bee741d0e9426fd2094',
     messagingSenderId: '684459689725',
     projectId: 'moyo-wedding-app-e8b92',

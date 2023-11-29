@@ -32,8 +32,8 @@ class _WeddingDayState extends State<WeddingDay> {
         leading: const BackButton(
             color: Colors.white
         ),
-        title: Text(AppLocalizations.of(context)!.weddingDay,
-          style: const TextStyle(
+        title: const Text('Bröllopsdagen',
+          style: TextStyle(
             color: Colors.white,
           ),),
         backgroundColor: Colors.black87,

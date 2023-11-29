@@ -18,6 +18,7 @@ import 'package:moyo/screens/dinner_menu.dart';
 import 'package:moyo/screens/faq_page.dart';
 import 'package:moyo/screens/location.dart';
 import 'package:moyo/screens/mailer.dart';
+import 'package:moyo/screens/notifications.dart';
 import 'package:moyo/screens/registry.dart';
 import 'package:moyo/screens/schedule.dart';
 import 'package:moyo/screens/seating.dart';
@@ -374,6 +375,16 @@ class _HomePageState extends State<HomePage> {
                                       MaterialPageRoute(
                                           builder: (
                                               context) => const Registry()));
+                                },
+                              ),
+                              ListTile(
+                                title: Text('Notiser'),
+                                leading: const Icon(Icons.list_alt_outlined),
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const NotificationPage()));
                                 },
                               ),
                               ListTile(

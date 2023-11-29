@@ -230,7 +230,7 @@ class _InsertDataState extends State<RSVPInsertData> {
                       CheckboxListTile(
                         checkColor: Colors.black,
                             activeColor: Colors.white38,
-                            title: const Text('Jag godkänner bla bla'),
+                            title: const Text('Jag godkänner att mitt namn och beskrivning av hur jag känner brudparet får synas på gästlistan i denna app efter att jag har tackat ja till inbjudan.'),
                             controlAffinity: ListTileControlAffinity.leading,
                             value: _checked,
                             onChanged:(bool? value) {
