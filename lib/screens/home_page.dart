@@ -1,14 +1,10 @@
 
-import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:moyo/components/drawer_field.dart';
-import 'package:moyo/components/moyo_button.dart';
 import 'package:moyo/models/language_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:moyo/screens/bridal_party.dart';
@@ -17,15 +13,12 @@ import 'package:moyo/screens/contact_details.dart';
 import 'package:moyo/screens/dinner_menu.dart';
 import 'package:moyo/screens/faq_page.dart';
 import 'package:moyo/screens/location.dart';
-import 'package:moyo/screens/mailer.dart';
 import 'package:moyo/screens/notifications.dart';
 import 'package:moyo/screens/registry.dart';
 import 'package:moyo/screens/schedule.dart';
 import 'package:moyo/screens/seating.dart';
 import 'package:moyo/screens/speech_form.dart';
-import 'package:moyo/screens/toastmadame.dart';
 import 'package:moyo/screens/transport.dart';
-import 'package:moyo/services/auth/auth.dart';
 import 'package:moyo/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:moyo/provider/locale_provider.dart';
@@ -217,8 +210,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),*/
                ExpansionTile(
-                          title: Text('V I G S E L'),
-                        leading: Icon(Icons.favorite_border_outlined),
+                          title: const Text('V I G S E L'),
+                        leading: const Icon(Icons.favorite_border_outlined),
                         children: [
                           Column(
                             children: [
@@ -277,8 +270,8 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],),
              ExpansionTile(
-               title: Text('M I D D A G  &  F E S T'),
-                        leading: Icon(Icons.favorite_border_outlined),
+               title: const Text('M I D D A G  &  F E S T'),
+                        leading: const Icon(Icons.favorite_border_outlined),
                         children: [
                           Column(
                             children: [
@@ -349,8 +342,8 @@ class _HomePageState extends State<HomePage> {
                         seedColor: Colors.white,
                       ),
                     ),
-                    child:*/ ExpansionTile(title: Text('Ö V R I G T'),
-                        leading: Icon(Icons.favorite_border_outlined),
+                    child:*/ ExpansionTile(title: const Text('Ö V R I G T'),
+                        leading: const Icon(Icons.favorite_border_outlined),
                         children: [
                           Column(
                             children: [
@@ -378,7 +371,7 @@ class _HomePageState extends State<HomePage> {
                                 },
                               ),
                               ListTile(
-                                title: Text('Notiser'),
+                                title: const Text('Notiser'),
                                 leading: const Icon(Icons.list_alt_outlined),
                                 onTap: () {
                                   Navigator.push(context,
@@ -518,8 +511,8 @@ class _HomePageState extends State<HomePage> {
                           ),
                         child:*/ ExpansionTile(
                           iconColor: Colors.white,
-                          title: Text('K O N T A K T'),
-                          leading: Icon(Icons.phone_outlined),
+                          title: const Text('K O N T A K T'),
+                          leading: const Icon(Icons.phone_outlined),
                           children: [
                             Column(
                               children: [
@@ -853,7 +846,7 @@ class _HomePageState extends State<HomePage> {
         labelColor: Colors.white,
         unselectedLabelColor: Colors.white70,
         indicatorSize: TabBarIndicatorSize.tab,
-        indicatorPadding: EdgeInsets.all(5.0),
+        indicatorPadding: const EdgeInsets.all(5.0),
         indicatorColor: Colors.greenAccent,
         tabs: [
           const Tab(

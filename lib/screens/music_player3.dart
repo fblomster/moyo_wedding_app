@@ -13,15 +13,17 @@ class SearchTab extends StatelessWidget {
     'Focus'
   ];
   final List<Color> colors = [
-    Color(0xffF19821),
-    Color(0xff99BACB),
-    Color(0xff498D7C),
-    Color(0xff4E97F2),
-    Color(0xffEFB958),
-    Color(0xffB196C4),
-    Color(0xffF49824),
-    Color(0xffF95F35),
+    const Color(0xffF19821),
+    const Color(0xff99BACB),
+    const Color(0xff498D7C),
+    const Color(0xff4E97F2),
+    const Color(0xffEFB958),
+    const Color(0xffB196C4),
+    const Color(0xffF49824),
+    const Color(0xffF95F35),
   ];
+
+  SearchTab({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,14 +36,14 @@ class SearchTab extends StatelessWidget {
               pinned: false,
               flexibleSpace: FlexibleSpaceBar(
                   centerTitle: true,
-                  title: Text("Search",
+                  title: const Text("Search",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18.0,
                       )),
                   background: Container(
-                    decoration: new BoxDecoration(
-                      gradient: new LinearGradient(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
                         colors: [
                           Theme.of(context).primaryColor,
                           Theme.of(context).canvasColor,
@@ -71,7 +73,7 @@ class SearchTab extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                             color: Colors.white,
                           ),
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Padding(
@@ -90,7 +92,7 @@ class SearchTab extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.keyboard_voice,
                         color: Colors.white,
                       ),
@@ -104,8 +106,8 @@ class SearchTab extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 8.0),
                           child: Text(
                             'Your top genres',
                             style: TextStyle(
@@ -116,7 +118,7 @@ class SearchTab extends StatelessWidget {
                         ),
                         GridView.count(
                           shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           crossAxisCount: 2,
                           childAspectRatio:
                           (MediaQuery.of(context).size.width / (2 * 100)),
@@ -143,7 +145,7 @@ class SearchTab extends StatelessWidget {
                                     const EdgeInsets.fromLTRB(16, 16, 0, 0),
                                     child: Text(
                                       topGenres[index],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold),
@@ -152,8 +154,8 @@ class SearchTab extends StatelessWidget {
                             );
                           }),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 8.0),
                           child: Text(
                             'Browse all',
                             style: TextStyle(
@@ -164,7 +166,7 @@ class SearchTab extends StatelessWidget {
                         ),
                         GridView.count(
                           shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           crossAxisCount: 2,
                           childAspectRatio:
                           (MediaQuery.of(context).size.width / (2 * 100)),
@@ -191,7 +193,7 @@ class SearchTab extends StatelessWidget {
                                     const EdgeInsets.fromLTRB(16, 16, 0, 0),
                                     child: Text(
                                       browseAll[index],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold),

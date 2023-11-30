@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +5,6 @@ import 'package:moyo/services/auth/auth.dart';
 import 'package:provider/provider.dart';
 import '../components/moyo_button.dart';
 import '../services/auth/auth_services.dart';
-import 'login.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
@@ -103,7 +101,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       keyboardType: TextInputType.name,
                     ),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     TextFormField(
                       controller: lastNameController,
                       decoration: InputDecoration(
@@ -124,7 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       keyboardType: TextInputType.name,
                     ),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
                     TextFormField(
                       controller: emailController,
                       decoration: InputDecoration(

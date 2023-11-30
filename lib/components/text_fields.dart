@@ -7,12 +7,12 @@ class TextFields extends StatelessWidget {
   final int? maxLines;
   final TextInputType? type;
 
-  TextFields({required this.controller, required this.name, required this.validator,this.maxLines,this.type});
+  const TextFields({super.key, required this.controller, required this.name, required this.validator,this.maxLines,this.type});
   @override
   Widget build(BuildContext context) {
     OutlineInputBorder border = OutlineInputBorder(borderRadius: BorderRadius.circular(40.0),borderSide: BorderSide.none);
     return  Padding(
-      padding: EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(20.0),
       child: TextFormField(
         autovalidateMode: AutovalidateMode.onUserInteraction,
         keyboardType: type,

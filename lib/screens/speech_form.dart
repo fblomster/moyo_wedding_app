@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +5,6 @@ import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../components/text_fields.dart';
-import '../models/message.dart';
 
 class SpeechForm extends StatefulWidget {
   const SpeechForm({Key? key}) : super(key: key);
@@ -35,7 +33,7 @@ class _SpeechFormState extends State<SpeechForm> {
   late DatabaseReference dbRef;
 
   bool _enableBtn = false;
-  bool _checked = false;
+  final bool _checked = false;
 
   final Uri _email = Uri.parse('mailto:jenny@');
 
@@ -327,18 +325,18 @@ class _SpeechFormState extends State<SpeechForm> {
                           maxLines: null,
                           type: TextInputType.multiline),
                       Padding(
-                          padding: EdgeInsets.all(20.0),
+                          padding: const EdgeInsets.all(20.0),
                           child: ElevatedButton(
                             style: ButtonStyle(
                                 backgroundColor:
                                 MaterialStateProperty.resolveWith<Color>(
                                       (Set<MaterialState> states) {
-                                    if (states.contains(MaterialState.pressed))
+                                    if (states.contains(MaterialState.pressed)) {
                                       return Theme.of(context)
                                           .colorScheme
                                           .primary
                                           .withOpacity(0.5);
-                                    else if (states.contains(MaterialState.disabled))
+                                    } else if (states.contains(MaterialState.disabled))
                                       return Colors.grey;
                                     return Colors.blue; // Use the component's default.
                                   },
@@ -359,7 +357,7 @@ class _SpeechFormState extends State<SpeechForm> {
                               await FlutterEmailSender.send(email);
                             })
                                 : null,
-                            child: Text('Submit'),
+                            child: const Text('Submit'),
                           )),
                     ],
                   ),

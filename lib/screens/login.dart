@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:moyo/main.dart';
-import 'package:moyo/services/auth/auth_gate.dart';
 import 'package:provider/provider.dart';
 import '../components/moyo_button.dart';
 import '../services/auth/auth_services.dart';

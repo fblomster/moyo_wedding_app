@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
 class Mailer extends StatefulWidget {
+  const Mailer({super.key});
+
   @override
   _MailerState createState() => _MailerState();
 }
@@ -26,7 +28,7 @@ class _MailerState extends State<Mailer> {
       final bool canSend = await FlutterMailer.canSendMail();
       if (!canSend) {
         const SnackBar snackbar =
-        const SnackBar(content: Text('no Email App Available'));
+        SnackBar(content: Text('no Email App Available'));
         ScaffoldMessenger.of(context).showSnackBar(snackbar);
         return;
       }
@@ -81,7 +83,7 @@ class _MailerState extends State<Mailer> {
             children: <Widget>[
               Text(
                 'Message',
-                style: Theme.of(context).textTheme.subtitle1,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               Text(error.message ?? 'unknown error'),
             ],
@@ -239,7 +241,7 @@ class _MailerState extends State<Mailer> {
               Builder(
                 builder: (BuildContext context) => TextButton(
                   style: TextButton.styleFrom(
-                    primary: Theme.of(context).primaryColor,
+                    foregroundColor: Theme.of(context).primaryColor,
                   ),
                   child: const Text('add text File'),
                   onPressed: () => _onCreateFile(context),
@@ -287,7 +289,7 @@ class _MailerState extends State<Mailer> {
               onChanged: (String str) => fileName = str,
               autofocus: true,
               decoration: const InputDecoration(
-                suffix: const Text('.txt'),
+                suffix: Text('.txt'),
                 labelText: 'file name',
                 alignLabelWithHint: true,
               ),
@@ -306,7 +308,7 @@ class _MailerState extends State<Mailer> {
               children: [
                 Text(
                   'use Temp directory',
-                  style: Theme.of(context).textTheme.caption,
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
                 Switch(
                   value: useTempDirectory,
@@ -325,8 +327,7 @@ class _MailerState extends State<Mailer> {
               children: <Widget>[
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Theme.of(context).colorScheme.secondary,
-                    onPrimary: Theme.of(context).colorScheme.secondary,
+                    foregroundColor: Theme.of(context).colorScheme.secondary, backgroundColor: Theme.of(context).colorScheme.secondary,
                   ),
                   child: const Icon(Icons.save),
                   onPressed: () {
@@ -366,7 +367,7 @@ class _MailerState extends State<Mailer> {
     final File file = await _localFile(fileName);
 
     // Write the file
-    return file.writeAsString('$text');
+    return file.writeAsString(text);
   }
 }
 
