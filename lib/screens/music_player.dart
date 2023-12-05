@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:spotify_sdk/spotify_sdk.dart';
 import 'package:moyo/models/music.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MusicPlayer extends StatefulWidget {
   const MusicPlayer({Key? key}) : super(key: key);
@@ -257,6 +258,12 @@ class _MusicPlayerState extends State<MusicPlayer> {
                               searchSongController.text = value!;
                             },
                           ),
+                          ElevatedButton(
+                            onPressed: () {
+                              openSpotifyPlaylist("spotify:playlist:YOUR_PLAYLIST_URI");
+                            },
+                            child: Text('Open Playlist in Spotify'),
+                          ),
                         ],
                       ),
                   )
@@ -271,6 +278,17 @@ class _MusicPlayerState extends State<MusicPlayer> {
         child: const Icon(Icons.play_arrow),
       ),
     );
+  }
+
+  Future<void> openSpotifyPlaylist(String playlistUri) async {
+    final Uri url = Uri.parse("spotify://playlist/$playlistUri");
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      // Handle error if Spotify app is not installed
+      print("Could not launch Spotify app");
+    }
   }
 }
       /*body: Container(

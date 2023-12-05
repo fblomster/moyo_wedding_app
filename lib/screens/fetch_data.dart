@@ -131,7 +131,6 @@ class _FetchDataState extends State<FetchData> {
               child: FirebaseAnimatedList(
                 query: dbRef,
                 itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
-
                   Map guest = snapshot.value as Map;
                   guest['key'] = snapshot.key;
 
