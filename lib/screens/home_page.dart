@@ -159,9 +159,9 @@ class _HomePageState extends State<HomePage> {
                   .size
                   .width * 0.75,
               child: Drawer(
-                backgroundColor: Colors.white,
+                //backgroundColor: Colors.white,
                 child: Container(
-                  color: Colors.black26,//(0xffc2fedc),
+                  color: Color(0xffB4C3BE), //Colors.black26,//(0xffc2fedc),
                   child: ListView(
                     children: <Widget>[
                       UserAccountsDrawerHeader(
@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                           left: 40,
                           child: IconButton(onPressed: selectImage,
                         icon: const Icon(Icons.add_a_photo,
-                        color: Colors.greenAccent,)),
+                        color: Color(0xffB4C3BE),)),
                       ),
                           ],
                         ),
@@ -209,13 +209,22 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                       ),*/
+                      ListTile(
+                        title: Text('I N B J U D A N'),
+                        leading: Icon(Icons.favorite_border_outlined),
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (
+                                  context) => const WeddingDay()));
+                        },
+                      ),
                ExpansionTile(
-                          title: const Text('V I G S E L'),
-                        leading: const Icon(Icons.favorite_border_outlined),
+                          title: const Text('V I K T I G  I N F O'),
+                        leading: const Icon(Icons.info_outline),
                         children: [
                           Column(
                             children: [
-                              ListTile(
+                              /*ListTile(
                                 title: Text(AppLocalizations.of(context)!.weddingDay),
                                 leading: const Icon(
                                     Icons.favorite_border_outlined),
@@ -224,7 +233,7 @@ class _HomePageState extends State<HomePage> {
                                       MaterialPageRoute(builder: (
                                           context) => const WeddingDay()));
                                 },
-                              ),
+                              ),*/
                               ListTile(
                                 title: const Text("Brudföljet"),
                                 leading: const Icon(Icons.people_alt_outlined),
@@ -271,7 +280,7 @@ class _HomePageState extends State<HomePage> {
                         ],),
              ExpansionTile(
                title: const Text('M I D D A G  &  F E S T'),
-                        leading: const Icon(Icons.favorite_border_outlined),
+                        leading: const Icon(Icons.dinner_dining_outlined),
                         children: [
                           Column(
                             children: [
@@ -318,19 +327,12 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ],),
-                    const ExpansionTile(
-                      title: Text('I N B J U D A N'),
-                          leading: Icon(Icons.favorite_border_outlined),
-                          children: [
-                            Column(
-                            ),
-                          ],),
-                const ExpansionTile(title: Text('V I K T I G  I N F O'),
+                /*const ExpansionTile(title: Text('V I G S E L'),
                     leading: Icon(Icons.favorite_border_outlined),
                     children: [
                     Column(
                     ),
-                    ],),
+                    ],),*/
                 /*ListTileTheme(
                   tileColor: Colors.greenAccent,
                   iconColor: Colors.black87,
@@ -343,7 +345,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     child:*/ ExpansionTile(title: const Text('Ö V R I G T'),
-                        leading: const Icon(Icons.favorite_border_outlined),
+                        leading: const Icon(Icons.question_answer_outlined),
                         children: [
                           Column(
                             children: [
@@ -372,7 +374,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               ListTile(
                                 title: const Text('Notiser'),
-                                leading: const Icon(Icons.list_alt_outlined),
+                                leading: const Icon(Icons.chat_outlined),
                                 onTap: () {
                                   Navigator.push(context,
                                       MaterialPageRoute(
@@ -391,7 +393,7 @@ class _HomePageState extends State<HomePage> {
                                 },
                               ),
                               ListTile(
-                                title: const Text("Musik - Spotify"),
+                                title: const Text("Musik"),
                                 leading: const Icon(Icons.music_note_outlined),
                                 onTap: () {
                                   Navigator.push(context,
@@ -618,7 +620,7 @@ class _HomePageState extends State<HomePage> {
                         },
                       ),*/
                       const Divider(
-                        height: 30,
+                        height: 80,
                         color: Colors.black54,
                       ),
               ListTile(

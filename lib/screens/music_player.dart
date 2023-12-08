@@ -66,19 +66,21 @@ class _MusicPlayerState extends State<MusicPlayer> {
           ),
         ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 26),
+              padding: const EdgeInsets.all(30),
               child: Column(
                 children: [
-                  const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Icon(Icons.close, color: Colors.transparent),
+                  const Text('Vilken musik vill du dansa till på vårt bröllop? Lägg gärna till dina favoriter i vår spellista på Spotify.'),
+                  const SizedBox(height: 20),
+                  //Row(
+                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //crossAxisAlignment: CrossAxisAlignment.start,
+                    //children: [
+                      //const Icon(Icons.close, color: Colors.transparent),
                       Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(
+                          /*Text(
                             'Playing Now',
                             style: textTheme.bodyMedium
                                 ?.copyWith(color: const Color(0xFF1BB751)),
@@ -257,7 +259,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
                             onSaved: (value) {
                               searchSongController.text = value!;
                             },
-                          ),
+                          ),*/
                           ElevatedButton(
                             onPressed: () {
                               openSpotifyPlaylist("spotify:playlist:YOUR_PLAYLIST_URI");
@@ -266,8 +268,9 @@ class _MusicPlayerState extends State<MusicPlayer> {
                           ),
                         ],
                       ),
-                  )
-                ],
+              ]
+               //   )
+                //],
               ),
             ),
           ),

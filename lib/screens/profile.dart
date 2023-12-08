@@ -16,8 +16,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   final userNameController = TextEditingController();
   final userLastnameController = TextEditingController();
-  final userEmailController = TextEditingController();
-  final userPhoneController = TextEditingController();
+  final userDescriptionController = TextEditingController();
 
   late DatabaseReference dbRef;
 
@@ -86,8 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Map guest = snapshot.data!;
               userNameController.text = guest['name'];
               userLastnameController.text = guest['lastname'];
-              userEmailController.text = guest['email'];
-              userPhoneController.text = guest['phone'];
+              userDescriptionController.text = guest['description'];
 
               return Container(
                 height: double.infinity,
@@ -153,6 +151,28 @@ class _ProfilePageState extends State<ProfilePage> {
                         const SizedBox(
                           height: 30,
                         ),
+                        const Text(
+                          'Beskrivning',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                                child: Text(
+                                  userDescriptionController.text,
+                                  style: const TextStyle(
+                                    //: 2.0,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                        ),
+                        /*const SizedBox(
+                          height: 30,
+                        ),
                         Text(userNameController.text),
                         const SizedBox(
                           height: 30,
@@ -165,7 +185,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             labelText: 'Efternamn',
                             hintText: 'Skriv ditt efternamn',
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
