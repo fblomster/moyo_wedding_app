@@ -53,7 +53,7 @@ class _ContactDetailsState extends State<ContactDetails> {
               ElevatedButton(
                 onPressed: _launchEmail,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.greenAccent,
+                  backgroundColor: const Color(0xffB4C3BE),
                 ),
                 child: const Text('frida@',
                   style: TextStyle(color: Colors.black),),
@@ -66,7 +66,7 @@ class _ContactDetailsState extends State<ContactDetails> {
                               context) => const Contact()));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.greenAccent,
+                  backgroundColor: const Color(0xffB4C3BE),
                 ),
                 child: const Text('Chatta med oss',
                   style: TextStyle(color: Colors.black),),

@@ -76,7 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
           builder: (context, AsyncSnapshot<Map> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               // While waiting for data, you can show a loading indicator.
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             } else if (snapshot.hasError) {
               // If an error occurs, you can handle it here.
               return Text('Error: ${snapshot.error}');

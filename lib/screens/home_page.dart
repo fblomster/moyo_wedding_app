@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-        fontFamily: 'ClashGrotesk'),
+        fontFamily: 'Nexa'),
         home: DefaultTabController(
           length: 4,
           child: Scaffold(
@@ -161,7 +161,7 @@ class _HomePageState extends State<HomePage> {
               child: Drawer(
                 //backgroundColor: Colors.white,
                 child: Container(
-                  color: Color(0xffB4C3BE), //Colors.black26,//(0xffc2fedc),
+                  color: Color(0xffd6eadf),//Color(0xfff9dcc5),//const Color(0xffB4C3BE), //Colors.black26,//(0xffc2fedc),
                   child: ListView(
                     children: <Widget>[
                       UserAccountsDrawerHeader(
@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                           left: 40,
                           child: IconButton(onPressed: selectImage,
                         icon: const Icon(Icons.add_a_photo,
-                        color: Color(0xffB4C3BE),)),
+                        color: Color(0xffd6eadf),)),
                       ),
                           ],
                         ),
@@ -210,8 +210,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),*/
                       ListTile(
-                        title: Text('I N B J U D A N'),
-                        leading: Icon(Icons.favorite_border_outlined),
+                        title: const Text('I N B J U D A N'),
+                        leading: const Icon(Icons.favorite_border_outlined),
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (
@@ -404,83 +404,6 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ],),
-                  //),
-                //),
-                      /*ListTile(
-                        title: Text(
-                            AppLocalizations.of(context)!.weddingDay),
-                        leading: const Icon(
-                            Icons.favorite_border_outlined),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (
-                                  context) => const WeddingDay()));
-                        },
-                      ),
-                      ListTile(
-                        title: const Text('S C H E M A'),
-                        leading: const Icon(Icons.schedule_outlined),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(
-                                  builder: (
-                                      context) => const Schedule()));
-                        },
-                      ),
-                      ListTile(
-                        title: const Text("Brudföljet"),
-                        leading: const Icon(Icons.people_alt_outlined),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (
-                                  context) => const Toastmadame()));
-                        },
-                      ),
-                      ListTile(
-                        title: Text(
-                            AppLocalizations.of(context)!
-                                .accommodation),
-                        leading: const Icon(Icons.hotel_outlined),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (
-                                  context) => const Accommodation()));
-                        },
-                      ),
-                      ListTile(
-                        title: Text(
-                            AppLocalizations.of(context)!.transport),
-                        leading: const Icon(Icons.bus_alert_outlined),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(
-                                  builder: (
-                                      context) => const Transport()));
-                        },
-                      ),
-                      ListTile(
-                        title: Text(
-                            AppLocalizations.of(context)!.guestList),
-                        leading: const Icon(
-                            Icons.people_outline_outlined),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(
-                                  builder: (
-                                      context) => const FetchData()));
-                        },
-                      ),
-                      ListTile(
-                        title: Text(
-                            AppLocalizations.of(context)!.registry),
-                        leading: const Icon(Icons.list_alt_outlined),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(
-                                  builder: (
-                                      context) => const Registry()));
-                        },
-                      ),*/
                       ListTile(
                         title: const Text("O S A"),
                         leading: const Icon(Icons.mail_lock_outlined),
@@ -490,28 +413,7 @@ class _HomePageState extends State<HomePage> {
                                   context) => const RSVPInsertData()));
                         },
                       ),
-                      /*ListTile(
-                        title: const Text("K A R T A"),
-                        leading: const Icon(Icons.map_outlined),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(
-                                  builder: (
-                                      context) => const Location()));
-                        },
-                      ),*/
-                     /* ListTileTheme(
-                        tileColor: Colors.greenAccent,
-                        iconColor: Colors.black87,
-                        textColor: Colors.black87,
-                        child: Theme(
-                          data: ThemeData(
-                            colorScheme: ColorScheme.fromSeed(
-                              primary: Colors.white,
-                              seedColor: Colors.white,
-                            ),
-                          ),
-                        child:*/ ExpansionTile(
+                      ExpansionTile(
                           iconColor: Colors.white,
                           title: const Text('K O N T A K T'),
                           leading: const Icon(Icons.phone_outlined),
@@ -551,82 +453,16 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           ],),
-
-                      /*ListTile(
-                        title: const Text("C H A T T A  med oss"),
-                        leading: const Icon(Icons.chat_bubble_outline),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(
-                                  builder: (
-                                      context) => const Contact()));
-                        },
-                      ),*/
-                      /*ListTile(
-                                title: const Text("Notiser"),
-                                leading: const Icon(
-                                    Icons.notification_add_outlined),
-                                onTap: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (
-                                          context) => const NotificationPage()));
-                                },
-                              ),*/
-                      /*ListTile(
-                        title: const Text("FAQ"),
-                        leading: const Icon(Icons.info_outline),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(
-                                  builder: (
-                                      context) => const FaqPage()));
-                        },
-                      ),
-                      ListTile(
-                        title: const Text("Musik - Spotify"),
-                        leading: const Icon(Icons.music_note_outlined),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (
-                                  context) => const MusicPlayer()));
-                        },
-                      ),
-                        ListTile(
-                        title: const Text("Meny - TBA"),
-                        leading: const Icon(Icons.menu_book_outlined),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (
-                                  context) => const DinnerMenu()));
-                        },
-                      ),
-                      ListTile(
-                        title: const Text("Bordsplacering - TBA"),
-                        leading: const Icon(Icons.table_bar_outlined),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(
-                                  builder: (
-                                      context) => const Seating()));
-                        },
-                      ),
-                      ListTile(
-                        title: const Text("Quiz - TBA"),
-                        leading: const Icon(Icons.quiz_outlined),
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (
-                                  context) => const Accommodation()));
-                        },
-                      ),*/
                       const Divider(
                         height: 80,
                         color: Colors.black54,
                       ),
               ListTile(
-                          title: const Text("L O G G A UT",
+                          title: const Text("L O G G A  U T",
                           style: TextStyle(
-                              fontFamily: 'ClashGrotesk'),),
+                              //fontWeight: FontWeight.bold
+                          ),
+                          ),
                           leading: const Icon(Icons.logout),
                           onTap: () {
                             Navigator.push(context,
@@ -634,28 +470,15 @@ class _HomePageState extends State<HomePage> {
                                     context) => const Accommodation()));
                           },
                         ),
-                      /* ListTile(
-                     leading: const Icon(Icons.language),
-                     title: Text(AppLocalizations.of(context)!.chooseLanguage),
-                     onTap: () {
-                       Navigator.pop(context);
-                     },
-                 )*/
                     ],
                   ),
                 ),
               ),
             ),
-            //}
-            //}),
 
             body:
             TabBarView(
                 children: [
-                  //Center(
-                  // Center is a layout widget. It takes a single child and positions it
-                  // in the middle of the parent.
-                  //child:
                   Container(
                     height: double.infinity,
                     width: double.infinity,
@@ -666,41 +489,21 @@ class _HomePageState extends State<HomePage> {
                             'assets/wood-plank-texture-background.jpg'),
                       ),
                     ),
-                    //child: SingleChildScrollView(
                       child: Column(
-                        // Column is also a layout widget. It takes a list of children and
-                        // arranges them vertically. By default, it sizes itself to fit its
-                        // children horizontally, and tries to be as tall as its parent.
-                        //
-                        // Column has various properties to control how it sizes itself and
-                        // how it positions its children. Here we use mainAxisAlignment to
-                        // center the children vertically; the main axis here is the vertical
-                        // axis because Columns are vertical (the cross axis would be
-                        // horizontal).
-                        //
-                        // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-                        // action in the IDE, or press "p" in the console), to see the
-                        // wireframe for each widget.
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           const Text(
                             'Frida & Jonas',
                             style: TextStyle(
-                              //fontFamily: 'ClashGrotesk',
                               fontSize: 26,
                             ),
                           ),
                           Text(
                             AppLocalizations.of(context)!.weddingDate,
                             style: const TextStyle(
-                             // fontFamily: 'Literata',
                               fontSize: 18,
                             ),
                           ),
-                          /*  Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),*/
                           const SizedBox(
                             height: 20.0,
                           ),
@@ -721,7 +524,7 @@ class _HomePageState extends State<HomePage> {
                                       context) => const WeddingDay()));
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.greenAccent,
+                              backgroundColor: Color(0xffadd5bf),//const Color(0xfff3c3b0),//(0xffbbad2b8), //Colors.greenAccent,
                             ),
                             child: Text(AppLocalizations.of(context)!
                                 .weddingDay,
@@ -732,77 +535,12 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
-                    //),
                   ),
                   const WeddingDay(),
                   const Accommodation(),
                   const RSVPInsertData(),
-                ])
-            ,
-
-            /*   floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),*/
-            bottomNavigationBar: menu(), /*Container(
-              color: Colors.black,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
-              child: GNav(
-                backgroundColor: Colors.black87,
-                color: Colors.white,
-                activeColor: Colors.white,
-                tabBackgroundColor: Colors.grey.shade800,
-                gap: 8,
-                padding: const EdgeInsets.all(16),//menu(),
-                tabs: [
-                  GButton(
-                    text: "Hem",
-                    icon: Icons.home,
-                  ),
-                  GButton(
-                    text: AppLocalizations.of(context)!.inviteButton,
-                    icon: Icons.insert_invitation_outlined,
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (
-                              context) => const WeddingDay()));
-                    },
-                  ),
-                  GButton(
-                    text: AppLocalizations.of(context)!.accommodation,
-                    icon: Icons.hotel,
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (
-                              context) => const Accommodation()));
-                    },
-                  ),
-                  GButton(
-                    text: 'Mailer',
-                    icon: Icons.mail_lock_outlined,
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (
-                              context) => Mailer()));
-                    },
-                  ),
-                  GButton(
-                    text: AppLocalizations.of(context)!.rsvp,
-                    icon: Icons.mail,
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (
-                              context) => const RSVPInsertData()));
-                    },
-                  ),
-                ],
-              ),
-        ),
-            ),*/
-            // This trailing comma makes auto-formatting nicer for build methods.
-
+                ]),
+            bottomNavigationBar: menu(),
           ),
         )
     );
@@ -816,7 +554,7 @@ class _HomePageState extends State<HomePage> {
         // Fetch additional user data from Firestore
         DocumentSnapshot userDocument = await FirebaseFirestore.instance
             .collection(
-            'Guests') // Replace 'users' with your Firestore collection name
+            'Guests')
             .doc(user.uid)
             .get();
 
@@ -849,7 +587,7 @@ class _HomePageState extends State<HomePage> {
         unselectedLabelColor: Colors.white70,
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorPadding: const EdgeInsets.all(5.0),
-        indicatorColor: Colors.greenAccent,
+        indicatorColor: Color(0xff84c1a0),//Color(0xffdb6551),//Color(0xffbbad2b8),
         tabs: [
           const Tab(
             text: "Hem",

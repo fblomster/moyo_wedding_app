@@ -2,7 +2,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:moyo/screens/notifications.dart';
 import 'package:moyo/screens/notifications_onReceived.dart';
 import 'package:moyo/services/api/firebase_api.dart';
 import 'package:moyo/services/auth/auth_gate.dart';

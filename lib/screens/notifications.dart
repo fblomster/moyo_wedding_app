@@ -29,7 +29,7 @@ class NotificationPage extends StatelessWidget {
         future: getNotifications(), // Replace with your function to fetch data
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
@@ -49,7 +49,6 @@ class NotificationPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   var notification =
                       notifications[index].data() as Map<String, dynamic>;
-                  ;
                   return ListTile(
                     title: Text(notification['title'] as String),
                     subtitle: Text(notification['body'] as String),

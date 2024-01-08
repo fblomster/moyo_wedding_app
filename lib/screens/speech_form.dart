@@ -130,7 +130,7 @@ class _SpeechFormState extends State<SpeechForm> {
               ElevatedButton(
                 onPressed: _launchEmail,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.greenAccent,
+                  backgroundColor: const Color(0xffB4C3BE),
                 ),
                 child: const Text('jenny@',
                   style: TextStyle(color: Colors.black),),
@@ -337,7 +337,7 @@ class _SpeechFormState extends State<SpeechForm> {
                                           .primary
                                           .withOpacity(0.5);
                                     } else if (states.contains(MaterialState.disabled))
-                                      return Color(0xffC5E3EC);//Colors.blueGrey;
+                                      return const Color(0xffB4C3BE);//Colors.blueGrey;
                                     return Colors.blue; // Use the component's default.
                                   },
                                 ),
